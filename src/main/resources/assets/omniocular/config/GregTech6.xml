@@ -2,6 +2,56 @@
 <!--Date: 2017/06/9-->
 <!--Version: 6.05.22-->
 <oo>
+
+    <!-- 蒸汽锅炉容量上限 -->
+	<init>
+		function getBoilerCapacity(mID){
+			switch(mID){
+				case 1200:{return 160000;break;}
+				case 1201:{return 200000;break;}
+				case 1202:{return 240000;break;}
+				case 1203:{return 160000;break;}
+				case 1204:{return 320000;break;}
+				case 1205:{return 960000;break;}
+				case 1206:{return 1120000;break;}
+				case 1207:{return 1280000;break;}
+				case 1208:{return 1280000;break;}
+				case 1250:{return 4 * getBoilerCapacity(mID - 50);break;}
+				case 1251:{return 4 * getBoilerCapacity(mID - 50);break;}
+				case 1252:{return 4 * getBoilerCapacity(mID - 50);break;}
+				case 1253:{return 4 * getBoilerCapacity(mID - 50);break;}
+				case 1254:{return 4 * getBoilerCapacity(mID - 50);break;}
+				case 1255:{return 4 * getBoilerCapacity(mID - 50);break;}
+				case 1256:{return 4 * getBoilerCapacity(mID - 50);break;}
+				case 1257:{return 4 * getBoilerCapacity(mID - 50);break;}
+				case 1258:{return 4 * getBoilerCapacity(mID - 50);break;}
+			}
+		}
+	</init>
+
+	<!-- 判断蒸汽机器爆炸半径 -->
+	<init>
+		function ExplodeRoundSU(cap){
+			if((Math.sqrt(cap) / 100) > 1){
+				return Math.floor((Math.sqrt(cap) / 100));
+			}
+			return 1;
+		}
+	</init>
+
+	<!-- 判断靠近锅炉所受伤害数值 -->
+	<init>
+		function HeatDamageSU(enCap,SUCap,isChisel){
+			if(isChisel == 0){
+				if(Math.floor((enCap + SUCap / 2) / 2000) < 10){
+					return Math.floor((enCap + SUCap / 2) / 2000);
+				}
+				return 10;
+			}
+			return Math.floor((enCap + SUCap / 2) / 2000)
+		}
+	</init>
+
     <!-- 坩埚   -->
     <tileentity id="gt.multitileentity.smeltery">
 	    <line displayname="当前温度">
@@ -51,15 +101,63 @@
 	
 	<!-- 蒸汽锅炉   -->
 	<tileentity id="gt.multitileentity.tank.boiler_steam">
+		<line displayname="爆炸警告1">
+		if((nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id'])) > 0.10){
+			return RED + "此时使用扳手拆除会造成半径" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "格的爆炸";
+		}
+		</line>
+
+		<line displayname="爆炸警告2">
+		if((nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id'])) > 0.46){
+			return RED + "此时使用凿子清理锅炉会造成半径" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "格的爆炸";
+		}
+		</line>
+
+		<line displayname="烫伤警告1">
+		if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
+			if((nbt['gt.tank.1']['Amount'] / 2) > 2000){
+				return RED + "此时靠近锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],0) + "点伤害";
+			}
+		}
+		</line>
+
+		<line displayname="烫伤警告2">
+		if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
+			if((nbt['gt.tank.1']['Amount'] / 2) > 2000){
+				return RED + "此时使用凿子清理锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],1) + "点伤害";
+			}
+		}
+		</line>
+
+		<line displayname="效率">
+		if(nbt['gt.eff'] != undefined){
+			return nbt['gt.eff'] / 100 + "%";
+		}
+		return "100.00%";
+		</line>
+
+		<line displayname="热量存量">
+		if(nbt['gt.energy'] != undefined){
+			return nbt['gt.energy'] + "/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + Math.floor(nbt['gt.energy'] / getBoilerCapacity(nbt['gt.mte.id']) * 10000) / 100 + "%";
+		}
+		return "0/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + "0.00%";
+		</line>
+
 	    <line displayname="水类型">
-		return fluidName(nbt['gt.tank.0']['FluidName'])
+		return fluidName(nbt['gt.tank.0']['FluidName']);
 		</line>
+
 		<line displayname="水存量">
-		return nbt['gt.tank.0']['Amount']+BLUE+"/4000"+BLUE+" L"
+		return nbt['gt.tank.0']['Amount'] + "/4000" + BLUE + "L";
 		</line>
+
 		<line displayname="蒸汽存量">
-		return nbt['gt.tank.1']['Amount']+BLUE+" L"
+		if(nbt['gt.tank.1']['Amount'] != undefined){
+			return nbt['gt.tank.1']['Amount'] + "/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + Math.floor(nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id']) * 10000) / 100 + "%";
+		}
+		return "0/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + "0.00%";
 		</line>
+		
 	</tileentity>
 	
 	<!-- 蒸汽引擎   -->
@@ -127,34 +225,8 @@
 		</line>
 
 		<line displayname="流体种类">
-		switch(nbt['gt.spring']['FluidName']){
-			case "liquid_extra_heavy_oil" :{
-				return " 超重油";
-				break;
-			}
-			case "liquid_heavy_oil" :{
-				return " 重油";
-				break;
-			}
-			case "liquid_medium_oil" :{
-				return " 原油";
-				break;
-			}
-			case "liquid_light_oil" :{
-				return " 轻油";
-				break;
-			}
-			case "water" :{
-				return " 水";
-				break;
-			}
-			case "lava" :{
-				return " 岩浆";
-				break;
-			}
-			default :{
-				return " 未知";
-			}
+		if(nbt['gt.spring']['FluidName'] != null){
+			return fluidName(nbt['gt.spring']['FluidName']);
 		}
 		</line>  
 
