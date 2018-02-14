@@ -103,4 +103,61 @@
 		return nbt['gt.invlist']['1']['Count']+BLUE+"个 "+RED+name(nbt['gt.invlist']['1'])
 		</line>
 	</tileentity>
+
+	<!-- 油泉 -->
+	<tileentity id="gt.multitileentity.fluid.spring">
+	    <line displayname="生成速度">
+		if(nbt['gt.spring']['Amount'] > 0){
+			if(nbt['gt.spring']['Amount'] < 20){
+				return nbt['gt.spring']['Amount'] + BLUE + " Tick/桶";
+			}
+			if(nbt['gt.spring']['Amount'] < 1200){
+				return nbt['gt.spring']['Amount'] / 20 + BLUE + " 秒/桶";
+			}
+			if(nbt['gt.spring']['Amount'] < 72000){
+				return nbt['gt.spring']['Amount'] / 1200 + BLUE + " 分钟/桶";
+			}
+			if(nbt['gt.spring']['Amount'] < 4320000){
+				return nbt['gt.spring']['Amount'] / 72000 + BLUE + " 小时/桶";
+			}
+			if(nbt['gt.spring']['Amount'] < 103680000){
+				return nbt['gt.spring']['Amount'] / 4320000 + BLUE + " 天/桶";
+			}
+		}
+		</line>
+
+		<line displayname="流体种类">
+		switch(nbt['gt.spring']['FluidName']){
+			case "liquid_extra_heavy_oil" :{
+				return " 超重油";
+				break;
+			}
+			case "liquid_heavy_oil" :{
+				return " 重油";
+				break;
+			}
+			case "liquid_medium_oil" :{
+				return " 原油";
+				break;
+			}
+			case "liquid_light_oil" :{
+				return " 轻油";
+				break;
+			}
+			case "water" :{
+				return " 水";
+				break;
+			}
+			case "lava" :{
+				return " 岩浆";
+				break;
+			}
+			default :{
+				return " 未知";
+			}
+		}
+		</line>  
+
+	</tileentity>
+
 </oo>
