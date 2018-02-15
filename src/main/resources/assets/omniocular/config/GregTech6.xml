@@ -1,6 +1,6 @@
-<!--Author: Amamiya-Nagisa-->
-<!--Date: 2017/06/9-->
-<!--Version: 6.05.22-->
+<!--Author: lycc193-->
+<!--Date: 2018/02/15-->
+<!--Version: 6.07.01-->
 <oo>
 
     <!-- 蒸汽锅炉容量上限 -->
@@ -52,6 +52,50 @@
 		}
 	</init>
 
+	<!-- 引擎额定输出功率 -->
+	<init>
+		function getEngineOutput(mID){
+			switch(mID){
+				case 1300:{return 8;break;}
+				case 1301:{return 10;break;}
+				case 1302:{return 12;break;}
+				case 1303:{return 8;break;}
+				case 1304:{return 16;break;}
+				case 1305:{return 48;break;}
+				case 1306:{return 56;break;}
+				case 1307:{return 64;break;}
+				case 1308:{return 64;break;}
+				case 1309:{return 12;break;}
+				case 1310:{return 8;break;}
+				case 1311:{return 32;break;}
+				case 1300:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1301:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1302:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1303:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1304:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1305:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1306:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1307:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1308:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1309:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1310:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1311:{return 4 * getEngineOutput(mID + 50);break;}
+			}
+		}
+	</init>
+
+	<!-- 限定上下限 -->
+	<init>
+		function bind(aMin,aMax,aValue){
+			if(aValue < aMin){
+				return aMin;
+			}
+			if(aValue > aMax){
+				return aMax;
+			}
+			return aValue;
+		}
+	</init>
     <!-- 坩埚   -->
     <tileentity id="gt.multitileentity.smeltery">
 	    <line displayname="当前温度">
@@ -99,76 +143,130 @@
         </line>
 	</tileentity>
 	
-	<!-- 蒸汽锅炉   -->
+	<!-- 蒸汽锅炉 -->
 	<tileentity id="gt.multitileentity.tank.boiler_steam">
 		<line displayname="爆炸警告1">
-		if((nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id'])) > 0.10){
-			return RED + "此时使用扳手拆除会造成半径" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "格的爆炸";
-		}
+			if((nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id'])) > 0.10){
+				return RED + "此时使用扳手拆除会造成威力" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "点的爆炸";
+			}
 		</line>
 
 		<line displayname="爆炸警告2">
-		if((nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id'])) > 0.46){
-			return RED + "此时使用凿子清理锅炉会造成半径" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "格的爆炸";
-		}
+			if((nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id'])) > 0.46){
+				return RED + "此时使用凿子清理锅炉会造成威力" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "点的爆炸";
+			}
 		</line>
 
 		<line displayname="烫伤警告1">
-		if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
-			if((nbt['gt.tank.1']['Amount'] / 2) > 2000){
-				return RED + "此时靠近锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],0) + "点伤害";
+			if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
+				if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
+					return RED + "此时靠近锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],0) + "点伤害";
+				}
 			}
-		}
+
+			if(nbt['gt.energy'] != undefined){
+				if(nbt['gt.tank.1']['Amount'] != undefined){
+					if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
+						return RED + "此时靠近锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],0) + "点伤害";
+					}
+				}
+				if((nbt['gt.energy']) > 2000){
+					return RED + "此时靠近锅炉会受到" + HeatDamageSU(nbt['gt.energy'],0,0) + "点伤害";
+				}
+			}
+			if(nbt['gt.tank.1']['Amount'] != undefined){
+				if((nbt['gt.tank.1']['Amount'] / 2) > 2000){
+					return RED + "此时靠近锅炉会受到" + HeatDamageSU(0,nbt['gt.tank.1']['Amount'],0) + "点伤害";
+				}
+			}
 		</line>
 
 		<line displayname="烫伤警告2">
-		if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
-			if((nbt['gt.tank.1']['Amount'] / 2) > 2000){
-				return RED + "此时使用凿子清理锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],1) + "点伤害";
+			if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
+				if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
+					return RED + "此时使用凿子清理锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],1) + "点伤害";
+				}
 			}
-		}
+
+			if(nbt['gt.energy'] != undefined){
+				if(nbt['gt.tank.1']['Amount'] != undefined){
+					if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
+						return RED + "此时使用凿子清理锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],1) + "点伤害";
+					}
+				}
+				if((nbt['gt.energy']) > 2000){
+					return RED + "此时使用凿子清理锅炉会受到" + HeatDamageSU(nbt['gt.energy'],0,1) + "点伤害";
+				}
+			}
+			if(nbt['gt.tank.1']['Amount'] != undefined){
+				if((nbt['gt.tank.1']['Amount'] / 2) > 2000){
+					return RED + "此时使用凿子清理锅炉会受到" + HeatDamageSU(0,nbt['gt.tank.1']['Amount'],1) + "点伤害";
+				}
+			}
 		</line>
 
 		<line displayname="效率">
-		if(nbt['gt.eff'] != undefined){
-			return nbt['gt.eff'] / 100 + "%";
-		}
-		return "100.00%";
+			if(nbt['gt.eff'] != undefined){
+				return nbt['gt.eff'] / 100 + "%";
+			}
+			return "100.00%";
 		</line>
 
 		<line displayname="热量存量">
-		if(nbt['gt.energy'] != undefined){
-			return nbt['gt.energy'] + "/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + Math.floor(nbt['gt.energy'] / getBoilerCapacity(nbt['gt.mte.id']) * 10000) / 100 + "%";
-		}
-		return "0/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + "0.00%";
+			if(nbt['gt.energy'] != undefined){
+				return nbt['gt.energy'] + "/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + Math.floor(nbt['gt.energy'] / getBoilerCapacity(nbt['gt.mte.id']) * 10000) / 100 + "%";
+			}
+			return "0/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + "0.00%";
 		</line>
 
 	    <line displayname="水类型">
-		return fluidName(nbt['gt.tank.0']['FluidName']);
+			return fluidName(nbt['gt.tank.0']['FluidName']);
 		</line>
 
 		<line displayname="水存量">
-		return nbt['gt.tank.0']['Amount'] + "/4000" + BLUE + "L";
+			return nbt['gt.tank.0']['Amount'] + "/4000" + BLUE + "L";
 		</line>
 
 		<line displayname="蒸汽存量">
-		if(nbt['gt.tank.1']['Amount'] != undefined){
 			return nbt['gt.tank.1']['Amount'] + "/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + Math.floor(nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id']) * 10000) / 100 + "%";
-		}
-		return "0/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + "0.00%";
 		</line>
 		
 	</tileentity>
 	
-	<!-- 蒸汽引擎   -->
+	<!-- 蒸汽引擎 -->
 	<tileentity id="gt.multitileentity.engine.kinetic_steam">
-	    <line displayname="缓存能量">
-		if(nbt['gt.energy']!=undefined){
-		return nbt['gt.energy']+BLUE+" KU"}
+		<line displayname="过热警告">
+			return RED + "若热量存量达到100%，则会强制停机";
 		</line>
+
+		<line displayname="工作状态">
+			if(nbt['gt.stopped'] == 1){
+				return BLUE + "停机";
+			}
+			if(nbt['gt.active'] == 1){
+				return BLUE + "运行";
+			}
+			return BLUE + "预热";
+		</line>
+
+		<line displayname="输出功率">
+			if(nbt['gt.active'] == 1){
+				return getEngineOutput(nbt['gt.mte.id']) * ((nbt['gt.visual'] + 1) / 16) + BLUE + " KU/t";
+			}
+			return "机器未运行 - 0" + BLUE + " KU/t";
+		</line>
+
+	    <line displayname="热量存量">
+			if(nbt['gt.energy'] != undefined){
+				return nbt['gt.energy'] + "/" + bind(2000,2147483647,getEngineOutput(nbt['gt.mte.id']) * 2000) + BLUE + " KU" + WHITE + " - " + Math.floor(nbt['gt.energy'] / bind(2000,2147483647,getEngineOutput(nbt['gt.mte.id']) * 2000) * 10000) / 100 + "%";
+			}
+			return "0/" + bind(2000,2147483647,getEngineOutput(nbt['gt.mte.id']) * 2000) + BLUE + " KU" + WHITE + " - " + "0%";
+		</line>
+
 		<line displayname="蒸汽存量">
-		return nbt['gt.tank.0']['Amount']+BLUE+" L"
+			return nbt['gt.tank.0']['Amount'] + "/" + bind(200,2147483647,getEngineOutput(nbt['gt.mte.id']) * 200) + BLUE + " L"
 		</line>
+
 	</tileentity>
 	
 	<!-- 管道   -->
