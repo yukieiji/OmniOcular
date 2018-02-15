@@ -68,18 +68,18 @@
 				case 1309:{return 12;break;}
 				case 1310:{return 8;break;}
 				case 1311:{return 32;break;}
-				case 1300:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1301:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1302:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1303:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1304:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1305:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1306:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1307:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1308:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1309:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1310:{return 4 * getEngineOutput(mID + 50);break;}
-				case 1311:{return 4 * getEngineOutput(mID + 50);break;}
+				case 1350:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1351:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1352:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1353:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1354:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1355:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1356:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1357:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1358:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1359:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1360:{return 4 * getEngineOutput(mID - 50);break;}
+				case 1361:{return 4 * getEngineOutput(mID - 50);break;}
 			}
 		}
 	</init>
@@ -203,6 +203,19 @@
 					return RED + "此时使用凿子清理锅炉会受到" + HeatDamageSU(0,nbt['gt.tank.1']['Amount'],1) + "点伤害";
 				}
 			}
+		</line>
+
+		<line displayname="工作状态">
+			if(nbt['gt.tank.1']['Amount'] * 2 >= getBoilerCapacity(nbt['gt.mte.id'])){
+				return BLUE + "运行";
+			}
+			if(nbt['gt.tank.0'] != undefined){
+				return BLUE + "预热";
+			}
+			if(nbt['gt.energy'] != undefined){
+				return BLUE + "干烧";
+			}
+			return BLUE + "停机";
 		</line>
 
 		<line displayname="效率">
