@@ -1,5 +1,4 @@
-<!--Author: lycc193-->
-<!--Date: 2018/02/15-->
+<!--Date: 2018/02/17-->
 <!--Version: 6.07.01-->
 <oo>
 
@@ -96,6 +95,22 @@
 			return aValue;
 		}
 	</init>
+
+	<!-- 电压等级 -->
+	<init>
+		function ID2EUTier(mID,Type){
+			if(Type == 0){
+				switch(mID){
+					case 10011:{return 32;break;}
+					case 10012:{return 128;break;}
+					case 10013:{return 512;break;}
+					case 10014:{return 2048;break;}					
+					case 10015:{return 8192;break;}					
+				}
+			}
+		}
+	</init>
+
     <!-- 坩埚   -->
     <tileentity id="gt.multitileentity.smeltery">
 	    <line displayname="当前温度">
@@ -282,6 +297,37 @@
 
 	</tileentity>
 	
+	<!-- 电力引擎 -->
+	<tileentity id="gt.multitileentity.engine.kinetic_electricity">
+		<line displayname="工作状态">
+			if(nbt['gt.active'] == 1){
+				if(nbt['gt.active.energy'] == 1){
+					return BLUE + "运行";
+				}
+				return BLUE + "待机";
+			}
+			return BLUE + "停机";
+		</line>
+
+		<line displayname="输入功率">
+			if(nbt['gt.mode'] == undefined){
+				return ID2EUTier(nbt['gt.mte.id'],0) + BLUE + " EU/t" + WHITE + " - " +  "1" + BLUE + " A";
+			}
+			if(nbt['gt.mode'] < 7){
+				return ID2EUTier(nbt['gt.mte.id'],0) / 2 + BLUE + " EU/t" + WHITE + " - " + Math.floor(1 / (8 - nbt['gt.mode']) * 1000) / 1000 + BLUE + " A";
+			}
+			return ID2EUTier(nbt['gt.mte.id'],0) * (nbt['gt.mode'] + 1) / 16 + BLUE + " EU/t" + WHITE + " - " + "1" + BLUE + " A";
+		</line>
+
+		<line displayname="输出功率">
+			if(nbt['gt.mode'] == undefined){
+				return ID2EUTier(nbt['gt.mte.id'],0) / 2 + BLUE + " EU/t";
+			}
+			return ID2EUTier(nbt['gt.mte.id'],0) * (nbt['gt.mode'] + 1) / 32 + BLUE + " EU/t";
+		</line>
+
+	</tileentity
+	>
 	<!-- 管道   -->
 	<tileentity id="gt.multitileentity.connector.pipe.fluid">
 	    <line displayname="内容物">
