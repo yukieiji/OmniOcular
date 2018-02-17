@@ -1,29 +1,109 @@
-<!--Date: 2018/02/17-->
+<!--Date: 2018/02/18-->
 <!--Version: 6.07.01-->
 <oo>
 
-    <!-- 蒸汽锅炉容量上限 -->
+    <!-- HU等级 -->
+	<!-- 0 - 蒸汽锅炉 -->
 	<init>
-		function getBoilerCapacity(mID){
-			switch(mID){
-				case 1200:{return 160000;break;}
-				case 1201:{return 200000;break;}
-				case 1202:{return 240000;break;}
-				case 1203:{return 160000;break;}
-				case 1204:{return 320000;break;}
-				case 1205:{return 960000;break;}
-				case 1206:{return 1120000;break;}
-				case 1207:{return 1280000;break;}
-				case 1208:{return 1280000;break;}
-				case 1250:{return 4 * getBoilerCapacity(mID - 50);break;}
-				case 1251:{return 4 * getBoilerCapacity(mID - 50);break;}
-				case 1252:{return 4 * getBoilerCapacity(mID - 50);break;}
-				case 1253:{return 4 * getBoilerCapacity(mID - 50);break;}
-				case 1254:{return 4 * getBoilerCapacity(mID - 50);break;}
-				case 1255:{return 4 * getBoilerCapacity(mID - 50);break;}
-				case 1256:{return 4 * getBoilerCapacity(mID - 50);break;}
-				case 1257:{return 4 * getBoilerCapacity(mID - 50);break;}
-				case 1258:{return 4 * getBoilerCapacity(mID - 50);break;}
+		function ID2HUTier(mID,Type){
+			if(Type == 0){
+				switch(mID){
+					case 1200:{return 16;break;}
+					case 1201:{return 20;break;}
+					case 1202:{return 24;break;}
+					case 1203:{return 16;break;}
+					case 1204:{return 32;break;}
+					case 1205:{return 96;break;}
+					case 1206:{return 112;break;}
+					case 1207:{return 128;break;}
+					case 1208:{return 128;break;}
+					case 1250:{return 4 * ID2HUTier(mID - 50,0);break;}
+					case 1251:{return 4 * ID2HUTier(mID - 50,0);break;}
+					case 1252:{return 4 * ID2HUTier(mID - 50,0);break;}
+					case 1253:{return 4 * ID2HUTier(mID - 50,0);break;}
+					case 1254:{return 4 * ID2HUTier(mID - 50,0);break;}
+					case 1255:{return 4 * ID2HUTier(mID - 50,0);break;}
+					case 1256:{return 4 * ID2HUTier(mID - 50,0);break;}
+					case 1257:{return 4 * ID2HUTier(mID - 50,0);break;}
+					case 1258:{return 4 * ID2HUTier(mID - 50,0);break;}
+				}
+			}
+		}
+	</init>
+
+	<!-- KU等级 -->
+	<!-- 0 - 蒸汽引擎, -->
+	<init>
+		function ID2KUTier(mID,Type){
+			if(Type == 0){
+				switch(mID){
+					case 1300:{return 8;break;}
+					case 1301:{return 10;break;}
+					case 1302:{return 12;break;}
+					case 1303:{return 8;break;}
+					case 1304:{return 16;break;}
+					case 1305:{return 48;break;}
+					case 1306:{return 56;break;}
+					case 1307:{return 64;break;}
+					case 1308:{return 64;break;}
+					case 1309:{return 12;break;}
+					case 1310:{return 8;break;}
+					case 1311:{return 32;break;}
+					case 1350:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1351:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1352:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1353:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1354:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1355:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1356:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1357:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1358:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1359:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1360:{return 4 * ID2KUTier(mID - 50,0);break;}
+					case 1361:{return 4 * ID2KUTier(mID - 50,0);break;}
+				}
+			}
+		}
+	</init>
+
+	<!-- EU等级 -->
+	<!-- 0 - 电动引擎, -->
+	<init>
+		function ID2EUTier(mID,Type){
+			if(Type == 0){
+				switch(mID){
+					case 10011:{return 32;break;}
+					case 10012:{return 128;break;}
+					case 10013:{return 512;break;}
+					case 10014:{return 2048;break;}					
+					case 10015:{return 8192;break;}					
+				}
+			}
+		}
+	</init>
+
+	<!-- RU等级 -->
+	<!-- 0 - 单方块涡轮, -->
+	<init>
+		function ID2RUTier(mID,Type){
+			if(Type == 0){
+				switch(mID){
+					case 1512:{return 16;break;}
+					case 1515:{return 24;break;}
+					case 1518:{return 32;break;}
+					case 1522:{return 64;break;}
+					case 1525:{return 96;break;}
+					case 1527:{return 128;break;}
+					case 1528:{return 128;break;}
+					case 1529:{return 128;break;}
+					case 1530:{return 256;break;}
+					case 1531:{return 256;break;}
+					case 1535:{return 384;break;}
+					case 1538:{return 512;break;}
+					case 1540:{return 768;break;}
+					case 1545:{return 1024;break;}
+					case 1548:{return 2048;break;}
+				}
 			}
 		}
 	</init>
@@ -51,38 +131,6 @@
 		}
 	</init>
 
-	<!-- 引擎额定输出功率 -->
-	<init>
-		function getEngineOutput(mID){
-			switch(mID){
-				case 1300:{return 8;break;}
-				case 1301:{return 10;break;}
-				case 1302:{return 12;break;}
-				case 1303:{return 8;break;}
-				case 1304:{return 16;break;}
-				case 1305:{return 48;break;}
-				case 1306:{return 56;break;}
-				case 1307:{return 64;break;}
-				case 1308:{return 64;break;}
-				case 1309:{return 12;break;}
-				case 1310:{return 8;break;}
-				case 1311:{return 32;break;}
-				case 1350:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1351:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1352:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1353:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1354:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1355:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1356:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1357:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1358:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1359:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1360:{return 4 * getEngineOutput(mID - 50);break;}
-				case 1361:{return 4 * getEngineOutput(mID - 50);break;}
-			}
-		}
-	</init>
-
 	<!-- 限定上下限 -->
 	<init>
 		function bind(aMin,aMax,aValue){
@@ -93,21 +141,6 @@
 				return aMax;
 			}
 			return aValue;
-		}
-	</init>
-
-	<!-- 电压等级 -->
-	<init>
-		function ID2EUTier(mID,Type){
-			if(Type == 0){
-				switch(mID){
-					case 10011:{return 32;break;}
-					case 10012:{return 128;break;}
-					case 10013:{return 512;break;}
-					case 10014:{return 2048;break;}					
-					case 10015:{return 8192;break;}					
-				}
-			}
 		}
 	</init>
 
@@ -161,13 +194,13 @@
 	<!-- 蒸汽锅炉 -->
 	<tileentity id="gt.multitileentity.tank.boiler_steam">
 		<line displayname="爆炸警告1">
-			if((nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id'])) > 0.10){
+			if((nbt['gt.tank.1']['Amount'] / (ID2HUTier(nbt['gt.mte.id'],0) * 10000)) > 0.10){
 				return RED + "此时使用扳手拆除会造成威力" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "点的爆炸";
 			}
 		</line>
 
 		<line displayname="爆炸警告2">
-			if((nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id'])) > 0.46){
+			if((nbt['gt.tank.1']['Amount'] / (ID2HUTier(nbt['gt.mte.id'],0) * 10000)) > 0.46){
 				return RED + "此时使用凿子清理锅炉会造成威力" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "点的爆炸";
 			}
 		</line>
@@ -221,7 +254,7 @@
 		</line>
 
 		<line displayname="工作状态">
-			if(nbt['gt.tank.1']['Amount'] * 2 >= getBoilerCapacity(nbt['gt.mte.id'])){
+			if(nbt['gt.tank.1']['Amount'] * 2 >= (ID2HUTier(nbt['gt.mte.id'],0) * 10000)){
 				return BLUE + "运行";
 			}
 			if(nbt['gt.tank.0'] != undefined){
@@ -242,9 +275,9 @@
 
 		<line displayname="热量存量">
 			if(nbt['gt.energy'] != undefined){
-				return nbt['gt.energy'] + "/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + Math.floor(nbt['gt.energy'] / getBoilerCapacity(nbt['gt.mte.id']) * 10000) / 100 + "%";
+				return nbt['gt.energy'] + "/" + ID2HUTier(nbt['gt.mte.id'],0) * 10000 + BLUE + " HU" + WHITE + " - " + Math.floor(nbt['gt.energy'] / ID2HUTier(nbt['gt.mte.id'],0)) / 100 + "%";
 			}
-			return "0/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + "0.00%";
+			return "0/" + ID2HUTier(nbt['gt.mte.id'],0) * 10000 + BLUE + " HU" + WHITE + " - " + "0.00%";
 		</line>
 
 	    <line displayname="水类型">
@@ -252,11 +285,17 @@
 		</line>
 
 		<line displayname="水存量">
-			return nbt['gt.tank.0']['Amount'] + "/4000" + BLUE + "L";
+			if(nbt['gt.tank.0'] != undefined){
+				return nbt['gt.tank.0']['Amount'] + "/4000" + BLUE + " L";
+			}
+			return "0/4000" + BLUE + " L";
 		</line>
 
 		<line displayname="蒸汽存量">
-			return nbt['gt.tank.1']['Amount'] + "/" + getBoilerCapacity(nbt['gt.mte.id']) + " - " + Math.floor(nbt['gt.tank.1']['Amount'] / getBoilerCapacity(nbt['gt.mte.id']) * 10000) / 100 + "%";
+			if(nbt['gt.tank.1'] != undefined){
+				return nbt['gt.tank.1']['Amount'] + "/" + ID2HUTier(nbt['gt.mte.id'],0) * 10000 + BLUE + " L" + WHITE + " - " + Math.floor(nbt['gt.tank.1']['Amount'] / ID2HUTier(nbt['gt.mte.id'],0)) / 100 + "%";
+			}
+			return "0/" + ID2HUTier(nbt['gt.mte.id'],0) * 10000 + BLUE + " L" + WHITE + " - " + "0.00%";
 		</line>
 		
 	</tileentity>
@@ -279,20 +318,23 @@
 
 		<line displayname="输出功率">
 			if(nbt['gt.active'] == 1){
-				return getEngineOutput(nbt['gt.mte.id']) * ((nbt['gt.visual'] + 1) / 16) + BLUE + " KU/t";
+				return ID2KUTier(nbt['gt.mte.id'],0) * ((nbt['gt.visual'] + 1) / 16) + BLUE + " KU/t";
 			}
 			return "机器未运行 - 0" + BLUE + " KU/t";
 		</line>
 
-	    <line displayname="热量存量">
+	    <line displayname="动能存量">
 			if(nbt['gt.energy'] != undefined){
-				return nbt['gt.energy'] + "/" + bind(2000,2147483647,getEngineOutput(nbt['gt.mte.id']) * 2000) + BLUE + " KU" + WHITE + " - " + Math.floor(nbt['gt.energy'] / bind(2000,2147483647,getEngineOutput(nbt['gt.mte.id']) * 2000) * 10000) / 100 + "%";
+				return nbt['gt.energy'] + "/" + bind(2000,2147483647,ID2KUTier(nbt['gt.mte.id'],0) * 2000) + BLUE + " KU" + WHITE + " - " + Math.floor(nbt['gt.energy'] / bind(2000,2147483647,ID2KUTier(nbt['gt.mte.id'],0) * 2000) * 10000) / 100 + "%";
 			}
-			return "0/" + bind(2000,2147483647,getEngineOutput(nbt['gt.mte.id']) * 2000) + BLUE + " KU" + WHITE + " - " + "0%";
+			return "0/" + bind(2000,2147483647,ID2KUTier(nbt['gt.mte.id'],0) * 2000) + BLUE + " KU" + WHITE + " - " + "0.00%";
 		</line>
 
 		<line displayname="蒸汽存量">
-			return nbt['gt.tank.0']['Amount'] + "/" + bind(200,2147483647,getEngineOutput(nbt['gt.mte.id']) * 200) + BLUE + " L"
+			if(nbt['gt.tank.0'] != undefined){
+				return nbt['gt.tank.0']['Amount'] + "/" + bind(200,2147483647,ID2KUTier(nbt['gt.mte.id'],0) * 200) + BLUE + " L"
+			}
+			return "0/" + bind(200,2147483647,ID2KUTier(nbt['gt.mte.id'],0) * 200) + BLUE + " L"
 		</line>
 
 	</tileentity>
@@ -321,13 +363,47 @@
 
 		<line displayname="输出功率">
 			if(nbt['gt.mode'] == undefined){
-				return ID2EUTier(nbt['gt.mte.id'],0) / 2 + BLUE + " EU/t";
+				return ID2EUTier(nbt['gt.mte.id'],0) / 2 + BLUE + " KU/t";
 			}
-			return ID2EUTier(nbt['gt.mte.id'],0) * (nbt['gt.mode'] + 1) / 32 + BLUE + " EU/t";
+			return ID2EUTier(nbt['gt.mte.id'],0) * (nbt['gt.mode'] + 1) / 32 + BLUE + " KU/t";
 		</line>
 
-	</tileentity
-	>
+	</tileentity>
+
+	<!-- 单方块涡轮 -->
+	<tileentity id="gt.multitileentity.turbines.rotation_steam">
+		<line displayname="运行状态">
+			if(nbt['gt.active.energy'] == 1){
+				return BLUE + "运行";
+			}
+			if(nbt['gt.can.energy'] == 1){
+				return BLUE + "待机";
+			}
+			return BLUE + "停机";
+		</line>
+
+		<line displayname="输入功率">
+			if(nbt['gt.output.su'] != undefined){
+				return nbt['gt.output.su'] + BLUE + " SU/t";
+			}
+			return "机器未运行" + " - " + "0" + BLUE + " SU/t";
+		</line>
+
+		<line displayname="输出功率">
+			if(nbt['gt.energy.su'] != undefined){
+				return nbt['gt.energy.su'] + BLUE + " RU/t";
+			}
+			return "机器未运行" + " - " + "0" + BLUE + " RU/t";
+		</line>
+
+		<line displayname="蒸汽存量">
+			if(nbt['gt.tank.0'] != undefined){
+				return nbt['gt.tank.0']['Amount'] + "/" + ID2RUTier(nbt['gt.mte.id'],0) * 24 + BLUE + " L";
+			}
+			return "0/" + ID2RUTier(nbt['gt.mte.id'],0) * 24 + BLUE + " L";
+		</line>
+	</tileentity>
+
 	<!-- 管道   -->
 	<tileentity id="gt.multitileentity.connector.pipe.fluid">
 	    <line displayname="内容物">
@@ -362,29 +438,29 @@
 	<!-- 油泉 -->
 	<tileentity id="gt.multitileentity.fluid.spring">
 	    <line displayname="生成速度">
-		if(nbt['gt.spring']['Amount'] > 0){
-			if(nbt['gt.spring']['Amount'] < 20){
-				return nbt['gt.spring']['Amount'] + BLUE + " Tick/桶";
+			if(nbt['gt.spring']['Amount'] > 0){
+				if(nbt['gt.spring']['Amount'] < 20){
+					return nbt['gt.spring']['Amount'] + BLUE + " Tick/桶";
+				}
+				if(nbt['gt.spring']['Amount'] < 1200){
+					return nbt['gt.spring']['Amount'] / 20 + BLUE + " 秒/桶";
+				}
+				if(nbt['gt.spring']['Amount'] < 72000){
+					return nbt['gt.spring']['Amount'] / 1200 + BLUE + " 分钟/桶";
+				}
+				if(nbt['gt.spring']['Amount'] < 4320000){
+					return nbt['gt.spring']['Amount'] / 72000 + BLUE + " 小时/桶";
+				}
+				if(nbt['gt.spring']['Amount'] < 103680000){
+					return nbt['gt.spring']['Amount'] / 4320000 + BLUE + " 天/桶";
+				}
 			}
-			if(nbt['gt.spring']['Amount'] < 1200){
-				return nbt['gt.spring']['Amount'] / 20 + BLUE + " 秒/桶";
-			}
-			if(nbt['gt.spring']['Amount'] < 72000){
-				return nbt['gt.spring']['Amount'] / 1200 + BLUE + " 分钟/桶";
-			}
-			if(nbt['gt.spring']['Amount'] < 4320000){
-				return nbt['gt.spring']['Amount'] / 72000 + BLUE + " 小时/桶";
-			}
-			if(nbt['gt.spring']['Amount'] < 103680000){
-				return nbt['gt.spring']['Amount'] / 4320000 + BLUE + " 天/桶";
-			}
-		}
 		</line>
 
 		<line displayname="流体种类">
-		if(nbt['gt.spring']['FluidName'] != null){
-			return fluidName(nbt['gt.spring']['FluidName']);
-		}
+			if(nbt['gt.spring']['FluidName'] != null){
+				return fluidName(nbt['gt.spring']['FluidName']);
+			}
 		</line>  
 
 	</tileentity>
