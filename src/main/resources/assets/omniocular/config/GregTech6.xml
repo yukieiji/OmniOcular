@@ -314,7 +314,7 @@
 				return ID2EUTier(nbt['gt.mte.id'],0) + BLUE + " EU/t" + WHITE + " - " +  "1" + BLUE + " A";
 			}
 			if(nbt['gt.mode'] < 7){
-				return ID2EUTier(nbt['gt.mte.id'],0) / 2 + BLUE + " EU/t" + WHITE + " - " + Math.floor(1 / (8 - nbt['gt.mode']) * 1000) / 1000 + BLUE + " A";
+				return ID2EUTier(nbt['gt.mte.id'],0) / 2 + BLUE + " EU/t" + WHITE + " - " + ((1 + nbt['gt.mode']) / 8) + BLUE + " A";
 			}
 			return ID2EUTier(nbt['gt.mte.id'],0) * (nbt['gt.mode'] + 1) / 16 + BLUE + " EU/t" + WHITE + " - " + "1" + BLUE + " A";
 		</line>
