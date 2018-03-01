@@ -675,7 +675,7 @@
 		</line>
 
 		<line displayname = "输出功率">
-			return ID2Tier(nbt['gt.mte.id'],"EU","RU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","RU",0) + Unit("RU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) * 2 + ")";
 		</line>
 
 		<line displayname = "旋转方向">
@@ -709,7 +709,7 @@
 		</line>
 
 		<line displayname = "输出功率">
-			return ID2Tier(nbt['gt.mte.id'],"EU","MU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","MU",0) + Unit("MU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -835,7 +835,7 @@
 		</line>
 
 		<line displayname = "输出功率">
-			return ID2Tier(nbt['gt.mte.id'],"EU","LU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","LU",0) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -851,7 +851,7 @@
 		</line>
 
 		<line displayname = "输出功率">
-			return ID2Tier(nbt['gt.mte.id'],"RU","EU",0) + Unit("RU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"RU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -867,7 +867,7 @@
 		</line>
 
 		<line displayname = "输出功率">
-			return ID2Tier(nbt['gt.mte.id'],"LU","QU",0) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"LU","QU",0) + Unit("QU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -945,7 +945,7 @@
 		</line>
 
 		<line displayname = "输出功率">
-			return ID2Tier(nbt['gt.mte.id'],"LU","EU",0) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"LU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
