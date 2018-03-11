@@ -1,5 +1,5 @@
-<!--Date: 2018/02/18-->
-<!--Version: 6.07.01-->
+<!--Date: 2018/03/11-->
+<!--Version: 6.07.05-->
 <oo>
 
 	<!-- ID to EnergyTier -->
@@ -193,18 +193,18 @@
 				return SteamEff(mID - 50);
 			}
 			switch(mID){
-				case 1300:{return 3000;break;}
-				case 1301:{return 4000;break;}
-				case 1302:{return 5000;break;}
-				case 1303:{return 6400;break;}
-				case 1304:{return 5000;break;}
-				case 1305:{return 6300;break;}
-				case 1306:{return 5800;break;}
-				case 1307:{return 5800;break;}
-				case 1308:{return 6000;break;}
-				case 1309:{return 5000;break;}
-				case 1310:{return 6450;break;}
-				case 1311:{return 6200;break;}
+				case 1300:{return 3000;}
+				case 1301:{return 4000;}
+				case 1302:{return 5000;}
+				case 1303:{return 6400;}
+				case 1304:{return 5000;}
+				case 1305:{return 6300;}
+				case 1306:{return 5800;}
+				case 1307:{return 5800;}
+				case 1308:{return 6000;}
+				case 1309:{return 5000;}
+				case 1310:{return 6450;}
+				case 1311:{return 6200;}
 			}
 		}
 	</init>
@@ -264,10 +264,10 @@
 			}
 
 			switch(ArgType){
-				case 0:{return BatteryAmount;break;}
-				case 1:{return EUAmount;break;}
-				case 2:{return BatteryCap;break;}
-				case 3:{return errorAmount;break;}
+				case 0:{return BatteryAmount;}
+				case 1:{return EUAmount;}
+				case 2:{return BatteryCap;}
+				case 3:{return errorAmount;}
 			}
 		}
 	</init>
@@ -283,13 +283,13 @@
 					return 4 * ID2Cap(mID - 100,"EU");
 				}
 				switch(mID){
-					case 20101:{return 32000;break;}
-					case 20102:{return 48000;break;}
-					case 20103:{return 64000;break;}
-					case 20104:{return 8000;break;}
-					case 20105:{return 16000;break;}
-					case 20106:{return 16000;break;}
-					case 20107:{return 16000;break;}
+					case 20101:{return 32000;}
+					case 20102:{return 48000;}
+					case 20103:{return 64000;}
+					case 20104:{return 8000;}
+					case 20105:{return 16000;}
+					case 20106:{return 16000;}
+					case 20107:{return 16000;}
 				}
 			}
 			if(mInput == "LU"){
@@ -315,68 +315,229 @@
 	<init>
 		function Unit(Type){
 			switch(Type){
-				case "EU":{return BLUE + " EU" + WHITE;break;}
-				case "RU":{return GREEN + " RU" + WHITE;break;}
-				case "KU":{return DGREEN + " KU" + WHITE;break;}
-				case "HU":{return RED + " HU" + WHITE;break;}
-				case "CU":{return AQUA + " CU" + WHITE;break;}
-				case "LU":{return YELLOW + " LU" + WHITE;break;}
-				case "MU":{return DGRAY + " MU" + WHITE;break;}
-				case "NU":{return BLACK + " NU" + WHITE;break;}
-				case "QU":{return DPURPLE + " QU" + WHITE;break;}
-				case "TU":{return DBLUE + " TU" + WHITE;break;}
-				case "RF":{return DRED + " RF" + WHITE;break;}
-				case "MJ":{return DRED + " MJ" + WHITE;break;}
-				case "SU":{return GRAY + " SU" + WHITE;break;}
-				case "AU":{return WHITE + " AU" + WHITE;break;}
-				case "ORDO":{return WHITE + " Ordo" + WHITE;break;}
-				case "AER":{return YELLOW + " Aer" + WHITE;break;}
-				case "AQUA":{return AQUA + " Aqua" + WHITE;break;}
-				case "TERRA":{return GREEN + " Terra" + WHITE;break;}
-				case "IGNIS":{return RED + " Ignis" + WHITE;break;}
-				case "PERDITIO":{return BLACK + " Perditio" + WHITE;break;}
-				case "L":{return AQUA + " L" + WHITE;break;}
-				case "A":{return AQUA + " A" + WHITE;break;}
-				case "Angle":{return DAQUA + " °" + WHITE;break;}
+				case "EU":{return BLUE + " EU" + WHITE;}
+				case "RU":{return GREEN + " RU" + WHITE;}
+				case "KU":{return DGREEN + " KU" + WHITE;}
+				case "HU":{return RED + " HU" + WHITE;}
+				case "CU":{return AQUA + " CU" + WHITE;}
+				case "LU":{return YELLOW + " LU" + WHITE;}
+				case "MU":{return DGRAY + " MU" + WHITE;}
+				case "NU":{return BLACK + " NU" + WHITE;}
+				case "QU":{return DPURPLE + " QU" + WHITE;}
+				case "TU":{return DBLUE + " TU" + WHITE;}
+				case "RF":{return DRED + " RF" + WHITE;}
+				case "MJ":{return DRED + " MJ" + WHITE;}
+				case "SU":{return GRAY + " SU" + WHITE;}
+				case "AU":{return WHITE + " AU" + WHITE;}
+				case "ORDO":{return WHITE + " Ordo" + WHITE;}
+				case "AER":{return YELLOW + " Aer" + WHITE;}
+				case "AQUA":{return AQUA + " Aqua" + WHITE;}
+				case "TERRA":{return GREEN + " Terra" + WHITE;}
+				case "IGNIS":{return RED + " Ignis" + WHITE;}
+				case "PERDITIO":{return BLACK + " Perditio" + WHITE;}
+				case "L":{return AQUA + " L" + WHITE;}
+				case "A":{return AQUA + " A" + WHITE;}
+				case "Angle":{return DAQUA + " °" + WHITE;}
+				case "个 ":{return AQUA + " 个 " + WHITE;}
+				case "份 ":{return AQUA + " 份 " + WHITE;}
+				case "K":{return AQUA + " K" + WHITE;}
+				case "种":{return AQUA + " 种" + WHITE;}
+				case "S":{return AQUA + " S" + WHITE;}
+				case "个":{return AQUA + " 个" + WHITE;}
 			}
 		}
 	</init>
 
-    <!-- 坩埚   -->
+	<!-- 储罐容量 -->
+	<init>
+		function LiquidCap(LC){
+			switch(LC['gt.mte.id']){
+				case 32733:{return 8000;}
+				case 32752:{return 8000;}
+				case 32753:{return 8000;}
+				case 32754:{return 8000;}
+				case 32714:{return 16000;}
+				case 32734:{return 32000;}
+				case 32715:{return 32000;}
+				case 32716:{return 64000;}
+				case 32742:{return 128000;}
+				case 32717:{return 256000;}
+				case 32718:{return 256000;}
+				case 32719:{return 4096000;}
+				case 17001:{return 432000;}
+				case 17002:{return 1728000;}
+				case 17006:{return 3456000;}
+				case 17003:{return 6912000;}
+				case 17004:{return 6912000;}
+				case 17005:{return 110592000;}
+				case 17022:{return 6912000;}
+				case 17026:{return 13824000;}
+				case 17023:{return 27648000;}
+				case 17024:{return 27648000;}
+				case 17025:{return 442368000;}
+			}
+		}
+	</init>
+
+	<!-- 坩埚温度上限 -->
+	<init>
+		function KevinCap(KC){
+			switch(KC['gt.mte.id']){
+				case 1000:{return 1375;}
+				case 1001:{return 2091;}
+				case 1002:{return 1875;}
+				case 1003:{return 1875;}
+				case 1004:{return 2250;}
+				case 1005:{return 2500;}
+				case 1019:{return 4750;}
+				case 1020:{return 1696;}
+				case 1021:{return 2395;}
+				case 1022:{return 2557;}
+				case 1041:{return 2341;}
+				case 1025:{return 2428;}
+				case 1026:{return 2807;}
+				case 1031:{return 2513;}
+				case 1032:{return 2807;}
+				case 1027:{return 2682;}
+				case 1028:{return 3695;}
+				case 1029:{return 2888;}
+				case 1023:{return 2426;}
+				case 1033:{return 2725;}
+				case 1034:{return 3620;}
+				case 1035:{return 3437;}
+				case 1036:{return 4112;}
+				case 1037:{return 4132;}
+				case 1039:{return 3398;}
+				case 1040:{return 2931;}
+				case 1038:{return 2728;}
+				case 1024:{return 4618;}
+				case 1030:{return 3750;}
+				case 1048:{return 5000;}
+				case 1049:{return 6781;}
+			}
+		}
+	</init>
+
+	<!-- 获取物品名称 -->
+	<init>
+		function getName(mID,Type){
+			try{
+				return ID2Name(mID,Type);
+			}
+			catch(e){
+				return mID;
+			}
+		}
+
+	</init>
+
+    <!-- 坩埚 -->
     <tileentity id = "gt.multitileentity.smeltery">
+		<!-- TODO: 烫伤警告/爆炸警告 -->
+		
 	    <line displayname = "当前温度">
-		return nbt['gt.temperature']+BLUE+" K"
+			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt) + Unit("K");
         </line>
+		
 		<line displayname = "熔炼物种数">
-		return nbt['gt.materials']['size']+BLUE+" 种"
+			return nbt['gt.materials']['size'] + Unit("种");
         </line>
-		<line displayname = "熔炼物1情况">
-		return nbt['gt.materials']['0']['a'] / 420076800+BLUE+"份 "+RED+nbt['gt.materials']['0']['i']
+		
+		<line displayname = "熔炼物1-4情况">
+			if(nbt['gt.materials']['0'] != undefined){
+				var str = '';
+				var i = 0;
+
+				while(i < 4){
+					if(nbt['gt.materials'][i.toString()] != undefined){
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+					}
+					if(((i + 1) < 4) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
+						str += " | ";
+					}
+					i++;
+				}
+
+				return str;
+			}
         </line>
-		<line displayname = "熔炼物2情况">
-		return nbt['gt.materials']['1']['a'] / 420076800+BLUE+"份 "+RED+nbt['gt.materials']['1']['i']
+		
+		<line displayname = "熔炼物5-8情况">
+			if(nbt['gt.materials']['4'] != undefined){
+				var str = '';
+				var i = 4;
+
+				while(i < 8){
+					if(nbt['gt.materials'][i.toString()] != undefined){
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+					}
+					if(((i + 1) < 8) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
+						str += " | ";
+					}
+					i++;
+				}
+
+				return str;
+			}
         </line>
-		<line displayname = "熔炼物3情况">
-		return nbt['gt.materials']['2']['a'] / 420076800+BLUE+"份 "+RED+nbt['gt.materials']['2']['i']
+		
+		<line displayname = "熔炼物9-12情况">
+			if(nbt['gt.materials']['8'] != undefined){
+				var str = '';
+				var i = 8;
+
+				while(i < 12){
+					if(nbt['gt.materials'][i.toString()] != undefined){
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+					}
+					if(((i + 1) < 12) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
+						str += " | ";
+					}
+					i++;
+				}
+
+				return str;
+			}
         </line>
-		<line displayname = "熔炼物4情况">
-		return nbt['gt.materials']['3']['a'] / 420076800+BLUE+"份 "+RED+nbt['gt.materials']['3']['i']
+	
+		<line displayname = "熔炼物13-16情况">
+			if(nbt['gt.materials']['12'] != undefined){
+				var str = '';
+				var i = 12;
+
+				while(i < 16){
+					if(nbt['gt.materials'][i.toString()] != undefined){
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+					}
+					if(((i + 1) < 16) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
+						str += " | ";
+					}
+					i++;
+				}
+
+				return str;
+			}
         </line>
-		<line displayname = "熔炼物5情况">
-		return nbt['gt.materials']['4']['a'] / 420076800+BLUE+"份 "+RED+nbt['gt.materials']['4']['i']
+	
+		<line displayname = "熔炼物17-20情况">
+			if(nbt['gt.materials']['16'] != undefined){
+				var str = '';
+				var i = 16;
+
+				while(i < 20){
+					if(nbt['gt.materials'][i.toString()] != undefined){
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+					}
+					if(((i + 1) < 20) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
+						str += " | ";
+					}
+					i++;
+				}
+
+				return str;
+			}
         </line>
-		<line displayname = "熔炼物6情况">
-		return nbt['gt.materials']['5']['a'] / 420076800+BLUE+"份 "+RED+nbt['gt.materials']['5']['i']
-        </line>
-		<line displayname = "熔炼物7情况">
-		return nbt['gt.materials']['6']['a'] / 420076800+BLUE+"份 "+RED+nbt['gt.materials']['6']['i']
-        </line>
-		<line displayname = "熔炼物8情况">
-		return nbt['gt.materials']['7']['a'] / 420076800+BLUE+"份 "+RED+nbt['gt.materials']['7']['i']
-        </line>
-		<line displayname = "熔炼物9情况">
-		return nbt['gt.materials']['8']['a'] / 420076800+BLUE+"份 "+RED+nbt['gt.materials']['8']['i']
-        </line>
+	
 	</tileentity>
 	
 	<!-- 模具   -->
@@ -757,11 +918,11 @@
 		</line>
 
 		<line displayname = "可用电池">
-			return BatteryBoxArg(nbt,0,0,1) + BLUE + " 个";
+			return BatteryBoxArg(nbt,0,0,1) + Unit("个");
 		</line>
 
 		<line displayname = "无用电池">
-			return BatteryBoxArg(nbt,0,3,1) + BLUE + " 个";
+			return BatteryBoxArg(nbt,0,3,1) + Unit("个");
 		</line>
 
 		<line displayname = "总存电量">
@@ -788,11 +949,11 @@
 		</line>
 
 		<line displayname = "可用电池">
-			return BatteryBoxArg(nbt,1,0,1) + BLUE + " 个";
+			return BatteryBoxArg(nbt,1,0,1) + Unit("个");
 		</line>
 
 		<line displayname = "无用电池">
-			return BatteryBoxArg(nbt,1,3,1) + BLUE + " 个";
+			return BatteryBoxArg(nbt,1,3,1) + Unit("个");
 		</line>
 
 		<line displayname = "总存电量">
@@ -886,11 +1047,11 @@
 		</line>
 
 		<line displayname = "可用电池">
-			return BatteryBoxArg(nbt,0,0,0) + BLUE + " 个";
+			return BatteryBoxArg(nbt,0,0,0) + Unit("个");
 		</line>
 
 		<line displayname = "无用电池">
-			return BatteryBoxArg(nbt,0,3,0) + BLUE + " 个";
+			return BatteryBoxArg(nbt,0,3,0) + Unit("个");
 		</line>
 
 		<line displayname = "总存电量">
@@ -917,11 +1078,11 @@
 		</line>
 
 		<line displayname = "可用电池">
-			return BatteryBoxArg(nbt,1,0,0) + BLUE + " 个";
+			return BatteryBoxArg(nbt,1,0,0) + Unit("个");
 		</line>
 
 		<line displayname = "无用电池">
-			return BatteryBoxArg(nbt,1,3,0) + BLUE + " 个";
+			return BatteryBoxArg(nbt,1,3,0) + Unit("个");
 		</line>
 
 		<line displayname = "总存电量">
@@ -987,40 +1148,46 @@
 		<line displayname = "燃料情况">
 		if(nbt['gt.invlist']['0']['Damage']!=8200)
 		if(nbt['gt.invlist']['0']['Damage']!=8201){
-		return nbt['gt.invlist']['0']['Count']+BLUE+"个 "+RED+name(nbt['gt.invlist']['0'])}	
+		return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['0'])}	
 		</line>
 		<line displayname = "灰烬情况">
 		switch(nbt['gt.invlist']['0']['Damage']) {
-		case 8200:return nbt['gt.invlist']['0']['Count']+BLUE+"个 "+RED+name(nbt['gt.invlist']['0']);
+		case 8200:return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['0']);
 		    break;
-		case 8201:return nbt['gt.invlist']['0']['Count']+BLUE+"个 "+RED+name(nbt['gt.invlist']['0']);
+		case 8201:return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['0']);
 		    break;}
 		</line>
 		<line displayname = "灰烬情况">
-		return nbt['gt.invlist']['1']['Count']+BLUE+"个 "+RED+name(nbt['gt.invlist']['1'])
+		return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['1'])
 		</line>
 	</tileentity>
 
 	<!-- 油泉 -->
 	<tileentity id = "gt.multitileentity.fluid.spring">
 	    <line displayname = "生成速度">
-			if(nbt['gt.spring']['Amount'] > 0){
-				if(nbt['gt.spring']['Amount'] < 20){
-					return nbt['gt.spring']['Amount'] + BLUE + " Tick/桶";
-				}
-				if(nbt['gt.spring']['Amount'] < 1200){
-					return nbt['gt.spring']['Amount'] / 20 + BLUE + " 秒/桶";
-				}
-				if(nbt['gt.spring']['Amount'] < 72000){
-					return nbt['gt.spring']['Amount'] / 1200 + BLUE + " 分钟/桶";
-				}
-				if(nbt['gt.spring']['Amount'] < 4320000){
-					return nbt['gt.spring']['Amount'] / 72000 + BLUE + " 小时/桶";
-				}
-				if(nbt['gt.spring']['Amount'] < 103680000){
-					return nbt['gt.spring']['Amount'] / 4320000 + BLUE + " 天/桶";
-				}
+			var str = ' ';
+			var AmountTemp = nbt['gt.spring']['Amount'];
+			if(AmountTemp > 20 * 60 * 60 * 24){
+				str += parseInt(AmountTemp / (20 * 60 * 60 * 24)) + " 天";
+				AmountTemp = AmountTemp % (20 * 60 * 60 * 24);
 			}
+			if(AmountTemp > 20 * 60 * 60){
+				str += parseInt(AmountTemp / (20 * 60 * 60)) + " 小时";
+				AmountTemp = AmountTemp % (20 * 60 * 60);
+			}
+			if(AmountTemp > 20 * 60){
+				str += parseInt(AmountTemp / (20 * 60)) + " 分钟";
+				AmountTemp = AmountTemp % (20 * 60);
+			}
+			if(AmountTemp > 20){
+				str += parseInt(AmountTemp / (20)) + " 秒";
+				AmountTemp = AmountTemp % (20);
+			}
+			if(AmountTemp > 0){
+				str += parseInt(AmountTemp) + " Tick";
+			}
+
+			return str + "/桶";
 		</line>
 
 		<line displayname = "流体种类">
@@ -1028,6 +1195,902 @@
 				return fluidName(nbt['gt.spring']['FluidName']);
 			}
 		</line>  
+
+	</tileentity>
+
+	<!-- 单方块储罐 -->
+	<tileentity id = "gt.multitileentity.tank.barrel.metal">
+		<line displayname = "流体存量">
+			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 多方块储罐 -->
+	<tileentity id = "gt.multitileentity.multiblock.tank.metal">
+		<line displayname = "流体存量">
+			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 单元式流体容器 -->
+	<tileentity id = "gt.multitileentity.cell">
+		<line displayname = "流体存量">
+			return nbt['gt.tank']['Amount'] + "/1000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 瓷杯 -->
+	<tileentity id = "gt.multitileentity.cup">
+		<line displayname = "流体存量">
+			return nbt['gt.tank']['Amount'] + "/250" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 陶杯 -->
+	<tileentity id = "gt.multitileentity.jug">
+		<line displayname = "流体存量">
+			return nbt['gt.tank']['Amount'] + "/2000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 量杯 -->
+	<tileentity id = "gt.multitileentity.measuring.pot">
+		<line displayname = "流体存量">
+			return nbt['gt.tank']['Amount'] + "/1000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 保温杯 -->
+	<tileentity id = "gt.multitileentity.thermos.can">
+		<line displayname = "流体存量">
+			return nbt['gt.tank']['Amount'] + "/4000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 木质浸洗盆 -->
+	<tileentity id = "gt.multitileentity.bathing.pot.wood">
+		<line displayname = "输入物品1">
+			if(nbt['gt.invlist']['0']['s'] == 0){
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+		</line>
+
+		<line displayname = "输入物品2">
+			if(nbt['gt.invlist']['1']['s'] == 1){
+				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+			}
+		</line>
+
+		<line displayname = "输入物品3">
+			if(nbt['gt.invlist']['2']['s'] == 2){
+				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+			}
+		</line>
+
+		<line displayname = "输入物品4">
+			if(nbt['gt.invlist']['3']['s'] == 3){
+				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+			}
+		</line>
+
+		<line displayname = "输入物品5">
+			if(nbt['gt.invlist']['4']['s'] == 4){
+				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+			}
+		</line>
+
+		<line displayname = "输入物品6">
+			if(nbt['gt.invlist']['5']['s'] == 5){
+				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+			}
+		</line>
+
+		<line displayname = "输入流体">
+			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出物品1">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品2">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品3">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品4">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品5">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品6">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出流体1">
+			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体2">
+			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体3">
+			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 木制浸洗桌 -->
+	<tileentity id = "gt.multitileentity.bathing.pot.table.wood">
+		<line displayname = "输入物品1">
+			if(nbt['gt.invlist']['0']['s'] == 0){
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+		</line>
+
+		<line displayname = "输入物品2">
+			if(nbt['gt.invlist']['1']['s'] == 1){
+				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+			}
+		</line>
+
+		<line displayname = "输入物品3">
+			if(nbt['gt.invlist']['2']['s'] == 2){
+				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+			}
+		</line>
+
+		<line displayname = "输入物品4">
+			if(nbt['gt.invlist']['3']['s'] == 3){
+				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+			}
+		</line>
+
+		<line displayname = "输入物品5">
+			if(nbt['gt.invlist']['4']['s'] == 4){
+				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+			}
+		</line>
+
+		<line displayname = "输入物品6">
+			if(nbt['gt.invlist']['5']['s'] == 5){
+				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+			}
+		</line>
+
+		<line displayname = "输入流体">
+			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出物品1">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品2">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品3">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品4">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品5">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品6">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出流体1">
+			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体2">
+			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体3">
+			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 浸洗盆 -->
+	<tileentity id = "gt.multitileentity.bathing.pot">
+		<line displayname = "输入物品1">
+			if(nbt['gt.invlist']['0']['s'] == 0){
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+		</line>
+
+		<line displayname = "输入物品2">
+			if(nbt['gt.invlist']['1']['s'] == 1){
+				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+			}
+		</line>
+
+		<line displayname = "输入物品3">
+			if(nbt['gt.invlist']['2']['s'] == 2){
+				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+			}
+		</line>
+
+		<line displayname = "输入物品4">
+			if(nbt['gt.invlist']['3']['s'] == 3){
+				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+			}
+		</line>
+
+		<line displayname = "输入物品5">
+			if(nbt['gt.invlist']['4']['s'] == 4){
+				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+			}
+		</line>
+
+		<line displayname = "输入物品6">
+			if(nbt['gt.invlist']['5']['s'] == 5){
+				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+			}
+		</line>
+
+		<line displayname = "输入流体">
+			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出物品1">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品2">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品3">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品4">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品5">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品6">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出流体1">
+			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体2">
+			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体3">
+			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 浸洗桌 -->
+	<tileentity id = "gt.multitileentity.bathing.pot.table">
+		<line displayname = "输入物品1">
+			if(nbt['gt.invlist']['0']['s'] == 0){
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+		</line>
+
+		<line displayname = "输入物品2">
+			if(nbt['gt.invlist']['1']['s'] == 1){
+				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+			}
+		</line>
+
+		<line displayname = "输入物品3">
+			if(nbt['gt.invlist']['2']['s'] == 2){
+				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+			}
+		</line>
+
+		<line displayname = "输入物品4">
+			if(nbt['gt.invlist']['3']['s'] == 3){
+				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+			}
+		</line>
+
+		<line displayname = "输入物品5">
+			if(nbt['gt.invlist']['4']['s'] == 4){
+				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+			}
+		</line>
+
+		<line displayname = "输入物品6">
+			if(nbt['gt.invlist']['5']['s'] == 5){
+				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+			}
+		</line>
+
+		<line displayname = "输入流体">
+			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出物品1">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品2">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品3">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品4">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品5">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出物品6">
+			var i = 0;
+			while(i < 12){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出流体1">
+			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体2">
+			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体3">
+			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 搅拌盆 -->
+	<tileentity id = "gt.multitileentity.mixing.bowl">
+		<line displayname = "输入物品1">
+			if(nbt['gt.invlist']['0']['s'] == 0){
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+		</line>
+
+		<line displayname = "输入物品2">
+			if(nbt['gt.invlist']['1']['s'] == 1){
+				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+			}
+		</line>
+
+		<line displayname = "输入物品3">
+			if(nbt['gt.invlist']['2']['s'] == 2){
+				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+			}
+		</line>
+
+		<line displayname = "输入物品4">
+			if(nbt['gt.invlist']['3']['s'] == 3){
+				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+			}
+		</line>
+
+		<line displayname = "输入物品5">
+			if(nbt['gt.invlist']['4']['s'] == 4){
+				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+			}
+		</line>
+
+		<line displayname = "输入物品6">
+			if(nbt['gt.invlist']['5']['s'] == 5){
+				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+			}
+		</line>
+
+		<line displayname = "输入流体1">
+			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体2">
+			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体3">
+			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体4">
+			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体5">
+			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体6">
+			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
+		</line>
+
+		<line displayname = "输出物品">
+			var i = 0;
+			while(i < 7){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出流体1">
+			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体2">
+			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 搅拌桌 -->
+	<tileentity id = "gt.multitileentity.mixing.bowl.table">
+		<line displayname = "输入物品1">
+			if(nbt['gt.invlist']['0']['s'] == 0){
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+		</line>
+
+		<line displayname = "输入物品2">
+			if(nbt['gt.invlist']['1']['s'] == 1){
+				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+			}
+		</line>
+
+		<line displayname = "输入物品3">
+			if(nbt['gt.invlist']['2']['s'] == 2){
+				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+			}
+		</line>
+
+		<line displayname = "输入物品4">
+			if(nbt['gt.invlist']['3']['s'] == 3){
+				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+			}
+		</line>
+
+		<line displayname = "输入物品5">
+			if(nbt['gt.invlist']['4']['s'] == 4){
+				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+			}
+		</line>
+
+		<line displayname = "输入物品6">
+			if(nbt['gt.invlist']['5']['s'] == 5){
+				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+			}
+		</line>
+
+		<line displayname = "输入流体1">
+			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体2">
+			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体3">
+			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体4">
+			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体5">
+			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
+		</line>
+
+		<line displayname = "输入流体6">
+			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
+		</line>
+
+		<line displayname = "输出物品">
+			var i = 0;
+			while(i < 7){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++
+			}
+		</line>
+
+		<line displayname = "输出流体1">
+			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+		</line>
+
+		<line displayname = "输出流体2">
+			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 榨汁机 -->
+	<tileentity id = "gt.multitileentity.juicer">
+		<line displayname = "输出流体">
+			return nbt['gt.tank.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.0']['FluidName']);
+		</line>
+
+	</tileentity>
+
+	<!-- 橡胶产出口 -->
+	<tileentity id = "gt.multitileentity.tree.rubber.resinhole">
+		<line displayname = "工作状态">
+			if(nbt['gt.active'] != undefined){
+				return BLUE + "可以收获";
+			}
+			return BLUE + "不可收获";
+		</line>
+
+	</tileentity>
+
+	<!-- 树液/乳胶收集袋 -->
+	<tileentity id = "gt.multitileentity.sapbag">
+		<line displayname = "收集物品">
+			try{
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+			catch(e){
+				return "无";
+			}
+		</line>
+
+	</tileentity>
+
+	<!-- 筛粉漏斗 -->
+	<tileentity id = "gt.multitileentity.funnel.dust">
+		<line displayname = "输出模式">
+			switch(nbt['gt.mode']){
+				case 0:{return BLUE + "块状粉末";}
+				case 1:{return BLUE + "粉末";}
+				case 2:{return BLUE + "小堆粉末";}
+				case 3:{return BLUE + "小撮粉末";}
+				case 4:{return BLUE + "1/72 粉末";}
+			}
+		</line>
+
+		<line displayname = "物品存量">
+			try{
+				var mDust = -1;
+				var mAmount = 0;
+				if(nbt['gt.invlist']['0']['s'] == 0){
+					var strT = name(nbt['gt.invlist']['0']);
+					if(strT.indexOf("粉块") >= 0){
+						mDust = 0;
+					}
+					else if(strT.indexOf("1/72") >= 0){
+						mDust = 4;
+					}
+					else if(strT.indexOf("小撮") >= 0){
+						mDust = 3;
+					}
+					else if(strT.indexOf("小堆") >= 0){
+						mDust = 2;
+					}
+					else{
+						mDust = 1;
+					}
+					mAmount += nbt['gt.invlist']['0']['Count'];
+				}
+
+				if(nbt['gt.materials']['a'] != undefined){
+					switch(mDust){
+						case 0:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 / 9 * 1000) / 1000;break;}
+						case 1:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 * 1000) / 1000;break;}
+						case 2:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 * 4 * 1000) / 1000;break;}
+						case 3:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 * 9 * 1000) / 1000;break;}
+						case 4:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 * 72 * 1000) / 1000;break;}
+						case -1:{
+							switch(nbt['gt.mode']){
+								case 0:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 / 9 * 1000) / 1000;break;}
+								case 1:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 * 1000) / 1000;break;}
+								case 2:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 * 4 * 1000) / 1000;break;}
+								case 3:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 * 9 * 1000) / 1000;break;}
+								case 4:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 * 72 * 1000) / 1000;break;}
+							}
+							break;
+						}	
+					}
+				}
+				if(nbt['gt.invlist']['0']['s'] == 0){
+					return mAmount + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				}
+				try{
+					switch(nbt['gt.mode']){
+						case 0:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"storage.dust");}
+						case 1:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dust");}
+						case 2:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustSmall");}
+						case 3:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustTiny");}
+						case 4:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustDiv72");}
+					}
+				}
+				catch(e){
+					if(nbt['gt.materials']['a'] != undefined){
+						return parseInt(nbt['gt.materials']['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + nbt['gt.materials']['i'];
+					}
+				}
+			}
+			catch(e){
+				if(nbt['gt.invlist']['0']['s'] == 0){
+					return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				}
+			}
+			return BLUE + "无";
+		</line>
+
+		<line displayname = "准备输出">
+			var i = 0;
+			while(i < 2){
+				if(nbt['gt.invlist'][i.toString()]['s'] == 1){
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+				}
+				i++;
+			}
+			return BLUE + "无";
+		</line>
+
+		<line displayname = "正在输出">
+			var str = "1" + Unit("个 ");
+			try{
+				switch(nbt['gt.mode']){
+					case 0:{str += ID2Name(nbt['gt.invlist']['0']['Damage'],"storage.dust");break;}
+					case 1:{str += ID2Name(nbt['gt.invlist']['0']['Damage'],"dust");break;}
+					case 2:{str += ID2Name(nbt['gt.invlist']['0']['Damage'],"dustSmall");break;}
+					case 3:{str += ID2Name(nbt['gt.invlist']['0']['Damage'],"dustTiny");break;}
+					case 4:{str += ID2Name(nbt['gt.invlist']['0']['Damage'],"dustDiv72");break;}
+				}
+				try{
+					var i = 0;
+					while(i < 2){
+						if(nbt['gt.invlist'][i.toString()]['s'] == 1){
+							return BLUE + "输出口被堵住，无法输出";
+						}
+						i++;
+					}
+				}
+				catch(e){
+					return str;
+				}
+			}
+			catch(e){}
+		</line>
+
+	</tileentity>
+
+
+	<!-- 焦炉 -->
+	<tileentity id = "gt.multitileentity.multiblock.cokeoven">
+		<line displayname = "工作状态">
+			try{
+				if(nbt['gt.active'] != undefined){
+					return BLUE + "运行";
+				}
+				if((nbt['gt.running'] != undefined) && (nbt['gt.invlist']['0']['s'] == 0)){
+					if(nbt['gt.invlist']['1']['Count'] == 64){
+						return RED + "请将输出槽的物品取走";
+					}
+					return RED + "请使用打火石之类的东西点火";
+				}
+				if((nbt['gt.running'] != 1)){
+					return RED + "停机";
+				}
+			}
+			catch(e){
+				return RED + "请放入待加工的物品";
+			}
+		</line>
+
+		<line displayname = "输入警告">
+			if((nbt['gt.running'] != undefined) && (nbt['gt.invlist']['0']['s'] == 0) && (nbt['gt.active'] != 1)){
+				return RED + "若多次点火失败，请检查是否存在相应合成表";
+			}
+		</line>
+
+		<line displayname = "工作进程">
+			if(nbt['gt.progress'] != undefined){
+				return nbt['gt.progress'] / 20 + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
+			}
+		</line>
+
+		<line displayname = "正在加工">
+			return nbt['gt.invout.0']['Count'] + Unit("个 ") + name(nbt['gt.invout.0']) + " - " + nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
+		</line>
+
+		<line displayname = "输入物品">
+			if(nbt['gt.invlist']['0']['s'] == 0){
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+		</line>
+
+		<line displayname = "输出物品">
+			if(nbt['gt.invlist']['0']['s'] == 1){
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+			else if(nbt['gt.invlist']['1']['s'] == 1){
+				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+			}
+		</line>
+
+		<line displayname = "输出流体">
+			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+		</line>
 
 	</tileentity>
 
