@@ -381,8 +381,8 @@
 
 	<!-- 坩埚温度上限 -->
 	<init>
-		function KevinCap(KC){
-			switch(KC['gt.mte.id']){
+		function KevinCap(Kevin){
+			switch(Kevin){
 				case 1000:{return 1375;}
 				case 1001:{return 2091;}
 				case 1002:{return 1875;}
@@ -414,6 +414,14 @@
 				case 1030:{return 3750;}
 				case 1048:{return 5000;}
 				case 1049:{return 6781;}
+				default :{
+					if(Kevin >= 1750){
+						return KevinCap(Kevin - 750);
+					}
+					if(Kevin >= 1050){
+						return KevinCap(Kevin - 50);
+					}
+				}
 			}
 		}
 	</init>
@@ -436,7 +444,7 @@
 		<!-- TODO: 烫伤警告/爆炸警告 -->
 		
 	    <line displayname = "当前温度">
-			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt) + Unit("K");
+			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
         </line>
 		
 		<line displayname = "熔炼物种数">
@@ -540,16 +548,135 @@
 	
 	</tileentity>
 	
-	<!-- 模具   -->
+	<!-- 模具 -->
 	<tileentity id = "gt.multitileentity.mold">
+		<!-- TODO: 烫伤警告 -->
+
 	    <line displayname = "当前温度">
-		return nbt['gt.temperature']+BLUE+" K"
+			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
         </line>
-		<line displayname = "当前铸造">
-		return nbt['gt.materials']['m']
-        </line>
+
+		<line displayname = "铸造模具">
+			try{
+				if(nbt['gt.mold'] != undefined){
+					return Mold2Recipes(nbt['gt.mold']);
+				}
+				return "无";
+			}
+			catch(e){}
+		</line>
+
+		<line displayname = "连通方向">
+			var str = "";
+			if((nbt['gt.connection'] & 4) == 4){
+				str += "北";
+				if((nbt['gt.connection'] & 8) == 8 || (nbt['gt.connection'] & 16) == 16 || (nbt['gt.connection'] & 32) == 32){
+					str += " | ";
+				}
+			}
+			if((nbt['gt.connection'] & 8) == 8){
+				str += "南";
+				if((nbt['gt.connection'] & 16) == 16 || (nbt['gt.connection'] & 32) == 32){
+					str += " | ";
+				}
+			}
+			if((nbt['gt.connection'] & 16) == 16){
+				str += "西";
+				if((nbt['gt.connection'] & 32) == 32){
+					str += " | ";
+				}
+			}
+			if((nbt['gt.connection'] & 32) == 32){
+				str += "东";
+			}
+			if(str != ""){
+				return str;
+			}
+			return "无";
+		</line>
+
+		<line displayname = "自动输入">
+			if(nbt['gt.mode'] != undefined){
+				return BLUE + "当提供红石信号时，进行自动输入";
+			}
+			return BLUE + "当提供红石信号时，不能自动输入";
+		</line>
+
+		<line displayname = "铸造材料">
+			return getName(nbt['gt.materials']['i'],"material");
+	    </line>
+
+		<line displayname = "输出产物">
+			return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+		</line>
+
 	</tileentity>
 	
+	<!-- 坩埚浇铸口 -->
+	<tileentity id = "gt.multitileentity.smeltery.drain">
+		<line displayname = "自动输出">
+			if(nbt['gt.mode'] != undefined){
+				return BLUE + "当提供红石信号时，不能自动输出";
+			}
+			return BLUE + "当提供红石信号时，可以自动输出";
+		</line>
+
+	</tileentity>
+
+	<!-- 浇铸盆 -->
+	<tileentity id = "gt.multitileentity.basin">
+		<!-- TODO: 烫伤警告 -->
+
+	    <line displayname = "当前温度">
+			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
+        </line>
+
+		<line displayname = "连通方向">
+			var str = "";
+			if((nbt['gt.connection'] & 4) == 4){
+				str += "北";
+				if((nbt['gt.connection'] & 8) == 8 || (nbt['gt.connection'] & 16) == 16 || (nbt['gt.connection'] & 32) == 32){
+					str += " | ";
+				}
+			}
+			if((nbt['gt.connection'] & 8) == 8){
+				str += "南";
+				if((nbt['gt.connection'] & 16) == 16 || (nbt['gt.connection'] & 32) == 32){
+					str += " | ";
+				}
+			}
+			if((nbt['gt.connection'] & 16) == 16){
+				str += "西";
+				if((nbt['gt.connection'] & 32) == 32){
+					str += " | ";
+				}
+			}
+			if((nbt['gt.connection'] & 32) == 32){
+				str += "东";
+			}
+			if(str != ""){
+				return str;
+			}
+			return "无";
+		</line>
+
+		<line displayname = "自动输入">
+			if(nbt['gt.mode'] != undefined){
+				return BLUE + "当提供红石信号时，可以自动输入";
+			}
+			return BLUE + "当提供红石信号时，不能自动输入";
+		</line>
+
+		<line displayname = "铸造材料">
+			return getName(nbt['gt.materials']['i'],"material");
+	    </line>
+
+		<line displayname = "输出产物">
+			return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+		</line>
+
+	</tileentity>
+
 	<!-- 蒸汽锅炉 -->
 	<tileentity id = "gt.multitileentity.tank.boiler_steam">
 		<line displayname = "爆炸警告1">
@@ -1901,15 +2028,27 @@
 
 	</tileentity>
 
+	<!-- 开孔的枫树原木 -->
+	<tileentity id = "gt.multitileentity.tree.maple.saphole">
+		<line displayname = "工作状态">
+			if(nbt['gt.active'] != undefined){
+				return BLUE + "可以收获";
+			}
+			return BLUE + "不可收获";
+		</line>
+
+	</tileentity>
+
 	<!-- 树液/乳胶收集袋 -->
 	<tileentity id = "gt.multitileentity.sapbag">
 		<line displayname = "收集物品">
-			try{
+			if(nbt['gt.invlist'] != undefined){
 				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
 			}
-			catch(e){
-				return "无";
+			if(nbt['gt.tank'] != undefined){
+				return nbt['gt.tank']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 			}
+			return "无";
 		</line>
 
 	</tileentity>
@@ -2034,6 +2173,166 @@
 
 	</tileentity>
 
+	<!-- 打磨石 -->
+	<tileentity id = "gt.multitileentity.sharpener.grindstone">
+		<line displayname = "工作状态">
+			if(nbt['gt.state'] > 0){
+				return "还可打磨" + " " +nbt['gt.state'] + Unit("个") + "物品";
+			}
+			if(nbt['gt.state'] == 0){
+				return RED + "不可进行打磨，请放入沙石";
+			}
+		</line>
+
+	</tileentity>
+
+	<!-- 筛选台 -->
+	<tileentity id = "gt.multitileentity.sifter.table">
+		<line displayname = "工作状态">
+			switch(nbt['gt.state']){
+				case 0:{return BLUE + "请放入需要进行筛选的物品";}
+				case 1:{return BLUE + "准备进行筛选，请右击顶面";}
+				case 2:{return BLUE + "筛选成功，请取出产物";}
+				case 3:{return BLUE + "取出产物后，再进行下一次筛选";}
+			}
+		</line>
+
+		<line displayname = "输入物品">
+			if(nbt['gt.invlist']['0']['s'] == 0){
+				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+			}
+			if(nbt['gt.state'] == 2){
+				return BLUE + "请取出产物";
+			}
+			return BLUE + "无";
+		</line>
+
+		<line displayname = "输出产物1">
+			var order = 1;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物2">
+			var order = 2;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物3">
+			var order = 3;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物4">
+			var order = 4;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物5">
+			var order = 5;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物6">
+			var order = 6;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物7">
+			var order = 7;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物8">
+			var order = 8;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物9">
+			var order = 9;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物10">
+			var order = 10;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物11">
+			var order = 11;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+		<line displayname = "输出产物12">
+			var order = 12;
+			if(nbt['gt.invlist']['0']['s'] != 0){
+				order -= 1;
+			}
+			if(nbt['gt.invlist'][order.toString()] != undefined){
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+			}
+		</line>
+
+	</tileentity>
+
+	<!-- 铸币模具 -->
+	<tileentity id = "gt.multitileentity.mold.coins">
+	<!-- TODO -->
+	</tileentity>
 
 	<!-- 焦炉 -->
 	<tileentity id = "gt.multitileentity.multiblock.cokeoven">
