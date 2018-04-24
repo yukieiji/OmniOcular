@@ -1,5 +1,5 @@
-<!--Date: 2018/03/11-->
-<!--Version: 6.07.05-->
+<!--Date: 2018/04/24-->
+<!--Version: 6.07.11-->
 <oo>
 
 	<!-- ID to EnergyTier -->
@@ -230,12 +230,14 @@
 			var EUAmount = 0;
 			var BatteryCap = 0;
 			var BatteryIDArg = 200;
+			var BatteryIDArg_2 = 14000;
 			var BatteryBoxArg_0 = 10080;
 			var BatteryBoxArg_1	= 10090;
 			var errorAmount = 0;
 
 			if(isEU != 1){
 				BatteryIDArg = 210;
+				BatteryIDArg_2 = 14500;
 				BatteryBoxArg_0 = 10130;
 				BatteryBoxArg_1 = 10140;
 			}
@@ -247,17 +249,34 @@
 					}
 				}
 				if(BBA['gt.invlist'][i.toString()] != undefined){
-					if(parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_0) || parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_1)){
-						if(BBA['gt.invlist'][i.toString()]['tag'] != undefined){
-							EUAmount += BBA['gt.invlist'][i.toString()]['tag']['gt.energy'];
+					try{
+						if((BBA['gt.invlist'][i.toString()]['Damage'] >= 20100) && (parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_0) || parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_1))){
+							if(BBA['gt.invlist'][i.toString()]['tag'] != undefined){
+								EUAmount += BBA['gt.invlist'][i.toString()]['tag']['gt.energy'];
+							}
+							BatteryAmount++;
+							if(isEU == 1){
+								BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"EU");
+								}else{
+									BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"LU");
+							}
 						}
-						BatteryAmount++;
-						if(isEU == 1){
-							BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"EU");
-						}else{
-							BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"LU");
+						else if((BBA['gt.invlist'][i.toString()]['Damage'] >= 14000) && (BBA['gt.invlist'][i.toString()]['Damage'] <= 14515) && (parseInt((BBA['gt.invlist'][i.toString()]['Damage'] % BatteryIDArg_2) % 10) == (BBA['gt.mte.id'] % BatteryBoxArg_0) || parseInt((BBA['gt.invlist'][i.toString()]['Damage'] % BatteryIDArg_2) % 10) == (BBA['gt.mte.id'] % BatteryBoxArg_1))){
+							if(BBA['gt.invlist'][i.toString()]['tag'] != undefined){
+								EUAmount += BBA['gt.invlist'][i.toString()]['tag']['gt.energy'];
+							}
+							BatteryAmount++;
+							if(isEU == 1){
+								BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"EU");
+							}else{
+								BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"LU");
+							}
 						}
-					}else{
+						else{
+							errorAmount++;
+						}
+					}
+					catch(e){
 						errorAmount++;
 					}
 				}
@@ -276,24 +295,44 @@
 	<init>
 		function ID2Cap(mID,mInput){
 			if(mInput == "EU"){
-				if(mID > 20300){
-					return 16 * ID2Cap(mID - 200,"EU");
+				if(mID >= 14100){
+					if(mID > 20300){
+						return 16 * ID2Cap(mID - 200,"EU");
+					}
+					if(mID > 20200){
+						return 4 * ID2Cap(mID - 100,"EU");
+					}
+					switch(mID){
+						case 20101:{return 32000;}
+						case 20102:{return 48000;}
+						case 20103:{return 64000;}
+						case 20104:{return 8000;}
+						case 20105:{return 16000;}
+						case 20106:{return 16000;}
+						case 20107:{return 16000;}
+					}
 				}
-				if(mID > 20200){
-					return 4 * ID2Cap(mID - 100,"EU");
-				}
-				switch(mID){
-					case 20101:{return 32000;}
-					case 20102:{return 48000;}
-					case 20103:{return 64000;}
-					case 20104:{return 8000;}
-					case 20105:{return 16000;}
-					case 20106:{return 16000;}
-					case 20107:{return 16000;}
+				else{
+					if(mID >= 14020){
+						return 2 * ID2Cap(mID - 20,"EU");
+					}
+					if(mID >= 14010){
+						return 2 * ID2Cap(mID - 10,"EU");
+					}
+					switch(mID){
+						case 14000:{return 16000;}
+						case 14001:{return 64000;}
+						case 14002:{return 256000;}
+						case 14003:{return 1024000;}
+						case 14004:{return 4096000;}
+					}
 				}
 			}
 			if(mInput == "LU"){
-				return 800000 * Math.pow(4,parseInt((mID / 100) % 210));
+				if(mID >= 14510){
+					return 2 * ID2Cap(mID - 10,"LU");
+				}
+				return 3200000 * Math.pow(4,parseInt(mID % 14500));
 			}
 		}
 	</init>
@@ -588,18 +627,18 @@
 					}
 				}
 			}
-			if(IO == 'O'){
+			else if(IO == 'O'){
 				if((solt + 1) > outAmount){
 				}
 				else{
-					for(i = 0;i < outAmount;i++){
+					for(i = 0;i < (inAmount + outAmount);i++){
 						if(nbt['gt.invlist'][i.toString()]['s'] == (solt + inAmount)){
 							return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
 						}
 					}
 				}
 			}
-			if(IO == 'B'){
+			else if(IO == 'B'){
 				if(blueprint == 1){
 					for(i = 0;i < (inAmount + outAmount);i++){
 						if(nbt['gt.invlist'][i.toString()]['s'] == 21){
@@ -2636,7 +2675,7 @@
 
 		<line displayname = "工作进程">
 			if(nbt['gt.progress'] != undefined){
-				return nbt['gt.progress'] / 20 + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
+				return nbt['gt.progress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
 			}
 		</line>
 
@@ -2827,7 +2866,7 @@
 		</line>
 
 		<line displayname = "物品输出">
-			IOInv(nbt,1,'O');
+			IOInv(nbt,11,'O');
 		</line>
 
 		<line displayname = "流体输出">
@@ -2873,7 +2912,7 @@
 
 		<line displayname = "工作进程">
 			if(nbt['gt.progress'] != undefined){
-				return nbt['gt.progress'] / 20 + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
+				return nbt['gt.progress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
 			}
 		</line>
 
@@ -3064,7 +3103,7 @@
 		</line>
 
 		<line displayname = "物品输出">
-			IOInv(nbt,1,'O');
+			IOInv(nbt,11,'O');
 		</line>
 
 		<line displayname = "流体输出">
