@@ -3,9 +3,9 @@
 <oo>
 
 	<!-- ID to EnergyTier -->
-	<!-- HU SU - 蒸汽锅炉,SU KU - 蒸汽引擎,EU KU - 电动引擎,SU RU - 单方块涡轮,EU HU - 电力加热器, -->
-	<!-- EU RU - 电力旋转动能引擎,EU MU - 电磁铁,EU EU - 变压器,EU EU - 电池盒,EU LU - CO2激光器, -->
-	<!-- RU EU - 发电机,LU QU - 量子充能器, LU LU - 晶体充能器,LU EU - 激光接收器,EU CU HU - 半导体制冷器, -->
+	<!-- HU SU - ボイラー,SU KU - 蒸気エンジン,EU KU - 電気エンジン,SU RU - 蒸気タービン,EU HU - 電気ヒーター, -->
+	<!-- EU RU - 電気モーター,EU MU - 電磁石,EU EU - 変圧器,EU EU - バッテリーボックス,EU LU - CO2レーザー, -->
+	<!-- RU EU - 発電機,LU QU - 量子生成器, LU LU - クリスタルチャージャー,LU EU - レーザーアブソリューバー,EU CU HU - 半导体制冷器, -->
 	<init>
 		function ID2Tier(mID,mInput,mOutput,isInput){
 			var tInput = 0;
@@ -29,7 +29,7 @@
 							case 1208:{tInput = 128;break;}
 						}
 					}
-					
+
 					tOutput = tInput * 2;
 				}
 			}
@@ -92,7 +92,7 @@
 					else if(mID >= 10000){
 						tInput = 8 * Math.pow(4,(mID % 10000));
 						tOutput = tInput / 2;
-					}	
+					}
 				}
 				if(mOutput == "RU"){
 					tInput = 8 * Math.pow(4,(mID % 10020));
@@ -186,7 +186,7 @@
 		}
 	</init>
 
-	<!-- 蒸汽引擎效率 -->
+	<!-- 蒸気エンジン効率 -->
 	<init>
 		function SteamEff(mID){
 			if(mID >= 1350){
@@ -209,7 +209,7 @@
 		}
 	</init>
 
-	<!-- 蒸汽锅炉容量 -->
+	<!-- ボイラー容量 -->
 	<init>
 		function SteamCap(SC){
 			return ID2Tier(SC['gt.mte.id'],"HU","SU",1) * 10000;
@@ -223,7 +223,7 @@
 		}
 	</init>
 
-	<!-- 电池盒参数 -->
+	<!-- バッテリーボックス参数 -->
 	<init>
 		function BatteryBoxArg(BBA,isLarge,ArgType,isEU){
 			var BatteryAmount = 0;
@@ -291,7 +291,7 @@
 		}
 	</init>
 
-	<!-- 电池容量 -->
+	<!-- バッテリー容量 -->
 	<init>
 		function ID2Cap(mID,mInput){
 			if(mInput == "EU"){
@@ -337,16 +337,16 @@
 		}
 	</init>
 
-	<!-- 工作状态 -->
+	<!-- 機械の状態 -->
 	<init>
 		function isRun(iR){
 			if(iR['gt.active.energy'] != undefined){
-				return GREEN + "运行";
+				return GREEN + "動作中";
 			}
 			if((iR['gt.active'] != undefined)||(iR['gt.can.energy'] != undefined)){
-				return BLUE + "待机";
+				return BLUE + "スタンバイ";
 			}
-			return RED + "停机";
+			return RED + "停止中";
 		}
 	</init>
 
@@ -387,7 +387,7 @@
 		}
 	</init>
 
-	<!-- 储罐容量 -->
+	<!-- タンク容量 -->
 	<init>
 		function LiquidCap(LC){
 			switch(LC['gt.mte.id']){
@@ -418,7 +418,7 @@
 		}
 	</init>
 
-	<!-- 坩埚温度上限 -->
+	<!-- るつぼの温度上限 -->
 	<init>
 		function KevinCap(Kevin){
 			switch(Kevin){
@@ -478,7 +478,7 @@
 
 	</init>
 
-	<!-- 加工机器能量单位 -->
+	<!-- 機械のエネルギーの単位 -->
 	<init>
 		function ID2EnergyType(mID){
 			if(mID > 20000 && mID < 21000){
@@ -654,15 +654,15 @@
     <!-- 坩埚 -->
     <tileentity id = "gt.multitileentity.smeltery">
 		<!-- TODO: 烫伤警告/爆炸警告 -->
-		
+
 	    <line displayname = "当前温度">
 			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
         </line>
-		
+
 		<line displayname = "熔炼物种数">
 			return nbt['gt.materials']['size'] + Unit("种");
         </line>
-		
+
 		<line displayname = "熔炼物1-4情况">
 			if(nbt['gt.materials']['0'] != undefined){
 				var str = '';
@@ -681,7 +681,7 @@
 				return str;
 			}
         </line>
-		
+
 		<line displayname = "熔炼物5-8情况">
 			if(nbt['gt.materials']['4'] != undefined){
 				var str = '';
@@ -700,7 +700,7 @@
 				return str;
 			}
         </line>
-		
+
 		<line displayname = "熔炼物9-12情况">
 			if(nbt['gt.materials']['8'] != undefined){
 				var str = '';
@@ -719,7 +719,7 @@
 				return str;
 			}
         </line>
-	
+
 		<line displayname = "熔炼物13-16情况">
 			if(nbt['gt.materials']['12'] != undefined){
 				var str = '';
@@ -738,7 +738,7 @@
 				return str;
 			}
         </line>
-	
+
 		<line displayname = "熔炼物17-20情况">
 			if(nbt['gt.materials']['16'] != undefined){
 				var str = '';
@@ -757,9 +757,9 @@
 				return str;
 			}
         </line>
-	
+
 	</tileentity>
-	
+
 	<!-- 模具 -->
 	<tileentity id = "gt.multitileentity.mold">
 		<!-- TODO: 烫伤警告 -->
@@ -823,7 +823,7 @@
 		</line>
 
 	</tileentity>
-	
+
 	<!-- 坩埚浇铸口 -->
 	<tileentity id = "gt.multitileentity.smeltery.drain">
 		<line displayname = "自动输出">
@@ -889,7 +889,7 @@
 
 	</tileentity>
 
-	<!-- 蒸汽锅炉 -->
+	<!-- ボイラー -->
 	<tileentity id = "gt.multitileentity.tank.boiler_steam">
 		<line displayname = "爆炸警告1">
 			if((nbt['gt.tank.1']['Amount'] / (SteamCap(nbt))) > 0.10){
@@ -951,9 +951,9 @@
 			}
 		</line>
 
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			if(nbt['gt.tank.1']['Amount'] * 2 >= (SteamCap(nbt))){
-				return GREEN + "运行";
+				return GREEN + "動作中";
 			}
 			if(nbt['gt.tank.0'] != undefined){
 				return BLUE + "预热";
@@ -961,7 +961,7 @@
 			if(nbt['gt.energy'] != undefined){
 				return GOLD + "干烧";
 			}
-			return RED + "停机";
+			return RED + "停止中";
 		</line>
 
 		<line displayname = "效率">
@@ -995,30 +995,30 @@
 			}
 			return "0/" + SteamCap(nbt) + Unit("L") + " - " + "0.00%";
 		</line>
-		
+
 	</tileentity>
-	
-	<!-- 蒸汽引擎 -->
+
+	<!-- 蒸気エンジン -->
 	<tileentity id = "gt.multitileentity.engine.kinetic_steam">
 		<line displayname = "过热警告">
-			return RED + "若热量储量达到100%，则会强制停机";
+			return RED + "若热量储量达到100%，则会强制停止中";
 		</line>
 
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			if(nbt['gt.stopped'] == 1){
-				return RED + "停机";
+				return RED + "停止中";
 			}
 			if(nbt['gt.active'] == 1){
-				return GREEN + "运行";
+				return GREEN + "動作中";
 			}
 			return BLUE + "预热";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			if(nbt['gt.active'] == 1){
 				return ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * ((nbt['gt.visual'] + 1) / 16) + Unit("KU") + "/t";
 			}
-			return "机器未运行 - 0" + Unit("KU") + "/t";
+			return "机器未動作中 - 0" + Unit("KU") + "/t";
 		</line>
 
 	    <line displayname = "动能储量">
@@ -1036,14 +1036,14 @@
 		</line>
 
 	</tileentity>
-	
+
 	<!-- 电力引擎 -->
 	<tileentity id = "gt.multitileentity.engine.kinetic_electricity">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			if(nbt['gt.mode'] == undefined){
 				return ID2Tier(nbt['gt.mte.id'],"EU","KU",1) + Unit("EU") + "/t" + " - " +  "1" + Unit("A");
 			}
@@ -1053,7 +1053,7 @@
 			return ID2Tier(nbt['gt.mte.id'],"EU","KU",1) * (nbt['gt.mode'] + 1) / 16 + Unit("EU") + "/t" + " - " + "1" + Unit("A");
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			if(nbt['gt.mode'] == undefined){
 				return ID2Tier(nbt['gt.mte.id'],"EU","KU",0) + Unit("KU") + "/t";
 			}
@@ -1062,7 +1062,7 @@
 
 	</tileentity>
 
-	<!-- 单方块涡轮 -->
+	<!-- 蒸気タービン -->
 	<tileentity id = "gt.multitileentity.turbines.rotation_steam">
 		<line displayname = "旋转警告">
 			if(nbt['gt.can.energy'] == 1 && nbt['gt.facing'] == 1){
@@ -1070,7 +1070,7 @@
 			}
 		</line>
 
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			if(nbt['gt.output.su'] != undefined){
 				if((nbt['gt.output.su'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
 					return BLUE + "超载";
@@ -1080,19 +1080,19 @@
 				if((nbt['gt.tank.0']['Amount'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
 					return BLUE + "超载";
 				}
-			}	
+			}
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			if(nbt['gt.output.su'] != undefined){
 				if((nbt['gt.output.su'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
-					return RED + "机器超载无法正常工作，请降低输入功率"
+					return RED + "机器超载无法正常工作，请降低エネルギー入力"
 				}
 			}
 			if(nbt['gt.tank.0'] != undefined){
 				if((nbt['gt.tank.0']['Amount'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
-					return RED + "机器超载无法正常工作，请降低输入功率"
+					return RED + "机器超载无法正常工作，请降低エネルギー入力"
 				}
 			}
 			if(nbt['gt.output.su'] != undefined){
@@ -1131,34 +1131,34 @@
 					if((nbt['gt.tank.0']['Amount'] / 3) > ID2Tier(nbt['gt.mte.id'],"SU","RU",0)){
 						return "10" + Unit("Angle") + "/t" + " - " + "1.8" + BLUE + " 秒" + WHITE + "/转";
 					}
-				}	
+				}
 				return "5" + Unit("Angle") + "/t" + " - " + "3.6" + BLUE + " 秒" + WHITE + "/转";
 			}
 		</line>
 
 	</tileentity>
 
-	<!-- 电力加热器 -->
+	<!-- 電気ヒーター -->
 	<tileentity id = "gt.multitileentity.heater.heat_electric">
 		<line displayname = "烫伤警告">
 			return RED + "此时靠近热量输出面，会受到" + Math.min(10,(ID2Tier(nbt['gt.mte.id'],"EU","HU",1) / 10)) + "伤害";
 		</line>
 
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","HU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","HU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","HU",1) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","HU",0) + Unit("HU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
 
-	<!-- 电力旋转动能引擎 -->
+	<!-- 電気モーター -->
 	<tileentity id = "gt.multitileentity.motors.rotation_electric">
 		<line displayname = "旋转警告">
 			if(nbt['gt.can.energy'] == 1 && nbt['gt.facing'] == 1){
@@ -1166,15 +1166,15 @@
 			}
 		</line>
 
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","RU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","RU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","RU",1) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","RU",0) + Unit("RU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) * 2 + ")";
 		</line>
 
@@ -1198,36 +1198,36 @@
 
 	</tileentity>
 
-	<!-- 电磁铁 -->
+	<!-- 電磁石 -->
 	<tileentity id = "gt.multitileentity.magnet.magnet_electric">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","MU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","MU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","MU",1) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","MU",0) + Unit("MU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
 
-	<!-- 变压器 -->
+	<!-- 変圧器 -->
 	<tileentity id = "gt.multitileentity.transformers.transformer_electric">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			if(nbt['gt.reversed'] != undefined){
 				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) * 2 + ")";
 			}
 			return ID2Tier(nbt['gt.mte.id'],"EU","EU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			if(nbt['gt.reversed'] != undefined){
 				return ID2Tier(nbt['gt.mte.id'],"EU","EU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) * 2 + ")";
 			}
@@ -1243,13 +1243,13 @@
 
 	</tileentity>
 
-	<!-- 电池盒 -->
+	<!-- バッテリーボックス -->
 	<tileentity id = "gt.multitileentity.energystorages.battery_electric">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			if(nbt['gt.mode'] != undefined){
 				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,0,0,1)) + Unit("A");
 			}
@@ -1274,13 +1274,13 @@
 
 	</tileentity>
 
-	<!-- 大型电池盒 -->
+	<!-- ラージバッテリーボックス -->
 	<tileentity id = "gt.multitileentity.energystorages.battery_electric_large">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			if(nbt['gt.mode'] != undefined){
 				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,1,0,1)) + Unit("A");
 			}
@@ -1313,72 +1313,72 @@
 			}
 		</line>
 
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
-	
+
 		<line displayname = "电能储量">
 			if(nbt['gt.energy'] != undefined){
-				return nbt['gt.energy'] + Unit("EU"); 
+				return nbt['gt.energy'] + Unit("EU");
 		</line>
 
 	</tileentity>
 
-	<!-- CO2激光器 -->
+	<!-- CO2レーザー -->
 	<tileentity id = "gt.multitileentity.laser.laser_electric">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","LU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","LU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","LU",1) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","LU",0) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
 
-	<!-- 发电机 -->
+	<!-- 発電機 -->
 	<tileentity id = "gt.multitileentity.dynamo.electric_rotation">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			return ID2Tier(nbt['gt.mte.id'],"RU","EU",1) + Unit("RU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"RU","EU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"RU","EU",1) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			return ID2Tier(nbt['gt.mte.id'],"RU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
 
-	<!-- 量子充能器 -->
+	<!-- 量子生成器 -->
 	<tileentity  id = "gt.multitileentity.quantumenergizer.quantum_laser">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			return ID2Tier(nbt['gt.mte.id'],"LU","QU",1) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","QU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","QU",1) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			return ID2Tier(nbt['gt.mte.id'],"LU","QU",0) + Unit("QU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
 
-	<!-- 晶体充能器 -->
+	<!-- クリスタルチャージャー -->
 	<tileentity id = "gt.multitileentity.energystorages.crystal_laser">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			if(nbt['gt.mode'] != undefined){
 				return ID2Tier(nbt['gt.mte.id'],"LU","LU",0) + Unit("LU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,0,0,0)) + Unit("A");
 			}
@@ -1403,13 +1403,13 @@
 
 	</tileentity>
 
-	<!-- 大型晶体充能器 -->
+	<!-- ラージクリスタルチャージャー -->
 	<tileentity id = "gt.multitileentity.energystorages.crystal_laser_large">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			if(nbt['gt.mode'] != undefined){
 				return ID2Tier(nbt['gt.mte.id'],"LU","LU",0) + Unit("LU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,1,0,0)) + Unit("A");
 			}
@@ -1434,17 +1434,17 @@
 
 	</tileentity>
 
-	<!-- 激光接收器 -->
+	<!-- レーザーアブソリューバー -->
 	<tileentity id = "gt.multitileentity.laserabsorbers.electric_laser">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			return ID2Tier(nbt['gt.mte.id'],"LU","EU",1) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","EU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","EU",1) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			return ID2Tier(nbt['gt.mte.id'],"LU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) * 2 + ")";
 		</line>
 
@@ -1452,19 +1452,19 @@
 
 	<!-- 半导体制冷器 -->
 	<tileentity id = "gt.multitileentity.cooler.cryo_electric">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			isRun(nbt);
 		</line>
 
-		<line displayname = "输入功率">
+		<line displayname = "エネルギー入力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","CU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","CU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","CU",1) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","CU",0) + Unit("CU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","CU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","CU",0) * 2 + ")";
 		</line>
 
-		<line displayname = "输出功率">
+		<line displayname = "エネルギー出力">
 			return ID2Tier(nbt['gt.mte.id'],"EU","HU",0) + Unit("HU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) * 2 + ")";
 		</line>
 
@@ -1477,17 +1477,17 @@
 		return fluidName(nbt['gt.tank.0']['FluidName'])+": "+GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");}
 		</line>
 	</tileentity>
-	
+
 	<!-- 加热器   -->
 	<tileentity id = "gt.multitileentity.generator.burning_solid">
 	    <line displayname = "剩余热量">
 		if(nbt['gt.energy']!=undefined){
 		return nbt['gt.energy']+BLUE+" HU"}
-		</line>  
+		</line>
 		<line displayname = "燃料情况">
 		if(nbt['gt.invlist']['0']['Damage']!=8200)
 		if(nbt['gt.invlist']['0']['Damage']!=8201){
-		return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['0'])}	
+		return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['0'])}
 		</line>
 		<line displayname = "灰烬情况">
 		switch(nbt['gt.invlist']['0']['Damage']) {
@@ -1533,7 +1533,7 @@
 			if(nbt['gt.spring']['FluidName'] != null){
 				return fluidName(nbt['gt.spring']['FluidName']);
 			}
-		</line>  
+		</line>
 
 	</tileentity>
 
@@ -2231,7 +2231,7 @@
 
 	<!-- 橡胶产出口 -->
 	<tileentity id = "gt.multitileentity.tree.rubber.resinhole">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			if(nbt['gt.active'] != undefined){
 				return BLUE + "可以收获";
 			}
@@ -2242,7 +2242,7 @@
 
 	<!-- 开孔的枫树原木 -->
 	<tileentity id = "gt.multitileentity.tree.maple.saphole">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			if(nbt['gt.active'] != undefined){
 				return BLUE + "可以收获";
 			}
@@ -2317,7 +2317,7 @@
 								case 4:{mAmount += parseInt(nbt['gt.materials']['a'] / 420076800 * 72 * 1000) / 1000;break;}
 							}
 							break;
-						}	
+						}
 					}
 				}
 				if(nbt['gt.invlist']['0']['s'] == 0){
@@ -2387,7 +2387,7 @@
 
 	<!-- 打磨石 -->
 	<tileentity id = "gt.multitileentity.sharpener.grindstone">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			if(nbt['gt.state'] > 0){
 				return "还可打磨" + " " +nbt['gt.state'] + Unit("个") + "物品";
 			}
@@ -2400,7 +2400,7 @@
 
 	<!-- 筛选台 -->
 	<tileentity id = "gt.multitileentity.sifter.table">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			switch(nbt['gt.state']){
 				case 0:{return BLUE + "请放入需要进行筛选的物品";}
 				case 1:{return BLUE + "准备进行筛选，请右击顶面";}
@@ -2548,10 +2548,10 @@
 
 	<!-- 焦炉 -->
 	<tileentity id = "gt.multitileentity.multiblock.cokeoven">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			try{
 				if(nbt['gt.active'] != undefined){
-					return BLUE + "运行";
+					return BLUE + "動作中";
 				}
 				if((nbt['gt.running'] != undefined) && (nbt['gt.invlist']['0']['s'] == 0)){
 					if(nbt['gt.invlist']['1']['Count'] == 64){
@@ -2560,7 +2560,7 @@
 					return RED + "请使用打火石之类的东西点火";
 				}
 				if((nbt['gt.running'] != 1)){
-					return RED + "停机";
+					return RED + "停止中";
 				}
 			}
 			catch(e){
@@ -2610,7 +2610,7 @@
 		<line displayname = "所含物品">
 			return nbt['gt.value']['Count'] + Unit("个 ") + name(nbt['gt.value']);
 		</line>
-	
+
 	</tileentity>
 
 	<!-- 浆果 -->
@@ -2655,22 +2655,22 @@
 
 	<!-- 泵 -->
 	<tileentity id = "gt.multitileentity.pump.rotation">
-		
+
 	</tileentity>
 
 	<!-- 加工机器 -->
 	<tileentity id = "gt.multitileentity.machine.basic">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			if(nbt['gt.active'] != undefined){
 				return BLUE + "正在加工";
 			}
 			if(nbt['gt.running'] != undefined){
 				if(nbt['gt.mte.id'] < 22000){
-					return BLUE + "待机 - 耗电";
+					return BLUE + "スタンバイ - 耗电";
 				}
-				return BLUE + "待机";
+				return BLUE + "スタンバイ";
 			}
-			return RED + "停机";
+			return RED + "停止中";
 		</line>
 
 		<line displayname = "工作进程">
@@ -2897,17 +2897,17 @@
 
 	<!-- 电力加工机器 -->
 	<tileentity id = "gt.multitileentity.machine.basic.electric">
-		<line displayname = "工作状态">
+		<line displayname = "機械の状態">
 			if(nbt['gt.active'] != undefined){
 				return BLUE + "正在加工";
 			}
 			if(nbt['gt.running'] != undefined){
 				if(nbt['gt.mte.id'] < 22000){
-					return BLUE + "待机 - 耗电";
+					return BLUE + "スタンバイ - 耗电";
 				}
-				return BLUE + "待机";
+				return BLUE + "スタンバイ";
 			}
-			return RED + "停机";
+			return RED + "停止中";
 		</line>
 
 		<line displayname = "工作进程">

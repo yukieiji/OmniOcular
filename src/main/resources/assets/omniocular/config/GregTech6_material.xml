@@ -2,8 +2,7 @@
 <!--Version: 6.07.03-->
 <!-- 可选文件 -->
 <oo>
-    <init>
-        function ID2OD(mID){
+    <init>function ID2OD(mID){
             switch(mID){
                 case -1:{return "NULL";}
                 case 0:{return "Empty";}
@@ -1044,8 +1043,7 @@
                 case 9005:{return "GarnetSand";}
                 case 9006:{return "QuartzSand";}
             }
-        }
-    </init>
+        }</init>
 
     <init>
         function ID2Name(mID,Type){
@@ -1175,66 +1173,66 @@
     <init>
         function Mold2Recipes(mold){
             switch(mold){
-				case 3:{return "螺栓";}
-				case 6:{return "螺栓";}
-				case 12:{return "螺栓";}
-				case 15:{return "螺丝刀头";}
-				case 24:{return "螺栓";}
-				case 30:{return "螺丝刀头";}
-				case 31:{return "杆/棍";}
-				case 33:{return "螺栓";}
-				case 66:{return "螺栓";}
-				case 96:{return "螺栓";}
+				case 3:{return "ボルト";}
+				case 6:{return "ボルト";}
+				case 12:{return "ボルト";}
+				case 15:{return "スクリュードライバーのヘッドパーツ";}
+				case 24:{return "ボルト";}
+				case 30:{return "スクリュードライバーのヘッドパーツ";}
+				case 31:{return "棒";}
+				case 33:{return "ボルト";}
+				case 66:{return "ボルト";}
+				case 96:{return "ボルト";}
 				case 99:{return "小块";}
 				case 103:{return "锄头毛坯";}
-				case 132:{return "螺栓";}
-				case 192:{return "螺栓";}
+				case 132:{return "ボルト";}
+				case 192:{return "ボルト";}
 				case 198:{return "小块";}
 				case 199:{return "锄头毛坯";}
 				case 206:{return "锄头毛坯";}
 				case 227:{return "锄头毛坯";}
 				case 230:{return "锄头毛坯";}
-				case 264:{return "螺栓";}
-				case 384:{return "螺栓";}
+				case 264:{return "ボルト";}
+				case 384:{return "ボルト";}
 				case 396:{return "小块";}
 				case 398:{return "锄头毛坯";}
 				case 412:{return "锄头毛坯";}
 				case 454:{return "锄头毛坯";}
 				case 460:{return "锄头毛坯";}
 				case 465:{return "镐头毛坯";}
-				case 480:{return "螺丝刀头";}
+				case 480:{return "スクリュードライバーのヘッドパーツ";}
 				case 511:{return "镰刀片毛坯";}
-				case 528:{return "螺栓";}
+				case 528:{return "ボルト";}
 				case 558:{return "镐头毛坯";}
-				case 768:{return "螺栓";}
+				case 768:{return "ボルト";}
 				case 792:{return "小块";}
 				case 796:{return "锄头毛坯";}
 				case 908:{return "锄头毛坯";}
 				case 920:{return "锄头毛坯";}
-				case 960:{return "螺丝刀头";}
+				case 960:{return "スクリュードライバーのヘッドパーツ";}
 				case 991:{return "镰刀片毛坯";}
-				case 992:{return "杆/棍";}
+				case 992:{return "棒";}
 				case 1007:{return "镰刀片毛坯";}
 				case 1022:{return "镰刀片毛坯";}
 				case 1023:{return "锯片毛坯";}
-				case 1056:{return "螺栓";}
+				case 1056:{return "ボルト";}
 				case 1123:{return "锄头毛坯";}
 				case 1249:{return "箭头毛坯";}
 				case 1255:{return "斧头毛坯";}
 				case 2017:{return "凿子头毛坯";}
-				case 2112:{return "螺栓";}
+				case 2112:{return "ボルト";}
 				case 2119:{return "箭头毛坯";}
 				case 2147:{return "锄头毛坯";}
 				case 2246:{return "锄头毛坯";}
 				case 2498:{return "箭头毛坯";}
 				case 2510:{return "斧头毛坯";}
-				case 3072:{return "螺栓";}
+				case 3072:{return "ボルト";}
 				case 3168:{return "小块";}
 				case 3169:{return "锄头毛坯";}
 				case 3170:{return "锄头毛坯";}
 				case 3175:{return "斧头毛坯";}
 				case 3296:{return "锄头毛坯";}
-				case 4224:{return "螺栓";}
+				case 4224:{return "ボルト";}
 				case 4238:{return "箭头毛坯";}
 				case 4294:{return "锄头毛坯";}
 				case 4324:{return "箭头毛坯";}
@@ -1243,7 +1241,7 @@
 				case 4996:{return "箭头毛坯";}
 				case 5020:{return "斧头毛坯";}
 				case 5607:{return "万用铲头毛坯";}
-				case 6144:{return "螺栓";}
+				case 6144:{return "ボルト";}
 				case 6336:{return "小块";}
 				case 6338:{return "锄头毛坯";}
 				case 6340:{return "锄头毛坯";}
@@ -1263,7 +1261,7 @@
 				case 7653:{return "万用铲头毛坯";}
 				case 7655:{return "锹头毛坯";}
 				case 8167:{return "锉刀头";}
-				case 8448:{return "螺栓";}
+				case 8448:{return "ボルト";}
 				case 8476:{return "箭头毛坯";}
 				case 8588:{return "锄头毛坯";}
 				case 8648:{return "箭头毛坯";}
@@ -1271,7 +1269,7 @@
 				case 8984:{return "锄头毛坯";}
 				case 10734:{return "万用铲头毛坯";}
 				case 11214:{return "万用铲头毛坯";}
-				case 12288:{return "螺栓";}
+				case 12288:{return "ボルト";}
 				case 12672:{return "小块";}
 				case 12676:{return "锄头毛坯";}
 				case 12680:{return "锄头毛坯";}
@@ -1293,12 +1291,12 @@
 				case 14880:{return "镐头毛坯";}
 				case 15306:{return "万用铲头毛坯";}
 				case 15310:{return "锹头毛坯";}
-				case 15360:{return "螺丝刀头";}
+				case 15360:{return "スクリュードライバーのヘッドパーツ";}
 				case 15599:{return "铲头毛坯";}
 				case 15823:{return "铲头毛坯";}
 				case 16352:{return "镰刀片毛坯";}
 				case 16367:{return "剑身毛坯";}
-				case 16896:{return "螺栓";}
+				case 16896:{return "ボルト";}
 				case 17176:{return "锄头毛坯";}
 				case 17296:{return "箭头毛坯";}
 				case 17308:{return "斧头毛坯";}
@@ -1306,7 +1304,7 @@
 				case 17856:{return "镐头毛坯";}
 				case 18431:{return "双刃斧头毛坯";}
 				case 21468:{return "万用铲头毛坯";}
-				case 24576:{return "螺栓";}
+				case 24576:{return "ボルト";}
 				case 25344:{return "小块";}
 				case 25352:{return "锄头毛坯";}
 				case 25360:{return "锄头毛坯";}
@@ -1324,26 +1322,26 @@
 				case 29652:{return "万用铲头毛坯";}
 				case 29660:{return "锹头毛坯";}
 				case 29692:{return "锉刀头";}
-				case 30720:{return "螺丝刀头";}
+				case 30720:{return "スクリュードライバーのヘッドパーツ";}
 				case 31198:{return "铲头毛坯";}
 				case 31646:{return "铲头毛坯";}
 				case 31712:{return "镰刀片毛坯";}
 				case 31742:{return "剑身毛坯";}
-				case 31744:{return "杆/棍";}
+				case 31744:{return "棒";}
 				case 32224:{return "镰刀片毛坯";}
 				case 32639:{return "锤头";}
 				case 32704:{return "镰刀片毛坯";}
 				case 32736:{return "锯片毛坯";}
 				case 32753:{return "双刃斧头毛坯";}
 				case 32767:{return "锭";}
-				case 33792:{return "螺栓";}
-				case 33825:{return "螺丝刀头";}
+				case 33792:{return "ボルト";}
+				case 33825:{return "スクリュードライバーのヘッドパーツ";}
 				case 35936:{return "锄头毛坯";}
 				case 39968:{return "箭头毛坯";}
 				case 40160:{return "斧头毛坯";}
 				case 64544:{return "凿子头毛坯";}
-				case 67584:{return "螺栓";}
-				case 67650:{return "螺丝刀头";}
+				case 67584:{return "ボルト";}
+				case 67650:{return "スクリュードライバーのヘッドパーツ";}
 				case 67808:{return "箭头毛坯";}
 				case 68704:{return "锄头毛坯";}
 				case 71872:{return "锄头毛坯";}
@@ -1352,14 +1350,14 @@
 				case 72935:{return "锹头毛坯";}
 				case 79936:{return "箭头毛坯";}
 				case 80320:{return "斧头毛坯";}
-				case 98304:{return "螺栓";}
+				case 98304:{return "ボルト";}
 				case 101376:{return "小块";}
 				case 101408:{return "锄头毛坯";}
 				case 101440:{return "锄头毛坯";}
 				case 101600:{return "斧头毛坯";}
 				case 105472:{return "锄头毛坯";}
-				case 135168:{return "螺栓";}
-				case 135300:{return "螺丝刀头";}
+				case 135168:{return "ボルト";}
+				case 135300:{return "スクリュードライバーのヘッドパーツ";}
 				case 135616:{return "箭头毛坯";}
 				case 137408:{return "锄头毛坯";}
 				case 138368:{return "箭头毛坯";}
@@ -1372,7 +1370,7 @@
 				case 160640:{return "斧头毛坯";}
 				case 171239:{return "铲头毛坯";}
 				case 179424:{return "万用铲头毛坯";}
-				case 196608:{return "螺栓";}
+				case 196608:{return "ボルト";}
 				case 202752:{return "小块";}
 				case 202816:{return "锄头毛坯";}
 				case 202880:{return "锄头毛坯";}
@@ -1396,8 +1394,8 @@
 				case 244896:{return "万用铲头毛坯";}
 				case 244960:{return "锹头毛坯";}
 				case 261344:{return "锉刀头";}
-				case 270336:{return "螺栓";}
-				case 270600:{return "螺丝刀头";}
+				case 270336:{return "ボルト";}
+				case 270600:{return "スクリュードライバーのヘッドパーツ";}
 				case 271232:{return "箭头毛坯";}
 				case 274816:{return "锄头毛坯";}
 				case 276736:{return "箭头毛坯";}
@@ -1409,7 +1407,7 @@
 				case 342478:{return "铲头毛坯";}
 				case 343488:{return "万用铲头毛坯";}
 				case 358848:{return "万用铲头毛坯";}
-				case 393216:{return "螺栓";}
+				case 393216:{return "ボルト";}
 				case 405504:{return "小块";}
 				case 405632:{return "锄头毛坯";}
 				case 405760:{return "锄头毛坯";}
@@ -1435,13 +1433,13 @@
 				case 476160:{return "镐头毛坯";}
 				case 489792:{return "万用铲头毛坯";}
 				case 489920:{return "锹头毛坯";}
-				case 491520:{return "螺丝刀头";}
+				case 491520:{return "スクリュードライバーのヘッドパーツ";}
 				case 499168:{return "铲头毛坯";}
 				case 506336:{return "铲头毛坯";}
 				case 523264:{return "镰刀片毛坯";}
 				case 523744:{return "剑身毛坯";}
-				case 540672:{return "螺栓";}
-				case 541200:{return "螺丝刀头";}
+				case 540672:{return "ボルト";}
+				case 541200:{return "スクリュードライバーのヘッドパーツ";}
 				case 549632:{return "锄头毛坯";}
 				case 553472:{return "箭头毛坯";}
 				case 553856:{return "斧头毛坯";}
@@ -1450,7 +1448,7 @@
 				case 589792:{return "双刃斧头毛坯";}
 				case 684956:{return "铲头毛坯";}
 				case 686976:{return "万用铲头毛坯";}
-				case 786432:{return "螺栓";}
+				case 786432:{return "ボルト";}
 				case 811008:{return "小块";}
 				case 811264:{return "锄头毛坯";}
 				case 811520:{return "锄头毛坯";}
@@ -1472,21 +1470,21 @@
 				case 948864:{return "万用铲头毛坯";}
 				case 949120:{return "锹头毛坯";}
 				case 950144:{return "锉刀头";}
-				case 983040:{return "螺丝刀头";}
+				case 983040:{return "スクリュードライバーのヘッドパーツ";}
 				case 998336:{return "铲头毛坯";}
 				case 1012672:{return "铲头毛坯";}
 				case 1014784:{return "镰刀片毛坯";}
 				case 1015744:{return "剑身毛坯";}
-				case 1015808:{return "杆/棍";}
+				case 1015808:{return "棒";}
 				case 1031168:{return "镰刀片毛坯";}
 				case 1044448:{return "锤头";}
 				case 1046528:{return "镰刀片毛坯";}
 				case 1047552:{return "锯片毛坯";}
 				case 1048096:{return "双刃斧头毛坯";}
 				case 1048544:{return "锭";}
-				case 1081344:{return "螺栓";}
-				case 1082400:{return "螺丝刀头";}
-				case 1082401:{return "杆/棍";}
+				case 1081344:{return "ボルト";}
+				case 1082400:{return "スクリュードライバーのヘッドパーツ";}
+				case 1082401:{return "棒";}
 				case 1116225:{return "镐头毛坯";}
 				case 1118480:{return "长杆/长棍";}
 				case 1149952:{return "锄头毛坯";}
@@ -1495,9 +1493,9 @@
 				case 1285120:{return "斧头毛坯";}
 				case 2065408:{return "凿子头毛坯";}
 				case 2130978:{return "镐头毛坯";}
-				case 2162688:{return "螺栓";}
-				case 2164800:{return "螺丝刀头";}
-				case 2164802:{return "杆/棍";}
+				case 2162688:{return "ボルト";}
+				case 2164800:{return "スクリュードライバーのヘッドパーツ";}
+				case 2164802:{return "棒";}
 				case 2164807:{return "凿子头毛坯";}
 				case 2169856:{return "箭头毛坯";}
 				case 2170087:{return "锉刀头";}
@@ -1512,7 +1510,7 @@
 				case 2333927:{return "剑身毛坯";}
 				case 2557952:{return "箭头毛坯";}
 				case 2570240:{return "斧头毛坯";}
-				case 3145728:{return "螺栓";}
+				case 3145728:{return "ボルト";}
 				case 3244032:{return "小块";}
 				case 3245056:{return "锄头毛坯";}
 				case 3246080:{return "锄头毛坯";}
@@ -1522,9 +1520,9 @@
 				case 3251200:{return "斧头毛坯";}
 				case 3375104:{return "锄头毛坯";}
 				case 4261956:{return "镐头毛坯";}
-				case 4325376:{return "螺栓";}
-				case 4329600:{return "螺丝刀头";}
-				case 4329604:{return "杆/棍";}
+				case 4325376:{return "ボルト";}
+				case 4329600:{return "スクリュードライバーのヘッドパーツ";}
+				case 4329604:{return "棒";}
 				case 4329614:{return "凿子头毛坯";}
 				case 4339712:{return "箭头毛坯";}
 				case 4340174:{return "锉刀头";}
@@ -1544,7 +1542,7 @@
 				case 5242879:{return "犁头毛坯";}
 				case 5479648:{return "铲头毛坯";}
 				case 5741568:{return "万用铲头毛坯";}
-				case 6291456:{return "螺栓";}
+				case 6291456:{return "ボルト";}
 				case 6488064:{return "小块";}
 				case 6490112:{return "锄头毛坯";}
 				case 6492160:{return "锄头毛坯";}
@@ -1580,9 +1578,9 @@
 				case 7888631:{return "外壳";}
 				case 8363008:{return "锉刀头";}
 				case 8523912:{return "镐头毛坯";}
-				case 8650752:{return "螺栓";}
-				case 8659200:{return "螺丝刀头";}
-				case 8659208:{return "杆/棍";}
+				case 8650752:{return "ボルト";}
+				case 8659200:{return "スクリュードライバーのヘッドパーツ";}
+				case 8659208:{return "棒";}
 				case 8659228:{return "凿子头毛坯";}
 				case 8679424:{return "箭头毛坯";}
 				case 8680348:{return "锉刀头";}
@@ -1601,7 +1599,7 @@
 				case 10991616:{return "万用铲头毛坯";}
 				case 11483136:{return "万用铲头毛坯";}
 				case 11512810:{return "小型齿轮";}
-				case 12582912:{return "螺栓";}
+				case 12582912:{return "ボルト";}
 				case 12976128:{return "小块";}
 				case 12980224:{return "锄头毛坯";}
 				case 12984320:{return "锄头毛坯";}
@@ -1637,7 +1635,7 @@
 				case 15237120:{return "镐头毛坯";}
 				case 15673344:{return "万用铲头毛坯";}
 				case 15677440:{return "锹头毛坯";}
-				case 15728640:{return "螺丝刀头";}
+				case 15728640:{return "スクリュードライバーのヘッドパーツ";}
 				case 15752951:{return "外壳";}
 				case 15973376:{return "铲头毛坯";}
 				case 16202752:{return "铲头毛坯";}
@@ -1646,9 +1644,9 @@
 				case 16759808:{return "剑身毛坯";}
 				case 17043521:{return "长杆/长棍";}
 				case 17047824:{return "镐头毛坯";}
-				case 17301504:{return "螺栓";}
-				case 17318400:{return "螺丝刀头";}
-				case 17318416:{return "杆/棍";}
+				case 17301504:{return "ボルト";}
+				case 17318400:{return "スクリュードライバーのヘッドパーツ";}
+				case 17318416:{return "棒";}
 				case 17588224:{return "锄头毛坯";}
 				case 17589016:{return "镰刀片毛坯";}
 				case 17711104:{return "箭头毛坯";}
@@ -1661,7 +1659,7 @@
 				case 22506965:{return "齿轮";}
 				case 24894479:{return "外壳";}
 				case 24894983:{return "外壳";}
-				case 25165824:{return "螺栓";}
+				case 25165824:{return "ボルト";}
 				case 25952256:{return "小块";}
 				case 25960448:{return "锄头毛坯";}
 				case 25968640:{return "锄头毛坯";}
@@ -1696,14 +1694,14 @@
 				case 30404608:{return "锉刀头";}
 				case 31388702:{return "外壳";}
 				case 31388732:{return "外壳";}
-				case 31457280:{return "螺丝刀头";}
+				case 31457280:{return "スクリュードライバーのヘッドパーツ";}
 				case 31487933:{return "外壳";}
 				case 31946752:{return "铲头毛坯";}
 				case 32405504:{return "铲头毛坯";}
 				case 32473054:{return "犁头毛坯";}
 				case 32473088:{return "镰刀片毛坯";}
 				case 32503808:{return "剑身毛坯";}
-				case 32505856:{return "杆/棍";}
+				case 32505856:{return "棒";}
 				case 32997376:{return "镰刀片毛坯";}
 				case 33422336:{return "锤头";}
 				case 33488896:{return "镰刀片毛坯";}
