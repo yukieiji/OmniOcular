@@ -223,7 +223,7 @@
 		}
 	</init>
 
-	<!-- バッテリーボックス参数 -->
+	<!-- バッテリーボックスの状態 -->
 	<init>
 		function BatteryBoxArg(BBA,isLarge,ArgType,isEU){
 			var BatteryAmount = 0;
@@ -350,7 +350,7 @@
 		}
 	</init>
 
-	<!-- 能量单位 -->
+	<!-- エネルギーの単位 -->
 	<init>
 		function Unit(Type){
 			switch(Type){
@@ -377,12 +377,12 @@
 				case "L":{return AQUA + " L" + WHITE;}
 				case "A":{return AQUA + " A" + WHITE;}
 				case "Angle":{return DAQUA + " °" + WHITE;}
-				case "个 ":{return AQUA + " 个 " + WHITE;}
-				case "份 ":{return AQUA + " 份 " + WHITE;}
+				case "個 ":{return AQUA + " 個 " + WHITE;}
+				case "ユニット ":{return AQUA + " ユニット " + WHITE;}
 				case "K":{return AQUA + " K" + WHITE;}
 				case "种":{return AQUA + " 种" + WHITE;}
 				case "S":{return AQUA + " S" + WHITE;}
-				case "个":{return AQUA + " 个" + WHITE;}
+				case "個":{return AQUA + " 個" + WHITE;}
 			}
 		}
 	</init>
@@ -465,7 +465,7 @@
 		}
 	</init>
 
-	<!-- 获取物品名称 -->
+	<!-- アイテム名取得 -->
 	<init>
 		function getName(mID,Type){
 			try{
@@ -623,7 +623,7 @@
 				}
 				for(i = 0;i < inAmount;i++){
 					if(nbt['gt.invlist'][i.toString()]['s'] == solt){
-						return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+						return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 					}
 				}
 			}
@@ -633,7 +633,7 @@
 				else{
 					for(i = 0;i < (inAmount + outAmount);i++){
 						if(nbt['gt.invlist'][i.toString()]['s'] == (solt + inAmount)){
-							return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+							return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 						}
 					}
 				}
@@ -642,35 +642,35 @@
 				if(blueprint == 1){
 					for(i = 0;i < (inAmount + outAmount);i++){
 						if(nbt['gt.invlist'][i.toString()]['s'] == 21){
-							return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+							return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 						}
 					}
-					return RED + "请放置蓝图";
+					return RED + "ブループリントが設置されてません";
 				}
 			}
 		}
 	</init>
 
-    <!-- 坩埚 -->
+    <!-- るつぼ -->
     <tileentity id = "gt.multitileentity.smeltery">
-		<!-- TODO: 烫伤警告/爆炸警告 -->
+		<!-- TODO: 機械の注意/爆炸警告 -->
 
-	    <line displayname = "当前温度">
+	    <line displayname = "現在の温度">
 			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
         </line>
 
-		<line displayname = "熔炼物种数">
-			return nbt['gt.materials']['size'] + Unit("种");
+		<line displayname = "搬入されたアイテムの種類">
+			return nbt['gt.materials']['size'] + Unit("種類");
         </line>
 
-		<line displayname = "熔炼物1-4情况">
+		<line displayname = "溶けているアイテム">
 			if(nbt['gt.materials']['0'] != undefined){
 				var str = '';
 				var i = 0;
 
 				while(i < 4){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
 					}
 					if(((i + 1) < 4) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -682,14 +682,14 @@
 			}
         </line>
 
-		<line displayname = "熔炼物5-8情况">
+		<line displayname = "溶けているアイテム">
 			if(nbt['gt.materials']['4'] != undefined){
 				var str = '';
 				var i = 4;
 
 				while(i < 8){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
 					}
 					if(((i + 1) < 8) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -701,14 +701,14 @@
 			}
         </line>
 
-		<line displayname = "熔炼物9-12情况">
+		<line displayname = "溶けているアイテム">
 			if(nbt['gt.materials']['8'] != undefined){
 				var str = '';
 				var i = 8;
 
 				while(i < 12){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
 					}
 					if(((i + 1) < 12) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -720,14 +720,14 @@
 			}
         </line>
 
-		<line displayname = "熔炼物13-16情况">
+		<line displayname = "溶けているアイテム">
 			if(nbt['gt.materials']['12'] != undefined){
 				var str = '';
 				var i = 12;
 
 				while(i < 16){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
 					}
 					if(((i + 1) < 16) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -739,14 +739,14 @@
 			}
         </line>
 
-		<line displayname = "熔炼物17-20情况">
+		<line displayname = "溶けているアイテム">
 			if(nbt['gt.materials']['16'] != undefined){
 				var str = '';
 				var i = 16;
 
 				while(i < 20){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
 					}
 					if(((i + 1) < 20) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -760,25 +760,25 @@
 
 	</tileentity>
 
-	<!-- 模具 -->
+	<!-- 鋳型 -->
 	<tileentity id = "gt.multitileentity.mold">
-		<!-- TODO: 烫伤警告 -->
+		<!-- TODO: 機械の注意 -->
 
-	    <line displayname = "当前温度">
+	    <line displayname = "現在の温度">
 			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
         </line>
 
-		<line displayname = "铸造模具">
+		<line displayname = "鋳型の形">
 			try{
 				if(nbt['gt.mold'] != undefined){
 					return Mold2Recipes(nbt['gt.mold']);
 				}
-				return "无";
+				return "なし";
 			}
 			catch(e){}
 		</line>
 
-		<line displayname = "连通方向">
+		<line displayname = "接続されている方向">
 			var str = "";
 			if((nbt['gt.connection'] & 4) == 4){
 				str += "北";
@@ -804,46 +804,46 @@
 			if(str != ""){
 				return str;
 			}
-			return "无";
+			return "なし";
 		</line>
 
-		<line displayname = "自动输入">
+		<line displayname = "自動搬入">
 			if(nbt['gt.mode'] != undefined){
-				return BLUE + "当提供红石信号时，进行自动输入";
+				return BLUE + "レッドストーン信号がオンの時、自動搬入される";
 			}
-			return BLUE + "当提供红石信号时，不能自动输入";
+			return BLUE + "自動搬入無効";
 		</line>
 
-		<line displayname = "铸造材料">
+		<line displayname = "鋳型の材料">
 			return getName(nbt['gt.materials']['i'],"material");
 	    </line>
 
-		<line displayname = "输出产物">
-			return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+		<line displayname = "搬入されてるアイテム">
+			return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 		</line>
 
 	</tileentity>
 
-	<!-- 坩埚浇铸口 -->
+	<!-- るつぼ蛇口 -->
 	<tileentity id = "gt.multitileentity.smeltery.drain">
-		<line displayname = "自动输出">
+		<line displayname = "自動搬出">
 			if(nbt['gt.mode'] != undefined){
-				return BLUE + "当提供红石信号时，不能自动输出";
+				return BLUE + "自動搬出無効";
 			}
-			return BLUE + "当提供红石信号时，可以自动输出";
+			return BLUE + "当レッドストーン信号がオンの時、自動搬入を行う";
 		</line>
 
 	</tileentity>
 
-	<!-- 浇铸盆 -->
+	<!-- ベイスン -->
 	<tileentity id = "gt.multitileentity.basin">
-		<!-- TODO: 烫伤警告 -->
+		<!-- TODO: 機械の注意 -->
 
-	    <line displayname = "当前温度">
+	    <line displayname = "現在の温度">
 			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
         </line>
 
-		<line displayname = "连通方向">
+		<line displayname = "向いている方角">
 			var str = "";
 			if((nbt['gt.connection'] & 4) == 4){
 				str += "北";
@@ -864,27 +864,27 @@
 				}
 			}
 			if((nbt['gt.connection'] & 32) == 32){
-				str += "东";
+				str += "東";
 			}
 			if(str != ""){
 				return str;
 			}
-			return "无";
+			return "なし";
 		</line>
 
-		<line displayname = "自动输入">
+		<line displayname = "自動搬入">
 			if(nbt['gt.mode'] != undefined){
-				return BLUE + "当提供红石信号时，可以自动输入";
+				return BLUE + "レッドストーン信号がオンの時、自動搬入される";
 			}
-			return BLUE + "当提供红石信号时，不能自动输入";
+			return BLUE + "自動搬入無効";
 		</line>
 
-		<line displayname = "铸造材料">
+		<line displayname = "このアイテムの素材">
 			return getName(nbt['gt.materials']['i'],"material");
 	    </line>
 
-		<line displayname = "输出产物">
-			return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+		<line displayname = "搬入されてるアイテム">
+			return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 		</line>
 
 	</tileentity>
@@ -903,7 +903,7 @@
 			}
 		</line>
 
-		<line displayname = "烫伤警告1">
+		<line displayname = "機械の注意1">
 			if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
 				if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
 					return RED + "此时靠近锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],0) + "点伤害";
@@ -927,7 +927,7 @@
 			}
 		</line>
 
-		<line displayname = "烫伤警告2">
+		<line displayname = "機械の注意2">
 			if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
 				if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
 					return RED + "此时使用凿子清理锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],1) + "点伤害";
@@ -1064,7 +1064,7 @@
 
 	<!-- 蒸気タービン -->
 	<tileentity id = "gt.multitileentity.turbines.rotation_steam">
-		<line displayname = "旋转警告">
+		<line displayname = "機械の注意">
 			if(nbt['gt.can.energy'] == 1 && nbt['gt.facing'] == 1){
 				return RED + "此时玩家/动物/实体/...站在RU输出面时，会被机器转动";
 			}
@@ -1087,12 +1087,12 @@
 		<line displayname = "エネルギー出力">
 			if(nbt['gt.output.su'] != undefined){
 				if((nbt['gt.output.su'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
-					return RED + "机器超载无法正常工作，请降低エネルギー入力"
+					return RED + "机器超载なし法正常工作，请降低エネルギー入力"
 				}
 			}
 			if(nbt['gt.tank.0'] != undefined){
 				if((nbt['gt.tank.0']['Amount'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
-					return RED + "机器超载无法正常工作，请降低エネルギー入力"
+					return RED + "机器超载なし法正常工作，请降低エネルギー入力"
 				}
 			}
 			if(nbt['gt.output.su'] != undefined){
@@ -1140,8 +1140,8 @@
 
 	<!-- 電気ヒーター -->
 	<tileentity id = "gt.multitileentity.heater.heat_electric">
-		<line displayname = "烫伤警告">
-			return RED + "此时靠近热量输出面，会受到" + Math.min(10,(ID2Tier(nbt['gt.mte.id'],"EU","HU",1) / 10)) + "伤害";
+		<line displayname = "機械の注意">
+			return RED + "HUを出力する面では" + Math.min(10,(ID2Tier(nbt['gt.mte.id'],"EU","HU",1) / 10)) + "のダメージを受ける";
 		</line>
 
 		<line displayname = "機械の状態">
@@ -1160,9 +1160,9 @@
 
 	<!-- 電気モーター -->
 	<tileentity id = "gt.multitileentity.motors.rotation_electric">
-		<line displayname = "旋转警告">
+		<line displayname = "機械の注意">
 			if(nbt['gt.can.energy'] == 1 && nbt['gt.facing'] == 1){
-				return RED + "此时玩家/动物/实体/...站在RU输出面时，会被机器转动";
+				return RED + "このRU出力する面でプレーヤー/動物/エンティティなどは回転してしまいます";
 			}
 		</line>
 
@@ -1178,16 +1178,16 @@
 			return ID2Tier(nbt['gt.mte.id'],"EU","RU",0) + Unit("RU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) * 2 + ")";
 		</line>
 
-		<line displayname = "旋转方向">
+		<line displayname = "回転方向">
 			if(nbt['gt.can.energy'] == 1 && nbt['gt.facing'] == 1){
 				if(nbt['gt.reversed'] != undefined){
-					return BLUE + "顺时针";
+					return BLUE + "時計回り";
 				}
-				return BLUE + "逆时针";
+				return BLUE + "反時計回り";
 			}
 		</line>
 
-		<line displayname = "旋转速度">
+		<line displayname = "回転速度">
 			if(nbt['gt.can.energy'] == 1 && nbt['gt.facing'] == 1){
 				if(nbt['gt.visual'] == 1){
 					return "10" + Unit("Angle") + "/t" + " - " + "1.8" + BLUE + " 秒" + WHITE + "/转";
@@ -1234,11 +1234,11 @@
 			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) * 2 + ")";
 		</line>
 
-		<line displayname = "输送方向">
+		<line displayname = "転送方向">
 			if(nbt['gt.reversed'] != undefined){
-				return BLUE + "大圆点" + RED + "输出" + BLUE + "高电压，小圆点" + RED + "输入" + BLUE + "低电压";
+				return BLUE + "大きな点が高電圧の" + RED + "搬出口 ，"+ BLUE + "小さな点が低電圧" + RED + "搬入口";
 			}
-			return BLUE + "大圆点" + RED + "输入" + BLUE + "高电压，小圆点" + RED + "输出" + BLUE + "低电压";
+			return BLUE + BLUE + "大きな点が高電圧の" + RED + "搬入口 ，"+ BLUE + "小さな点が低電圧" + RED + "搬出口";
 		</line>
 
 	</tileentity>
@@ -1256,19 +1256,19 @@
 			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + BatteryBoxArg(nbt,0,0,1) + Unit("A");
 		</line>
 
-		<line displayname = "可用电池">
-			return BatteryBoxArg(nbt,0,0,1) + Unit("个");
+		<line displayname = "充電が完了したアイテム">
+			return BatteryBoxArg(nbt,0,0,1) + Unit("個");
 		</line>
 
-		<line displayname = "无用电池">
-			return BatteryBoxArg(nbt,0,3,1) + Unit("个");
+		<line displayname = "充電中のアイテム">
+			return BatteryBoxArg(nbt,0,3,1) + Unit("個");
 		</line>
 
-		<line displayname = "总存电量">
+		<line displayname = "現在の総EU量">
 			return BatteryBoxArg(nbt,0,1,1) + Unit("EU");
 		</line>
 
-		<line displayname = "存电上限">
+		<line displayname = "貯蔵EU上限">
 			return BatteryBoxArg(nbt,0,2,1) + Unit("EU");
 		</line>
 
@@ -1287,29 +1287,29 @@
 			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + BatteryBoxArg(nbt,1,0,1) + Unit("A");
 		</line>
 
-		<line displayname = "可用电池">
-			return BatteryBoxArg(nbt,1,0,1) + Unit("个");
+		<line displayname = "充電が完了したアイテム">
+			return BatteryBoxArg(nbt,1,0,1) + Unit("個");
 		</line>
 
-		<line displayname = "无用电池">
-			return BatteryBoxArg(nbt,1,3,1) + Unit("个");
+		<line displayname = "充電中のアイテム">
+			return BatteryBoxArg(nbt,1,3,1) + Unit("個");
 		</line>
 
-		<line displayname = "总存电量">
+		<line displayname = "現在の総EU量">
 			return BatteryBoxArg(nbt,1,1,1) + Unit("EU");
 		</line>
 
-		<line displayname = "存电上限">
+		<line displayname = "貯蔵EU上限">
 			return BatteryBoxArg(nbt,1,2,1) + Unit("EU");
 		</line>
 
 	</tileentity>
 
-	<!-- 太阳能电池板 -->
+	<!--ソーラーパネル -->
 	<tileentity id = "gt.multitileentity.solarpanel.electric_8eu">
-		<line displayname = "遮盖警告">
+		<line displayname = "機械の注意">
 			if(nbt['gt.active'] == undefined){
-				return RED + "机器上方不能被非透明方块遮盖";
+				return RED + "このブロックの上に非透過ブロックを設置しない";
 			}
 		</line>
 
@@ -1385,19 +1385,19 @@
 			return ID2Tier(nbt['gt.mte.id'],"LU","LU",0) + Unit("LU") + "/t" + " - " + BatteryBoxArg(nbt,0,0,0) + Unit("A");
 		</line>
 
-		<line displayname = "可用电池">
-			return BatteryBoxArg(nbt,0,0,0) + Unit("个");
+		<line displayname = "充電が完了したアイテム">
+			return BatteryBoxArg(nbt,0,0,0) + Unit("個");
 		</line>
 
-		<line displayname = "无用电池">
-			return BatteryBoxArg(nbt,0,3,0) + Unit("个");
+		<line displayname = "充電中のアイテム">
+			return BatteryBoxArg(nbt,0,3,0) + Unit("個");
 		</line>
 
-		<line displayname = "总存电量">
+		<line displayname = "現在の総LU量">
 			return BatteryBoxArg(nbt,0,1,0) + Unit("LU");
 		</line>
 
-		<line displayname = "存电上限">
+		<line displayname = "貯蔵LU上限">
 			return BatteryBoxArg(nbt,0,2,0) + Unit("LU");
 		</line>
 
@@ -1416,19 +1416,19 @@
 			return ID2Tier(nbt['gt.mte.id'],"LU","LU",0) + Unit("LU") + "/t" + " - " + BatteryBoxArg(nbt,1,0,0) + Unit("A");
 		</line>
 
-		<line displayname = "可用电池">
-			return BatteryBoxArg(nbt,1,0,0) + Unit("个");
+		<line displayname = "充電が完了したアイテム">
+			return BatteryBoxArg(nbt,1,0,0) + Unit("個");
 		</line>
 
-		<line displayname = "无用电池">
-			return BatteryBoxArg(nbt,1,3,0) + Unit("个");
+		<line displayname = "充電中のアイテム">
+			return BatteryBoxArg(nbt,1,3,0) + Unit("個");
 		</line>
 
-		<line displayname = "总存电量">
+		<line displayname = "現在の総LU量">
 			return BatteryBoxArg(nbt,1,1,0) + Unit("LU");
 		</line>
 
-		<line displayname = "存电上限">
+		<line displayname = "貯蔵LU上限">
 			return BatteryBoxArg(nbt,1,2,0) + Unit("LU");
 		</line>
 
@@ -1450,7 +1450,7 @@
 
 	</tileentity>
 
-	<!-- 半导体制冷器 -->
+	<!-- サーモクーラー -->
 	<tileentity id = "gt.multitileentity.cooler.cryo_electric">
 		<line displayname = "機械の状態">
 			isRun(nbt);
@@ -1470,7 +1470,7 @@
 
 	</tileentity>
 
-	<!-- 管道 -->
+	<!-- パイプ -->
 	<tileentity id = "gt.multitileentity.connector.pipe.fluid">
 	    <line displayname = "内容物">
 	    if(nbt['gt.tank.0']['Amount']!=undefined){
@@ -1478,44 +1478,44 @@
 		</line>
 	</tileentity>
 
-	<!-- 加热器   -->
+	<!-- バーニングボックス   -->
 	<tileentity id = "gt.multitileentity.generator.burning_solid">
-	    <line displayname = "剩余热量">
+	    <line displayname = "生産HU">
 		if(nbt['gt.energy']!=undefined){
 		return nbt['gt.energy']+BLUE+" HU"}
 		</line>
-		<line displayname = "燃料情况">
+		<line displayname = "燃料の状況">
 		if(nbt['gt.invlist']['0']['Damage']!=8200)
 		if(nbt['gt.invlist']['0']['Damage']!=8201){
-		return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['0'])}
+		return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0'])}
 		</line>
-		<line displayname = "灰烬情况">
+		<line displayname = "灰の個数">
 		switch(nbt['gt.invlist']['0']['Damage']) {
-		case 8200:return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['0']);
+		case 8200:return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0']);
 		    break;
-		case 8201:return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['0']);
+		case 8201:return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0']);
 		    break;}
 		</line>
-		<line displayname = "灰烬情况">
-		return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + RED + name(nbt['gt.invlist']['1'])
+		<line displayname = "灰の個数">
+		return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['1'])
 		</line>
 	</tileentity>
 
-	<!-- 油泉 -->
+	<!-- 岩盤のスプリング -->
 	<tileentity id = "gt.multitileentity.fluid.spring">
 	    <line displayname = "生成速度">
 			var str = ' ';
 			var AmountTemp = nbt['gt.spring']['Amount'];
 			if(AmountTemp > 20 * 60 * 60 * 24){
-				str += parseInt(AmountTemp / (20 * 60 * 60 * 24)) + " 天";
+				str += parseInt(AmountTemp / (20 * 60 * 60 * 24)) + " 日";
 				AmountTemp = AmountTemp % (20 * 60 * 60 * 24);
 			}
 			if(AmountTemp > 20 * 60 * 60){
-				str += parseInt(AmountTemp / (20 * 60 * 60)) + " 小时";
+				str += parseInt(AmountTemp / (20 * 60 * 60)) + " 時間";
 				AmountTemp = AmountTemp % (20 * 60 * 60);
 			}
 			if(AmountTemp > 20 * 60){
-				str += parseInt(AmountTemp / (20 * 60)) + " 分钟";
+				str += parseInt(AmountTemp / (20 * 60)) + " 分";
 				AmountTemp = AmountTemp % (20 * 60);
 			}
 			if(AmountTemp > 20){
@@ -1526,10 +1526,10 @@
 				str += parseInt(AmountTemp) + " Tick";
 			}
 
-			return str + "/桶";
+			return str + "/バレル";
 		</line>
 
-		<line displayname = "流体种类">
+		<line displayname = "液体の種類">
 			if(nbt['gt.spring']['FluidName'] != null){
 				return fluidName(nbt['gt.spring']['FluidName']);
 			}
@@ -1537,159 +1537,159 @@
 
 	</tileentity>
 
-	<!-- 单方块储罐 -->
+	<!-- シングルブロックタンク -->
 	<tileentity id = "gt.multitileentity.tank.barrel.metal">
-		<line displayname = "流体存量">
+		<line displayname = "保存されている液体">
 			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
 
-	<!-- 多方块储罐 -->
+	<!-- マルチブロックタンク -->
 	<tileentity id = "gt.multitileentity.multiblock.tank.metal">
-		<line displayname = "流体存量">
+		<line displayname = "保存されている液体">
 			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
 
-	<!-- 单元式流体容器 -->
+	<!-- カプセルセルコンテナ -->
 	<tileentity id = "gt.multitileentity.cell">
-		<line displayname = "流体存量">
+		<line displayname = "保存されている液体">
 			return nbt['gt.tank']['Amount'] + "/1000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
 
-	<!-- 瓷杯 -->
+	<!-- カップ -->
 	<tileentity id = "gt.multitileentity.cup">
-		<line displayname = "流体存量">
+		<line displayname = "保存されている液体">
 			return nbt['gt.tank']['Amount'] + "/250" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
 
-	<!-- 陶杯 -->
+	<!-- ジャグ -->
 	<tileentity id = "gt.multitileentity.jug">
-		<line displayname = "流体存量">
+		<line displayname = "保存されている液体">
 			return nbt['gt.tank']['Amount'] + "/2000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
 
-	<!-- 量杯 -->
+	<!-- ポット -->
 	<tileentity id = "gt.multitileentity.measuring.pot">
-		<line displayname = "流体存量">
+		<line displayname = "保存されている液体">
 			return nbt['gt.tank']['Amount'] + "/1000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
 
-	<!-- 保温杯 -->
+	<!-- 保温瓶 -->
 	<tileentity id = "gt.multitileentity.thermos.can">
-		<line displayname = "流体存量">
+		<line displayname = "保存されている液体">
 			return nbt['gt.tank']['Amount'] + "/4000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
 	</tileentity>
 
-	<!-- 木质浸洗盆 -->
+	<!-- 木の浴槽 -->
 	<tileentity id = "gt.multitileentity.bathing.pot.wood">
-		<line displayname = "输入物品1">
+		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
-		<line displayname = "输入物品2">
+		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
-		<line displayname = "输入物品3">
+		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
-		<line displayname = "输入物品4">
+		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
-		<line displayname = "输入物品5">
+		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
-		<line displayname = "输入物品6">
+		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
-		<line displayname = "输入流体">
+		<line displayname = "搬入された液体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出物品1">
+		<line displayname = "搬出されたアイテム1">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品2">
+		<line displayname = "搬出されたアイテム2">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品3">
+		<line displayname = "搬出されたアイテム3">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品4">
+		<line displayname = "搬出されたアイテム4">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品5">
+		<line displayname = "搬出されたアイテム5">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品6">
+		<line displayname = "搬出されたアイテム6">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1711,101 +1711,101 @@
 
 	<!-- 木制浸洗桌 -->
 	<tileentity id = "gt.multitileentity.bathing.pot.table.wood">
-		<line displayname = "输入物品1">
+		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
-		<line displayname = "输入物品2">
+		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
-		<line displayname = "输入物品3">
+		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
-		<line displayname = "输入物品4">
+		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
-		<line displayname = "输入物品5">
+		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
-		<line displayname = "输入物品6">
+		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
-		<line displayname = "输入流体">
+		<line displayname = "搬入された液体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出物品1">
+		<line displayname = "搬出されたアイテム1">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品2">
+		<line displayname = "搬出されたアイテム2">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品3">
+		<line displayname = "搬出されたアイテム3">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品4">
+		<line displayname = "搬出されたアイテム4">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品5">
+		<line displayname = "搬出されたアイテム5">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品6">
+		<line displayname = "搬出されたアイテム6">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1827,101 +1827,101 @@
 
 	<!-- 浸洗盆 -->
 	<tileentity id = "gt.multitileentity.bathing.pot">
-		<line displayname = "输入物品1">
+		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
-		<line displayname = "输入物品2">
+		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
-		<line displayname = "输入物品3">
+		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
-		<line displayname = "输入物品4">
+		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
-		<line displayname = "输入物品5">
+		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
-		<line displayname = "输入物品6">
+		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
-		<line displayname = "输入流体">
+		<line displayname = "搬入された液体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出物品1">
+		<line displayname = "搬出されたアイテム1">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品2">
+		<line displayname = "搬出されたアイテム2">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品3">
+		<line displayname = "搬出されたアイテム3">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品4">
+		<line displayname = "搬出されたアイテム4">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品5">
+		<line displayname = "搬出されたアイテム5">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品6">
+		<line displayname = "搬出されたアイテム6">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1943,101 +1943,101 @@
 
 	<!-- 浸洗桌 -->
 	<tileentity id = "gt.multitileentity.bathing.pot.table">
-		<line displayname = "输入物品1">
+		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
-		<line displayname = "输入物品2">
+		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
-		<line displayname = "输入物品3">
+		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
-		<line displayname = "输入物品4">
+		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
-		<line displayname = "输入物品5">
+		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
-		<line displayname = "输入物品6">
+		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
-		<line displayname = "输入流体">
+		<line displayname = "搬入された液体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出物品1">
+		<line displayname = "搬出されたアイテム1">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品2">
+		<line displayname = "搬出されたアイテム2">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品3">
+		<line displayname = "搬出されたアイテム3">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品4">
+		<line displayname = "搬出されたアイテム4">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品5">
+		<line displayname = "搬出されたアイテム5">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "输出物品6">
+		<line displayname = "搬出されたアイテム6">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2059,71 +2059,71 @@
 
 	<!-- 搅拌盆 -->
 	<tileentity id = "gt.multitileentity.mixing.bowl">
-		<line displayname = "输入物品1">
+		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
-		<line displayname = "输入物品2">
+		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
-		<line displayname = "输入物品3">
+		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
-		<line displayname = "输入物品4">
+		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
-		<line displayname = "输入物品5">
+		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
-		<line displayname = "输入物品6">
+		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
-		<line displayname = "输入流体1">
+		<line displayname = "搬入された液体1">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体2">
+		<line displayname = "搬入された液体2">
 			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体3">
+		<line displayname = "搬入された液体3">
 			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体4">
+		<line displayname = "搬入された液体4">
 			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体5">
+		<line displayname = "搬入された液体5">
 			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体6">
+		<line displayname = "搬入された液体6">
 			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
-		<line displayname = "输出物品">
+		<line displayname = "搬出されたアイテム">
 			var i = 0;
 			while(i < 7){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2141,71 +2141,71 @@
 
 	<!-- 搅拌桌 -->
 	<tileentity id = "gt.multitileentity.mixing.bowl.table">
-		<line displayname = "输入物品1">
+		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
-		<line displayname = "输入物品2">
+		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
-		<line displayname = "输入物品3">
+		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
-		<line displayname = "输入物品4">
+		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
-		<line displayname = "输入物品5">
+		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
-		<line displayname = "输入物品6">
+		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
-		<line displayname = "输入流体1">
+		<line displayname = "搬入された液体1">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体2">
+		<line displayname = "搬入された液体2">
 			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体3">
+		<line displayname = "搬入された液体3">
 			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体4">
+		<line displayname = "搬入された液体4">
 			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体5">
+		<line displayname = "搬入された液体5">
 			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
-		<line displayname = "输入流体6">
+		<line displayname = "搬入された液体6">
 			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
-		<line displayname = "输出物品">
+		<line displayname = "搬出されたアイテム">
 			var i = 0;
 			while(i < 7){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2255,12 +2255,12 @@
 	<tileentity id = "gt.multitileentity.sapbag">
 		<line displayname = "收集物品">
 			if(nbt['gt.invlist'] != undefined){
-				return nbt['gt.invlist']['0']['Count'] + "/64" + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + "/64" + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 			if(nbt['gt.tank'] != undefined){
 				return nbt['gt.tank']['Amount'] + "/8000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 			}
-			return "无";
+			return "なし";
 		</line>
 
 	</tileentity>
@@ -2321,44 +2321,44 @@
 					}
 				}
 				if(nbt['gt.invlist']['0']['s'] == 0){
-					return mAmount + Unit("个 ") + name(nbt['gt.invlist']['0']);
+					return mAmount + Unit("個 ") + name(nbt['gt.invlist']['0']);
 				}
 				try{
 					switch(nbt['gt.mode']){
-						case 0:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"storage.dust");}
-						case 1:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dust");}
-						case 2:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustSmall");}
-						case 3:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustTiny");}
-						case 4:{return mAmount + Unit("个 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustDiv72");}
+						case 0:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"storage.dust");}
+						case 1:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dust");}
+						case 2:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustSmall");}
+						case 3:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustTiny");}
+						case 4:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustDiv72");}
 					}
 				}
 				catch(e){
 					if(nbt['gt.materials']['a'] != undefined){
-						return parseInt(nbt['gt.materials']['a'] / 420076800 * 1000) / 1000 + Unit("份 ") + nbt['gt.materials']['i'];
+						return parseInt(nbt['gt.materials']['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + nbt['gt.materials']['i'];
 					}
 				}
 			}
 			catch(e){
 				if(nbt['gt.invlist']['0']['s'] == 0){
-					return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+					return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 				}
 			}
-			return BLUE + "无";
+			return BLUE + "なし";
 		</line>
 
 		<line displayname = "准备输出">
 			var i = 0;
 			while(i < 2){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 1){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++;
 			}
-			return BLUE + "无";
+			return BLUE + "なし";
 		</line>
 
 		<line displayname = "正在输出">
-			var str = "1" + Unit("个 ");
+			var str = "1" + Unit("個 ");
 			try{
 				switch(nbt['gt.mode']){
 					case 0:{str += ID2Name(nbt['gt.invlist']['0']['Damage'],"storage.dust");break;}
@@ -2371,7 +2371,7 @@
 					var i = 0;
 					while(i < 2){
 						if(nbt['gt.invlist'][i.toString()]['s'] == 1){
-							return BLUE + "输出口被堵住，无法输出";
+							return BLUE + "输出口被堵住，なし法输出";
 						}
 						i++;
 					}
@@ -2389,7 +2389,7 @@
 	<tileentity id = "gt.multitileentity.sharpener.grindstone">
 		<line displayname = "機械の状態">
 			if(nbt['gt.state'] > 0){
-				return "还可打磨" + " " +nbt['gt.state'] + Unit("个") + "物品";
+				return "还可打磨" + " " +nbt['gt.state'] + Unit("個") + "物品";
 			}
 			if(nbt['gt.state'] == 0){
 				return RED + "不可进行打磨，请放入沙石";
@@ -2409,14 +2409,14 @@
 			}
 		</line>
 
-		<line displayname = "输入物品">
+		<line displayname = "搬入されたアイテム">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 			if(nbt['gt.state'] == 2){
 				return BLUE + "请取出产物";
 			}
-			return BLUE + "无";
+			return BLUE + "なし";
 		</line>
 
 		<line displayname = "输出产物1">
@@ -2425,7 +2425,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2435,7 +2435,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2445,7 +2445,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2455,7 +2455,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2465,7 +2465,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2475,7 +2475,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2485,7 +2485,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2495,7 +2495,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2505,7 +2505,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2515,7 +2515,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2525,7 +2525,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2535,7 +2535,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("个 ") + name(nbt['gt.invlist'][order.toString()]);
+				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
 			}
 		</line>
 
@@ -2581,21 +2581,21 @@
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.0']['Count'] + Unit("个 ") + name(nbt['gt.invout.0']) + " - " + nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
+			return nbt['gt.invout.0']['Count'] + Unit("個 ") + name(nbt['gt.invout.0']) + " - " + nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
 		</line>
 
-		<line displayname = "输入物品">
+		<line displayname = "搬入されたアイテム">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
-		<line displayname = "输出物品">
+		<line displayname = "搬出されたアイテム">
 			if(nbt['gt.invlist']['0']['s'] == 1){
-				return nbt['gt.invlist']['0']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
 			else if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("个 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
@@ -2608,7 +2608,7 @@
 	<!-- 地表岩石 -->
 	<tileentity id = "gt.multitileentity.rock">
 		<line displayname = "所含物品">
-			return nbt['gt.value']['Count'] + Unit("个 ") + name(nbt['gt.value']);
+			return nbt['gt.value']['Count'] + Unit("個 ") + name(nbt['gt.value']);
 		</line>
 
 	</tileentity>
@@ -2648,7 +2648,7 @@
 		</line>
 		<-->
 		<line displayname = "产出作物">
-			return nbt['gt.value']['Count'] + Unit("个 ") + name(nbt['gt.value']);
+			return nbt['gt.value']['Count'] + Unit("個 ") + name(nbt['gt.value']);
 		</line>
 
 	</tileentity>
@@ -2686,51 +2686,51 @@
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.0']['Count'] + Unit("个 ") + name(nbt['gt.invout.0']);
+			return nbt['gt.invout.0']['Count'] + Unit("個 ") + name(nbt['gt.invout.0']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.1']['Count'] + Unit("个 ") + name(nbt['gt.invout.1']);
+			return nbt['gt.invout.1']['Count'] + Unit("個 ") + name(nbt['gt.invout.1']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.2']['Count'] + Unit("个 ") + name(nbt['gt.invout.2']);
+			return nbt['gt.invout.2']['Count'] + Unit("個 ") + name(nbt['gt.invout.2']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.3']['Count'] + Unit("个 ") + name(nbt['gt.invout.3']);
+			return nbt['gt.invout.3']['Count'] + Unit("個 ") + name(nbt['gt.invout.3']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.4']['Count'] + Unit("个 ") + name(nbt['gt.invout.4']);
+			return nbt['gt.invout.4']['Count'] + Unit("個 ") + name(nbt['gt.invout.4']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.5']['Count'] + Unit("个 ") + name(nbt['gt.invout.5']);
+			return nbt['gt.invout.5']['Count'] + Unit("個 ") + name(nbt['gt.invout.5']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.6']['Count'] + Unit("个 ") + name(nbt['gt.invout.6']);
+			return nbt['gt.invout.6']['Count'] + Unit("個 ") + name(nbt['gt.invout.6']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.7']['Count'] + Unit("个 ") + name(nbt['gt.invout.7']);
+			return nbt['gt.invout.7']['Count'] + Unit("個 ") + name(nbt['gt.invout.7']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.8']['Count'] + Unit("个 ") + name(nbt['gt.invout.8']);
+			return nbt['gt.invout.8']['Count'] + Unit("個 ") + name(nbt['gt.invout.8']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.9']['Count'] + Unit("个 ") + name(nbt['gt.invout.9']);
+			return nbt['gt.invout.9']['Count'] + Unit("個 ") + name(nbt['gt.invout.9']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.10']['Count'] + Unit("个 ") + name(nbt['gt.invout.10']);
+			return nbt['gt.invout.10']['Count'] + Unit("個 ") + name(nbt['gt.invout.10']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.11']['Count'] + Unit("个 ") + name(nbt['gt.invout.11']);
+			return nbt['gt.invout.11']['Count'] + Unit("個 ") + name(nbt['gt.invout.11']);
 		</line>
 
 		<line displayname = "正在加工">
@@ -2923,51 +2923,51 @@
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.0']['Count'] + Unit("个 ") + name(nbt['gt.invout.0']);
+			return nbt['gt.invout.0']['Count'] + Unit("個 ") + name(nbt['gt.invout.0']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.1']['Count'] + Unit("个 ") + name(nbt['gt.invout.1']);
+			return nbt['gt.invout.1']['Count'] + Unit("個 ") + name(nbt['gt.invout.1']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.2']['Count'] + Unit("个 ") + name(nbt['gt.invout.2']);
+			return nbt['gt.invout.2']['Count'] + Unit("個 ") + name(nbt['gt.invout.2']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.3']['Count'] + Unit("个 ") + name(nbt['gt.invout.3']);
+			return nbt['gt.invout.3']['Count'] + Unit("個 ") + name(nbt['gt.invout.3']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.4']['Count'] + Unit("个 ") + name(nbt['gt.invout.4']);
+			return nbt['gt.invout.4']['Count'] + Unit("個 ") + name(nbt['gt.invout.4']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.5']['Count'] + Unit("个 ") + name(nbt['gt.invout.5']);
+			return nbt['gt.invout.5']['Count'] + Unit("個 ") + name(nbt['gt.invout.5']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.6']['Count'] + Unit("个 ") + name(nbt['gt.invout.6']);
+			return nbt['gt.invout.6']['Count'] + Unit("個 ") + name(nbt['gt.invout.6']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.7']['Count'] + Unit("个 ") + name(nbt['gt.invout.7']);
+			return nbt['gt.invout.7']['Count'] + Unit("個 ") + name(nbt['gt.invout.7']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.8']['Count'] + Unit("个 ") + name(nbt['gt.invout.8']);
+			return nbt['gt.invout.8']['Count'] + Unit("個 ") + name(nbt['gt.invout.8']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.9']['Count'] + Unit("个 ") + name(nbt['gt.invout.9']);
+			return nbt['gt.invout.9']['Count'] + Unit("個 ") + name(nbt['gt.invout.9']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.10']['Count'] + Unit("个 ") + name(nbt['gt.invout.10']);
+			return nbt['gt.invout.10']['Count'] + Unit("個 ") + name(nbt['gt.invout.10']);
 		</line>
 
 		<line displayname = "正在加工">
-			return nbt['gt.invout.11']['Count'] + Unit("个 ") + name(nbt['gt.invout.11']);
+			return nbt['gt.invout.11']['Count'] + Unit("個 ") + name(nbt['gt.invout.11']);
 		</line>
 
 		<line displayname = "正在加工">
