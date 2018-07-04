@@ -670,7 +670,7 @@
 
 				while(i < 4){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
 					}
 					if(((i + 1) < 4) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -689,7 +689,7 @@
 
 				while(i < 8){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
 					}
 					if(((i + 1) < 8) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -708,7 +708,7 @@
 
 				while(i < 12){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
 					}
 					if(((i + 1) < 12) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -727,7 +727,7 @@
 
 				while(i < 16){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
 					}
 					if(((i + 1) < 16) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -746,7 +746,7 @@
 
 				while(i < 20){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + getName(nbt['gt.materials'][i.toString()]['i'],"material");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
 					}
 					if(((i + 1) < 20) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -879,7 +879,7 @@
 			return BLUE + "自動搬入無効";
 		</line>
 
-		<line displayname = "このアイテムの素材">
+		<line displayname = "入っている液体">
 			return getName(nbt['gt.materials']['i'],"material");
 	    </line>
 
@@ -1695,15 +1695,15 @@
 			}
 		</line>
 
-		<line displayname = "输出流体1">
+		<line displayname = "搬出される液体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体2">
+		<line displayname = "搬出される液体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体3">
+		<line displayname = "搬出される液体3">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
@@ -1811,15 +1811,15 @@
 			}
 		</line>
 
-		<line displayname = "输出流体1">
+		<line displayname = "搬出される液体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体2">
+		<line displayname = "搬出される液体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体3">
+		<line displayname = "搬出される液体3">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
@@ -1927,15 +1927,15 @@
 			}
 		</line>
 
-		<line displayname = "输出流体1">
+		<line displayname = "搬出される液体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体2">
+		<line displayname = "搬出される液体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体3">
+		<line displayname = "搬出される液体3">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
@@ -2043,15 +2043,15 @@
 			}
 		</line>
 
-		<line displayname = "输出流体1">
+		<line displayname = "搬出される液体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体2">
+		<line displayname = "搬出される液体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体3">
+		<line displayname = "搬出される液体3">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
@@ -2129,11 +2129,11 @@
 			}
 		</line>
 
-		<line displayname = "输出流体1">
+		<line displayname = "搬出される液体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体2">
+		<line displayname = "搬出される液体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
@@ -2211,11 +2211,11 @@
 			}
 		</line>
 
-		<line displayname = "输出流体1">
+		<line displayname = "搬出される液体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "输出流体2">
+		<line displayname = "搬出される液体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
@@ -2223,7 +2223,7 @@
 
 	<!-- 榨汁机 -->
 	<tileentity id = "gt.multitileentity.juicer">
-		<line displayname = "输出流体">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.0']['FluidName']);
 		</line>
 
@@ -2265,19 +2265,19 @@
 
 	</tileentity>
 
-	<!-- 筛粉漏斗 -->
+	<!-- ダストファンネル -->
 	<tileentity id = "gt.multitileentity.funnel.dust">
-		<line displayname = "输出模式">
+		<line displayname = "搬出される粉のサイズ">
 			switch(nbt['gt.mode']){
-				case 0:{return BLUE + "块状粉末";}
-				case 1:{return BLUE + "粉末";}
-				case 2:{return BLUE + "小堆粉末";}
-				case 3:{return BLUE + "小撮粉末";}
-				case 4:{return BLUE + "1/72 粉末";}
+				case 0:{return BLUE + "粉ブロック";}
+				case 1:{return BLUE + "粉";}
+				case 2:{return BLUE + "小さな粉";}
+				case 3:{return BLUE + "とても小さな粉";}
+				case 4:{return BLUE + "1/72のサイズの粉";}
 			}
 		</line>
 
-		<line displayname = "物品存量">
+		<line displayname = "入っているアイテム">
 			try{
 				var mDust = -1;
 				var mAmount = 0;
@@ -2346,7 +2346,7 @@
 			return BLUE + "なし";
 		</line>
 
-		<line displayname = "准备输出">
+		<line displayname = "アイテムが搬出されます">
 			var i = 0;
 			while(i < 2){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 1){
@@ -2357,7 +2357,7 @@
 			return BLUE + "なし";
 		</line>
 
-		<line displayname = "正在输出">
+		<line displayname = "生産されるアイテム">
 			var str = "1" + Unit("個 ");
 			try{
 				switch(nbt['gt.mode']){
@@ -2371,7 +2371,7 @@
 					var i = 0;
 					while(i < 2){
 						if(nbt['gt.invlist'][i.toString()]['s'] == 1){
-							return BLUE + "输出口被堵住，なし法输出";
+							return BLUE + "搬出先にブロックがあり、搬出出来ません";
 						}
 						i++;
 					}
@@ -2385,27 +2385,27 @@
 
 	</tileentity>
 
-	<!-- 打磨石 -->
+	<!-- グラインドストーン -->
 	<tileentity id = "gt.multitileentity.sharpener.grindstone">
-		<line displayname = "機械の状態">
+		<line displayname = "グラインドストーンの状態">
 			if(nbt['gt.state'] > 0){
-				return "还可打磨" + " " +nbt['gt.state'] + Unit("個") + "物品";
+				return nbt['gt.state'] + Unit("個") + "のアイテムを研磨することが出来ます";
 			}
 			if(nbt['gt.state'] == 0){
-				return RED + "不可进行打磨，请放入沙石";
+				return RED + "研磨できません、砂を入れて下さい";
 			}
 		</line>
 
 	</tileentity>
 
-	<!-- 筛选台 -->
+	<!-- シフター -->
 	<tileentity id = "gt.multitileentity.sifter.table">
-		<line displayname = "機械の状態">
+		<line displayname = "ふるいの状態">
 			switch(nbt['gt.state']){
-				case 0:{return BLUE + "请放入需要进行筛选的物品";}
-				case 1:{return BLUE + "准备进行筛选，请右击顶面";}
-				case 2:{return BLUE + "筛选成功，请取出产物";}
-				case 3:{return BLUE + "取出产物后，再进行下一次筛选";}
+				case 0:{return BLUE + "アイテムを搬入して下さい";}
+				case 1:{return BLUE + "上部を素手で右クリックして、動作させます";}
+				case 2:{return BLUE + "アイテムを取り出して下さい";}
+				case 3:{return BLUE + "アイテムを取り出さないと、次のアイテムをふるいにかけれません";}
 			}
 		</line>
 
@@ -2541,46 +2541,46 @@
 
 	</tileentity>
 
-	<!-- 铸币模具 -->
+	<!-- コイン -->
 	<tileentity id = "gt.multitileentity.mold.coins">
 	<!-- TODO -->
 	</tileentity>
 
-	<!-- 焦炉 -->
+	<!-- コークス炉 -->
 	<tileentity id = "gt.multitileentity.multiblock.cokeoven">
-		<line displayname = "機械の状態">
+		<line displayname = "コークス炉の状態">
 			try{
 				if(nbt['gt.active'] != undefined){
 					return BLUE + "動作中";
 				}
 				if((nbt['gt.running'] != undefined) && (nbt['gt.invlist']['0']['s'] == 0)){
 					if(nbt['gt.invlist']['1']['Count'] == 64){
-						return RED + "请将输出槽的物品取走";
+						return RED + "搬出先のアイテムを取り出して下さい";
 					}
-					return RED + "请使用打火石之类的东西点火";
+					return RED + "動作準備完了、火を付けて下さい";
 				}
 				if((nbt['gt.running'] != 1)){
 					return RED + "停止中";
 				}
 			}
 			catch(e){
-				return RED + "请放入待加工的物品";
+				return RED + "加工するアイテムを搬入して下さい";
 			}
 		</line>
 
-		<line displayname = "输入警告">
+		<line displayname = "コークス炉の注意">
 			if((nbt['gt.running'] != undefined) && (nbt['gt.invlist']['0']['s'] == 0) && (nbt['gt.active'] != 1)){
-				return RED + "若多次点火失败，请检查是否存在相应合成表";
+				return RED + "着火に失敗した場合、レシピを確認して下さい";
 			}
 		</line>
 
-		<line displayname = "工作进程">
+		<line displayname = "処理プロセス">
 			if(nbt['gt.progress'] != undefined){
 				return nbt['gt.progress'] / 20 + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
 			}
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.0']['Count'] + Unit("個 ") + name(nbt['gt.invout.0']) + " - " + nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
 		</line>
 
@@ -2599,32 +2599,32 @@
 			}
 		</line>
 
-		<line displayname = "输出流体">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 	</tileentity>
 
-	<!-- 地表岩石 -->
+	<!-- 岩石 -->
 	<tileentity id = "gt.multitileentity.rock">
-		<line displayname = "所含物品">
+		<line displayname = "含まれているアイテム">
 			return nbt['gt.value']['Count'] + Unit("個 ") + name(nbt['gt.value']);
 		</line>
 
 	</tileentity>
 
-	<!-- 浆果 -->
+	<!-- ベリーブッシュ -->
 	<tileentity id = "gt.multitileentity.plant.bush">
-		<line displayname = "剩余时间">
+		<line displayname = "育ち切る時間">
 			if(nbt['gt.state'] != 3){
 				var t = 65536 - 128 * (nbt['gt.state'] * 128 + nbt['gt.progress']);
 				var str = "";
 				if(t > 20 * 60 * 60){
-					str += parseInt(t / (20 * 60 * 60)) + " 小时";
+					str += parseInt(t / (20 * 60 * 60)) + " 時間";
 					t = t % (20 * 60 * 60);
 				}
 				if(t > 20 * 60){
-					str += parseInt(t / (20 * 60)) + " 分钟";
+					str += parseInt(t / (20 * 60)) + " 分";
 					t = t % (20 * 60);
 				}
 				if(t > 20){
@@ -2636,7 +2636,7 @@
 				}
 				return str;
 			}
-			return AQUA + "已成熟，请收获";
+			return AQUA + "成長済み";
 		</line>
 		<!-->
 		<line displayname = "光照提示">
@@ -2647,486 +2647,486 @@
 			return AQUA + "下雨时，若莓丛四周有雨水降落，则生长速度加倍";
 		</line>
 		<-->
-		<line displayname = "产出作物">
+		<line displayname = "採れる作物">
 			return nbt['gt.value']['Count'] + Unit("個 ") + name(nbt['gt.value']);
 		</line>
 
 	</tileentity>
 
-	<!-- 泵 -->
+	<!-- ポンプ -->
 	<tileentity id = "gt.multitileentity.pump.rotation">
 
 	</tileentity>
 
-	<!-- 加工机器 -->
+	<!-- 加工機械 -->
 	<tileentity id = "gt.multitileentity.machine.basic">
 		<line displayname = "機械の状態">
 			if(nbt['gt.active'] != undefined){
-				return BLUE + "正在加工";
+				return BLUE + "稼働中";
 			}
 			if(nbt['gt.running'] != undefined){
 				if(nbt['gt.mte.id'] < 22000){
-					return BLUE + "スタンバイ - 耗电";
+					return BLUE + "スタンバイ - 電気消費中";
 				}
 				return BLUE + "スタンバイ";
 			}
 			return RED + "停止中";
 		</line>
 
-		<line displayname = "工作进程">
+		<line displayname = "処理プロセス">
 			if(nbt['gt.progress'] != undefined){
 				return nbt['gt.progress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
 			}
 		</line>
 
-		<line displayname = "能量需求">
+		<line displayname = "必要エネルギー">
 			if(nbt['gt.minenergy'] != undefined){
 				return nbt['gt.minenergy'] + Unit(ID2EnergyType(nbt['gt.mte.id']));
 			}
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.0']['Count'] + Unit("個 ") + name(nbt['gt.invout.0']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.1']['Count'] + Unit("個 ") + name(nbt['gt.invout.1']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.2']['Count'] + Unit("個 ") + name(nbt['gt.invout.2']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.3']['Count'] + Unit("個 ") + name(nbt['gt.invout.3']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.4']['Count'] + Unit("個 ") + name(nbt['gt.invout.4']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.5']['Count'] + Unit("個 ") + name(nbt['gt.invout.5']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.6']['Count'] + Unit("個 ") + name(nbt['gt.invout.6']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.7']['Count'] + Unit("個 ") + name(nbt['gt.invout.7']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.8']['Count'] + Unit("個 ") + name(nbt['gt.invout.8']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.9']['Count'] + Unit("個 ") + name(nbt['gt.invout.9']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.10']['Count'] + Unit("個 ") + name(nbt['gt.invout.10']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.11']['Count'] + Unit("個 ") + name(nbt['gt.invout.11']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.1']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.2']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.3']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.4']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.5']['FluidName']);
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,0,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,1,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,2,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,3,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,4,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,5,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,6,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,7,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,8,'I');
 		</line>
 
-		<line displayname = "所放蓝图">
+		<line displayname = "ブループリント">
 			IOInv(nbt,0,'B');
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,0,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,1,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,2,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,3,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,4,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,5,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,6,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,7,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,8,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,9,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,10,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,11,'O');
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
 		</line>
 
 	</tileentity>
 
-	<!-- 电力加工机器 -->
+	<!-- 電気加工機械-->
 	<tileentity id = "gt.multitileentity.machine.basic.electric">
 		<line displayname = "機械の状態">
 			if(nbt['gt.active'] != undefined){
-				return BLUE + "正在加工";
+				return BLUE + "稼働中";
 			}
 			if(nbt['gt.running'] != undefined){
 				if(nbt['gt.mte.id'] < 22000){
-					return BLUE + "スタンバイ - 耗电";
+					return BLUE + "スタンバイ - 電気消費中";
 				}
 				return BLUE + "スタンバイ";
 			}
 			return RED + "停止中";
 		</line>
 
-		<line displayname = "工作进程">
+		<line displayname = "処理プロセス">
 			if(nbt['gt.progress'] != undefined){
 				return nbt['gt.progress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
 			}
 		</line>
 
-		<line displayname = "能量需求">
+		<line displayname = "要求エネルギー">
 			if(nbt['gt.minenergy'] != undefined){
 				return nbt['gt.minenergy'] + Unit(ID2EnergyType(nbt['gt.mte.id']));
 			}
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.0']['Count'] + Unit("個 ") + name(nbt['gt.invout.0']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.1']['Count'] + Unit("個 ") + name(nbt['gt.invout.1']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.2']['Count'] + Unit("個 ") + name(nbt['gt.invout.2']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.3']['Count'] + Unit("個 ") + name(nbt['gt.invout.3']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.4']['Count'] + Unit("個 ") + name(nbt['gt.invout.4']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.5']['Count'] + Unit("個 ") + name(nbt['gt.invout.5']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.6']['Count'] + Unit("個 ") + name(nbt['gt.invout.6']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.7']['Count'] + Unit("個 ") + name(nbt['gt.invout.7']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.8']['Count'] + Unit("個 ") + name(nbt['gt.invout.8']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.9']['Count'] + Unit("個 ") + name(nbt['gt.invout.9']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.10']['Count'] + Unit("個 ") + name(nbt['gt.invout.10']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産されるアイテム">
 			return nbt['gt.invout.11']['Count'] + Unit("個 ") + name(nbt['gt.invout.11']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.1']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.2']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.3']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.4']['FluidName']);
 		</line>
 
-		<line displayname = "正在加工">
+		<line displayname = "生産される液体/気体">
 			return nbt['gt.tankout.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.5']['FluidName']);
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,0,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,1,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,2,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,3,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,4,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,5,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,6,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,7,'I');
 		</line>
 
-		<line displayname = "物品输入">
+		<line displayname = "搬入されているアイテム">
 			IOInv(nbt,8,'I');
 		</line>
 
-		<line displayname = "所放蓝图">
+		<line displayname = "ブループリント">
 			IOInv(nbt,0,'B');
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
-		<line displayname = "流体输入">
+		<line displayname = "搬入されている液体">
 			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,0,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,1,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,2,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,3,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,4,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,5,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,6,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,7,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,8,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,9,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,10,'O');
 		</line>
 
-		<line displayname = "物品输出">
+		<line displayname = "搬出されるアイテム">
 			IOInv(nbt,11,'O');
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
 		</line>
 
-		<line displayname = "流体输出">
+		<line displayname = "搬出される液体">
 			return nbt['gt.tank.out.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
 		</line>
 
