@@ -380,7 +380,7 @@
 				case "個 ":{return AQUA + " 個 " + WHITE;}
 				case "ユニット ":{return AQUA + " ユニット " + WHITE;}
 				case "K":{return AQUA + " K" + WHITE;}
-				case "种":{return AQUA + " 种" + WHITE;}
+				case "種類":{return AQUA + " 種類" + WHITE;}
 				case "S":{return AQUA + " S" + WHITE;}
 				case "個":{return AQUA + " 個" + WHITE;}
 			}
@@ -891,19 +891,19 @@
 
 	<!-- ボイラー -->
 	<tileentity id = "gt.multitileentity.tank.boiler_steam">
-		<line displayname = "爆炸警告1">
+		<line displayname = "警告1">
 			if((nbt['gt.tank.1']['Amount'] / (SteamCap(nbt))) > 0.10){
-				return RED + "此时使用扳手拆除会造成威力" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "点的爆炸";
+				return RED + "今、レンチで撤去しなければ" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "の爆発が起きます";
 			}
 		</line>
 
-		<line displayname = "爆炸警告2">
+		<line displayname = "警告2">
 			if((nbt['gt.tank.1']['Amount'] / (SteamCap(nbt))) > 0.46){
-				return RED + "此时使用凿子清理锅炉会造成威力" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "点的爆炸";
+				return RED + "今、ノミで加工すると" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "の爆発が起きます";
 			}
 		</line>
 
-		<line displayname = "機械の注意1">
+		<line displayname = "ボイラー注意1">
 			if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
 				if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
 					return RED + "此时靠近锅炉会受到" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],0) + "点伤害";
@@ -951,12 +951,12 @@
 			}
 		</line>
 
-		<line displayname = "機械の状態">
+		<line displayname = "ボイラーの状態">
 			if(nbt['gt.tank.1']['Amount'] * 2 >= (SteamCap(nbt))){
 				return GREEN + "動作中";
 			}
 			if(nbt['gt.tank.0'] != undefined){
-				return BLUE + "预热";
+				return BLUE + "予熱で動作中";
 			}
 			if(nbt['gt.energy'] != undefined){
 				return GOLD + "干烧";
@@ -964,7 +964,7 @@
 			return RED + "停止中";
 		</line>
 
-		<line displayname = "效率">
+		<line displayname = "効率">
 			if(nbt['gt.eff'] != undefined){
 				return nbt['gt.eff'] / 100 + "%";
 			}
@@ -989,7 +989,7 @@
 			return "0/4000" + Unit("L");
 		</line>
 
-		<line displayname = "蒸汽储量">
+		<line displayname = "蒸気搬入量">
 			if(nbt['gt.tank.1'] != undefined){
 				return nbt['gt.tank.1']['Amount'] + "/" + SteamCap(nbt) + Unit("L") + " - " + parseInt(nbt['gt.tank.1']['Amount'] / SteamCap(nbt) * 10000) / 100 + "%";
 			}
@@ -1000,8 +1000,8 @@
 
 	<!-- 蒸気エンジン -->
 	<tileentity id = "gt.multitileentity.engine.kinetic_steam">
-		<line displayname = "过热警告">
-			return RED + "若热量储量达到100%，则会强制停止中";
+		<line displayname = "機械の警告">
+			return RED + "蒸留水が満杯になると強制的に停止します";
 		</line>
 
 		<line displayname = "機械の状態">
@@ -1018,17 +1018,17 @@
 			if(nbt['gt.active'] == 1){
 				return ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * ((nbt['gt.visual'] + 1) / 16) + Unit("KU") + "/t";
 			}
-			return "机器未動作中 - 0" + Unit("KU") + "/t";
+			return "機械は動作していません - 0" + Unit("KU") + "/t";
 		</line>
 
-	    <line displayname = "动能储量">
+	    <line displayname = "エネルギー搬出量">
 			if(nbt['gt.energy'] != undefined){
 				return nbt['gt.energy'] + "/" + bind(2000,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 2000) + Unit("KU") + " - " + parseInt(nbt['gt.energy'] / bind(2000,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 2000) * 10000) / 100 + "%";
 			}
 			return "0/" + bind(2000,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 2000) + Unit("KU") + " - " + "0.00%";
 		</line>
 
-		<line displayname = "蒸汽储量">
+		<line displayname = "蒸気搬入量">
 			if(nbt['gt.tank.0'] != undefined){
 				return nbt['gt.tank.0']['Amount'] + "/" + bind(200,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 200) + Unit("L");
 			}
@@ -1037,7 +1037,7 @@
 
 	</tileentity>
 
-	<!-- 电力引擎 -->
+	<!-- 電気エンジン -->
 	<tileentity id = "gt.multitileentity.engine.kinetic_electricity">
 		<line displayname = "機械の状態">
 			isRun(nbt);
@@ -1066,19 +1066,19 @@
 	<tileentity id = "gt.multitileentity.turbines.rotation_steam">
 		<line displayname = "機械の注意">
 			if(nbt['gt.can.energy'] == 1 && nbt['gt.facing'] == 1){
-				return RED + "此时玩家/动物/实体/...站在RU输出面时，会被机器转动";
+				return RED + "このRU出力する面でプレーヤー/動物/エンティティなどは回転してしまいます";
 			}
 		</line>
 
 		<line displayname = "機械の状態">
 			if(nbt['gt.output.su'] != undefined){
 				if((nbt['gt.output.su'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
-					return BLUE + "超载";
+					return BLUE + "過負荷状態";
 				}
 			}
 			if(nbt['gt.tank.0'] != undefined){
 				if((nbt['gt.tank.0']['Amount'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
-					return BLUE + "超载";
+					return BLUE + "過負荷状態";
 				}
 			}
 			isRun(nbt);
@@ -1104,23 +1104,23 @@
 			return "0" + Unit("RU") + "/t";
 		</line>
 
-		<line displayname = "蒸汽储量">
+		<line displayname = "蒸気搬入量">
 			if(nbt['gt.tank.0'] != undefined){
 				return nbt['gt.tank.0']['Amount'] + "/" + bind(1,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","RU",1) * 2 * 4) + Unit("L");
 			}
 			return "0/" + bind(1,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","RU",1) * 2 * 4) + Unit("L");
 		</line>
 
-		<line displayname = "旋转方向">
+		<line displayname = "回転方向">
 			if(nbt['gt.can.energy'] == 1 && nbt['gt.facing'] == 1){
 				if(nbt['gt.reversed'] != undefined){
-					return BLUE + "顺时针";
+					return BLUE + "時計回り";
 				}
-				return BLUE + "逆时针";
+				return BLUE + "反時計回り";
 			}
 		</line>
 
-		<line displayname = "旋转速度">
+		<line displayname = "回転速度">
 			if(nbt['gt.can.energy'] == 1 && nbt['gt.facing'] == 1){
 				if(nbt['gt.output.su'] != undefined){
 					if((nbt['gt.output.su'] / 3) > ID2Tier(nbt['gt.mte.id'],"SU","RU",0)){
@@ -1317,7 +1317,7 @@
 			isRun(nbt);
 		</line>
 
-		<line displayname = "电能储量">
+		<line displayname = "EU貯蔵量">
 			if(nbt['gt.energy'] != undefined){
 				return nbt['gt.energy'] + Unit("EU");
 		</line>
@@ -1473,31 +1473,56 @@
 	<!-- パイプ -->
 	<tileentity id = "gt.multitileentity.connector.pipe.fluid">
 	    <line displayname = "内容物">
-	    if(nbt['gt.tank.0']['Amount']!=undefined){
-		return fluidName(nbt['gt.tank.0']['FluidName'])+": "+GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");}
+	    	if(nbt['gt.tank.0']['Amount']!=undefined){
+				return fluidName(nbt['gt.tank.0']['FluidName'])+": "+GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");
+			}
+			if(nbt['gt.tank.1']['Amount']!=undefined){
+				return fluidName(nbt['gt.tank.1']['FluidName'])+": "+GREEN+nbt['gt.tank.1']['Amount'] + Unit("L");
+			}
+			if(nbt['gt.tank.2']['Amount']!=undefined){
+				return fluidName(nbt['gt.tank.2']['FluidName'])+": "+GREEN+nbt['gt.tank.2']['Amount'] + Unit("L");
+			}
+			if(nbt['gt.tank.3']['Amount']!=undefined){
+				return fluidName(nbt['gt.tank.3']['FluidName'])+": "+GREEN+nbt['gt.tank.3']['Amount'] + Unit("L");
+			}
+			if(nbt['gt.tank.4']['Amount']!=undefined){
+				return fluidName(nbt['gt.tank.4']['FluidName'])+": "+GREEN+nbt['gt.tank.4']['Amount'] + Unit("L");
+			}
+			if(nbt['gt.tank.5']['Amount']!=undefined){
+				return fluidName(nbt['gt.tank.5']['FluidName'])+": "+GREEN+nbt['gt.tank.5']['Amount'] + Unit("L");
+			}
+			if(nbt['gt.tank.6']['Amount']!=undefined){
+				return fluidName(nbt['gt.tank.5']['FluidName'])+": "+GREEN+nbt['gt.tank.6']['Amount'] + Unit("L");
+			}
+			if(nbt['gt.tank.7']['Amount']!=undefined){
+				return fluidName(nbt['gt.tank.5']['FluidName'])+": "+GREEN+nbt['gt.tank.7']['Amount'] + Unit("L");
+			}
+			if(nbt['gt.tank.8']['Amount']!=undefined){
+				return fluidName(nbt['gt.tank.5']['FluidName'])+": "+GREEN+nbt['gt.tank.8']['Amount'] + Unit("L");
+			}
 		</line>
 	</tileentity>
 
 	<!-- バーニングボックス   -->
 	<tileentity id = "gt.multitileentity.generator.burning_solid">
 	    <line displayname = "生産HU">
-		if(nbt['gt.energy']!=undefined){
-		return nbt['gt.energy']+BLUE+" HU"}
+			if(nbt['gt.energy']!=undefined){
+				return nbt['gt.energy']+BLUE+" HU"}
 		</line>
 		<line displayname = "燃料の状況">
-		if(nbt['gt.invlist']['0']['Damage']!=8200)
-		if(nbt['gt.invlist']['0']['Damage']!=8201){
-		return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0'])}
+			if(nbt['gt.invlist']['0']['Damage']!=8200)
+			if(nbt['gt.invlist']['0']['Damage']!=8201){
+				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0'])}
 		</line>
 		<line displayname = "灰の個数">
-		switch(nbt['gt.invlist']['0']['Damage']) {
-		case 8200:return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0']);
-		    break;
-		case 8201:return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0']);
-		    break;}
+			switch(nbt['gt.invlist']['0']['Damage']) {
+			case 8200:return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0']);
+		  		break;
+			case 8201:return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0']);
+		    	break;}
 		</line>
 		<line displayname = "灰の個数">
-		return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['1'])
+			return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['1'])
 		</line>
 	</tileentity>
 
@@ -1588,12 +1613,12 @@
 	<!-- 保温瓶 -->
 	<tileentity id = "gt.multitileentity.thermos.can">
 		<line displayname = "保存されている液体">
-			return nbt['gt.tank']['Amount'] + "/4000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+			return fluidName(nbt['gt.tank']['FluidName']) +" " + nbt['gt.tank']['Amount'] + "/4000" + Unit("L") ;
 		</line>
 
 	</tileentity>
 
-	<!-- 木の浴槽 -->
+	<!-- 木製ベージングポット -->
 	<tileentity id = "gt.multitileentity.bathing.pot.wood">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
@@ -1709,7 +1734,7 @@
 
 	</tileentity>
 
-	<!-- 木制浸洗桌 -->
+	<!-- 木製ベージングポットテーブル -->
 	<tileentity id = "gt.multitileentity.bathing.pot.table.wood">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
@@ -1825,7 +1850,7 @@
 
 	</tileentity>
 
-	<!-- 浸洗盆 -->
+	<!-- ベージングポット -->
 	<tileentity id = "gt.multitileentity.bathing.pot">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
@@ -1941,7 +1966,7 @@
 
 	</tileentity>
 
-	<!-- 浸洗桌 -->
+	<!-- ベージングポットテーブル -->
 	<tileentity id = "gt.multitileentity.bathing.pot.table">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
@@ -2057,7 +2082,7 @@
 
 	</tileentity>
 
-	<!-- 搅拌盆 -->
+	<!-- ミキシングボウル -->
 	<tileentity id = "gt.multitileentity.mixing.bowl">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
@@ -2139,7 +2164,7 @@
 
 	</tileentity>
 
-	<!-- 搅拌桌 -->
+	<!-- ミキシングボウルテーブル -->
 	<tileentity id = "gt.multitileentity.mixing.bowl.table">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
@@ -2221,7 +2246,7 @@
 
 	</tileentity>
 
-	<!-- 榨汁机 -->
+	<!-- ジューサー-->
 	<tileentity id = "gt.multitileentity.juicer">
 		<line displayname = "搬出される液体">
 			return nbt['gt.tank.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.0']['FluidName']);
@@ -2229,31 +2254,31 @@
 
 	</tileentity>
 
-	<!-- 橡胶产出口 -->
+	<!-- 穴の空いたゴムの原木 -->
 	<tileentity id = "gt.multitileentity.tree.rubber.resinhole">
-		<line displayname = "機械の状態">
+		<line displayname = "木の状態">
 			if(nbt['gt.active'] != undefined){
-				return BLUE + "可以收获";
+				return BLUE + "樹脂を採取可能";
 			}
-			return BLUE + "不可收获";
+			return BLUE + "採取不可";
 		</line>
 
 	</tileentity>
 
-	<!-- 开孔的枫树原木 -->
+	<!-- 穴の空いたメープルの原木 -->
 	<tileentity id = "gt.multitileentity.tree.maple.saphole">
-		<line displayname = "機械の状態">
+		<line displayname = "木の状態">
 			if(nbt['gt.active'] != undefined){
-				return BLUE + "可以收获";
+				return BLUE + "樹液を採取可能";
 			}
-			return BLUE + "不可收获";
+			return BLUE + "採取不可";
 		</line>
 
 	</tileentity>
 
-	<!-- 树液/乳胶收集袋 -->
+	<!-- 樹脂/樹液バッグ -->
 	<tileentity id = "gt.multitileentity.sapbag">
-		<line displayname = "收集物品">
+		<line displayname = "採れるアイテム">
 			if(nbt['gt.invlist'] != undefined){
 				return nbt['gt.invlist']['0']['Count'] + "/64" + Unit("個 ") + name(nbt['gt.invlist']['0']);
 			}
