@@ -1,5 +1,5 @@
-<!--Date: 2018/04/24-->
-<!--Version: 6.07.11-->
+<!--Date : 2018/04/24-->
+<!--Version : 6.07.11-->
 <oo>
 
 	<!-- ID to EnergyTier -->
@@ -653,7 +653,7 @@
 
     <!-- るつぼ -->
     <tileentity id = "gt.multitileentity.smeltery">
-		<!-- TODO: 機械の注意/爆炸警告 -->
+		<!-- TODO : 機械の注意/爆炸警告 -->
 
 	    <line displayname = "現在の温度">
 			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
@@ -762,7 +762,7 @@
 
 	<!-- 鋳型 -->
 	<tileentity id = "gt.multitileentity.mold">
-		<!-- TODO: 機械の注意 -->
+		<!-- TODO : 機械の注意 -->
 
 	    <line displayname = "現在の温度">
 			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
@@ -837,7 +837,7 @@
 
 	<!-- ベイスン -->
 	<tileentity id = "gt.multitileentity.basin">
-		<!-- TODO: 機械の注意 -->
+		<!-- TODO : 機械の注意 -->
 
 	    <line displayname = "現在の温度">
 			return nbt['gt.temperature'] + Unit("K") + " / " + KevinCap(nbt['gt.mte.id']) + Unit("K");
@@ -1149,11 +1149,11 @@
 		</line>
 
 		<line displayname = "エネルギー入力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","HU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","HU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","HU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","HU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","HU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","HU",1) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","HU",0) + Unit("HU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","HU",0) + Unit("HU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -1171,11 +1171,11 @@
 		</line>
 
 		<line displayname = "エネルギー入力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","RU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","RU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","RU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","RU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","RU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","RU",1) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","RU",0) + Unit("RU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","RU",0) + Unit("RU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","RU",0) * 2 + ")";
 		</line>
 
 		<line displayname = "回転方向">
@@ -1205,11 +1205,11 @@
 		</line>
 
 		<line displayname = "エネルギー入力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","MU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","MU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","MU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","MU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","MU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","MU",1) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","MU",0) + Unit("MU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","MU",0) + Unit("MU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","MU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -1222,23 +1222,23 @@
 
 		<line displayname = "エネルギー入力">
 			if(nbt['gt.reversed'] != undefined){
-				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) * 2 + ")";
+				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) * 2 + ")";
 			}
-			return ID2Tier(nbt['gt.mte.id'],"EU","EU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","EU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
 			if(nbt['gt.reversed'] != undefined){
-				return ID2Tier(nbt['gt.mte.id'],"EU","EU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) * 2 + ")";
+				return ID2Tier(nbt['gt.mte.id'],"EU","EU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) * 2 + ")";
 			}
-			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) * 2 + ")";
 		</line>
 
 		<line displayname = "転送方向">
 			if(nbt['gt.reversed'] != undefined){
-				return BLUE + "大きな点が高電圧の" + RED + "搬出口 ，"+ BLUE + "小さな点が低電圧" + RED + "搬入口";
+				return BLUE + "大きな点が高電圧の" + RED + "搬出口 ，"+ BLUE + "小さな点が低電圧の" + RED + "搬入口";
 			}
-			return BLUE + BLUE + "大きな点が高電圧の" + RED + "搬入口 ，"+ BLUE + "小さな点が低電圧" + RED + "搬出口";
+			return BLUE + BLUE + "大きな点が高電圧の" + RED + "搬入口 ，"+ BLUE + "小さな点が低電圧の" + RED + "搬出口";
 		</line>
 
 	</tileentity>
@@ -1331,11 +1331,11 @@
 		</line>
 
 		<line displayname = "エネルギー入力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","LU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","LU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","LU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","LU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","LU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","LU",1) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","LU",0) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","LU",0) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","LU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -1347,11 +1347,11 @@
 		</line>
 
 		<line displayname = "エネルギー入力">
-			return ID2Tier(nbt['gt.mte.id'],"RU","EU",1) + Unit("RU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"RU","EU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"RU","EU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"RU","EU",1) + Unit("RU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"RU","EU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"RU","EU",1) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
-			return ID2Tier(nbt['gt.mte.id'],"RU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"RU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"RU","EU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -1363,11 +1363,11 @@
 		</line>
 
 		<line displayname = "エネルギー入力">
-			return ID2Tier(nbt['gt.mte.id'],"LU","QU",1) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","QU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","QU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"LU","QU",1) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","QU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"LU","QU",1) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
-			return ID2Tier(nbt['gt.mte.id'],"LU","QU",0) + Unit("QU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"LU","QU",0) + Unit("QU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"LU","QU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -1441,11 +1441,11 @@
 		</line>
 
 		<line displayname = "エネルギー入力">
-			return ID2Tier(nbt['gt.mte.id'],"LU","EU",1) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","EU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","EU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"LU","EU",1) + Unit("LU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","EU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"LU","EU",1) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
-			return ID2Tier(nbt['gt.mte.id'],"LU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"LU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"LU","EU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
@@ -1457,48 +1457,64 @@
 		</line>
 
 		<line displayname = "エネルギー入力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","CU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","CU",1) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","CU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","CU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","CU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","CU",1) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","CU",0) + Unit("CU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","CU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","CU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","CU",0) + Unit("CU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","CU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","CU",0) * 2 + ")";
 		</line>
 
 		<line displayname = "エネルギー出力">
-			return ID2Tier(nbt['gt.mte.id'],"EU","HU",0) + Unit("HU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) / 2 + " to " + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","HU",0) + Unit("HU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","HU",0) * 2 + ")";
 		</line>
 
 	</tileentity>
 
 	<!-- パイプ -->
 	<tileentity id = "gt.multitileentity.connector.pipe.fluid">
-	    <line displayname = "内容物">
+	    <line displayname = "入っている液体/気体">
 	    	if(nbt['gt.tank.0']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.0']['FluidName'])+": "+GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.0']['FluidName'])+" : "+GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");
 			}
+		</line>
+		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.1']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.1']['FluidName'])+": "+GREEN+nbt['gt.tank.1']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.1']['FluidName'])+" : "+GREEN+nbt['gt.tank.1']['Amount'] + Unit("L");
 			}
+		</line>
+		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.2']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.2']['FluidName'])+": "+GREEN+nbt['gt.tank.2']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.2']['FluidName'])+" : "+GREEN+nbt['gt.tank.2']['Amount'] + Unit("L");
 			}
+		</line>
+		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.3']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.3']['FluidName'])+": "+GREEN+nbt['gt.tank.3']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.3']['FluidName'])+" : "+GREEN+nbt['gt.tank.3']['Amount'] + Unit("L");
 			}
+		</line>
+		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.4']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.4']['FluidName'])+": "+GREEN+nbt['gt.tank.4']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.4']['FluidName'])+" : "+GREEN+nbt['gt.tank.4']['Amount'] + Unit("L");
 			}
+		</line>
+		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.5']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.5']['FluidName'])+": "+GREEN+nbt['gt.tank.5']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.5']['FluidName'])+" : "+GREEN+nbt['gt.tank.5']['Amount'] + Unit("L");
 			}
+		</line>
+		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.6']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.5']['FluidName'])+": "+GREEN+nbt['gt.tank.6']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.6']['FluidName'])+" : "+GREEN+nbt['gt.tank.6']['Amount'] + Unit("L");
 			}
+		</line>
+		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.7']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.5']['FluidName'])+": "+GREEN+nbt['gt.tank.7']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.7']['FluidName'])+" : "+GREEN+nbt['gt.tank.7']['Amount'] + Unit("L");
 			}
+		</line>
+		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.8']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.5']['FluidName'])+": "+GREEN+nbt['gt.tank.8']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.8']['FluidName'])+" : "+GREEN+nbt['gt.tank.8']['Amount'] + Unit("L");
 			}
 		</line>
 	</tileentity>
@@ -1564,7 +1580,7 @@
 
 	<!-- シングルブロックタンク -->
 	<tileentity id = "gt.multitileentity.tank.barrel.metal">
-		<line displayname = "保存されている液体">
+		<line displayname = "保存されている液体/気体">
 			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
@@ -1572,7 +1588,7 @@
 
 	<!-- マルチブロックタンク -->
 	<tileentity id = "gt.multitileentity.multiblock.tank.metal">
-		<line displayname = "保存されている液体">
+		<line displayname = "保存されている液体/気体">
 			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
@@ -1580,7 +1596,7 @@
 
 	<!-- カプセルセルコンテナ -->
 	<tileentity id = "gt.multitileentity.cell">
-		<line displayname = "保存されている液体">
+		<line displayname = "保存されている液体/気体">
 			return nbt['gt.tank']['Amount'] + "/1000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
@@ -1588,7 +1604,7 @@
 
 	<!-- カップ -->
 	<tileentity id = "gt.multitileentity.cup">
-		<line displayname = "保存されている液体">
+		<line displayname = "保存されている液体/気体">
 			return nbt['gt.tank']['Amount'] + "/250" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
@@ -1596,7 +1612,7 @@
 
 	<!-- ジャグ -->
 	<tileentity id = "gt.multitileentity.jug">
-		<line displayname = "保存されている液体">
+		<line displayname = "保存されている液体/気体">
 			return nbt['gt.tank']['Amount'] + "/2000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
@@ -1604,7 +1620,7 @@
 
 	<!-- ポット -->
 	<tileentity id = "gt.multitileentity.measuring.pot">
-		<line displayname = "保存されている液体">
+		<line displayname = "保存されている液体/気体">
 			return nbt['gt.tank']['Amount'] + "/1000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
 		</line>
 
@@ -1612,7 +1628,7 @@
 
 	<!-- 保温瓶 -->
 	<tileentity id = "gt.multitileentity.thermos.can">
-		<line displayname = "保存されている液体">
+		<line displayname = "保存されている液体/気体">
 			return fluidName(nbt['gt.tank']['FluidName']) +" " + nbt['gt.tank']['Amount'] + "/4000" + Unit("L") ;
 		</line>
 
@@ -1656,7 +1672,7 @@
 			}
 		</line>
 
-		<line displayname = "搬入された液体">
+		<line displayname = "搬入された液体/気体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
@@ -1720,15 +1736,15 @@
 			}
 		</line>
 
-		<line displayname = "搬出される液体1">
+		<line displayname = "搬出される液体/気体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体2">
+		<line displayname = "搬出される液体/気体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体3">
+		<line displayname = "搬出される液体/気体3">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
@@ -1772,7 +1788,7 @@
 			}
 		</line>
 
-		<line displayname = "搬入された液体">
+		<line displayname = "搬入された液体/気体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
@@ -1836,15 +1852,15 @@
 			}
 		</line>
 
-		<line displayname = "搬出される液体1">
+		<line displayname = "搬出される液体/気体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体2">
+		<line displayname = "搬出される液体/気体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体3">
+		<line displayname = "搬出される液体/気体3">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
@@ -1888,7 +1904,7 @@
 			}
 		</line>
 
-		<line displayname = "搬入された液体">
+		<line displayname = "搬入された液体/気体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
@@ -1952,15 +1968,15 @@
 			}
 		</line>
 
-		<line displayname = "搬出される液体1">
+		<line displayname = "搬出される液体/気体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体2">
+		<line displayname = "搬出される液体/気体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体3">
+		<line displayname = "搬出される液体/気体3">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
@@ -2004,7 +2020,7 @@
 			}
 		</line>
 
-		<line displayname = "搬入された液体">
+		<line displayname = "搬入された液体/気体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
@@ -2068,15 +2084,15 @@
 			}
 		</line>
 
-		<line displayname = "搬出される液体1">
+		<line displayname = "搬出される液体/気体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体2">
+		<line displayname = "搬出される液体/気体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体3">
+		<line displayname = "搬出される液体/気体3">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
@@ -2154,11 +2170,11 @@
 			}
 		</line>
 
-		<line displayname = "搬出される液体1">
+		<line displayname = "搬出される液体/気体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体2">
+		<line displayname = "搬出される液体/気体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
@@ -2236,11 +2252,11 @@
 			}
 		</line>
 
-		<line displayname = "搬出される液体1">
+		<line displayname = "搬出される液体/気体1">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体2">
+		<line displayname = "搬出される液体/気体2">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
@@ -2248,7 +2264,7 @@
 
 	<!-- ジューサー-->
 	<tileentity id = "gt.multitileentity.juicer">
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.0']['FluidName']);
 		</line>
 
@@ -2624,7 +2640,7 @@
 			}
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
@@ -2691,7 +2707,7 @@
 			}
 			if(nbt['gt.running'] != undefined){
 				if(nbt['gt.mte.id'] < 22000){
-					return BLUE + "スタンバイ - 電気消費中";
+					return BLUE + "スタンバイ - エネルギー消費中";
 				}
 				return BLUE + "スタンバイ";
 			}
@@ -2894,27 +2910,27 @@
 			IOInv(nbt,11,'O');
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体/">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
 		</line>
 
@@ -2928,7 +2944,7 @@
 			}
 			if(nbt['gt.running'] != undefined){
 				if(nbt['gt.mte.id'] < 22000){
-					return BLUE + "スタンバイ - 電気消費中";
+					return BLUE + "スタンバイ - エネルギー消費中";
 				}
 				return BLUE + "スタンバイ";
 			}
@@ -3059,27 +3075,27 @@
 			IOInv(nbt,0,'B');
 		</line>
 
-		<line displayname = "搬入されている液体">
+		<line displayname = "搬入されている液体/気体">
 			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
-		<line displayname = "搬入されている液体">
+		<line displayname = "搬入されている液体/気体">
 			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
-		<line displayname = "搬入されている液体">
+		<line displayname = "搬入されている液体/気体">
 			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
-		<line displayname = "搬入されている液体">
+		<line displayname = "搬入されている液体/気体">
 			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
-		<line displayname = "搬入されている液体">
+		<line displayname = "搬入されている液体/気体">
 			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
-		<line displayname = "搬入されている液体">
+		<line displayname = "搬入されている液体/気体">
 			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
@@ -3131,27 +3147,27 @@
 			IOInv(nbt,11,'O');
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
 		</line>
 
-		<line displayname = "搬出される液体">
+		<line displayname = "搬出される液体/気体">
 			return nbt['gt.tank.out.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
 		</line>
 
