@@ -216,7 +216,7 @@
 		}
 	</init>
 
-	<!-- 限定上下限 -->
+	<!-- 上限と下限 -->
 	<init>
 		function bind(aMin,aMax,aValue){
 			return Math.max(aMin,Math.min(aMax,aValue));
@@ -377,7 +377,7 @@
 				case "L":{return AQUA + " L" + WHITE;}
 				case "A":{return AQUA + " A" + WHITE;}
 				case "Angle":{return DAQUA + " °" + WHITE;}
-				case "個 ":{return AQUA + " 個 " + WHITE;}
+				case "個":{return AQUA + " 個 " + WHITE;}
 				case "ユニット ":{return AQUA + " ユニット " + WHITE;}
 				case "K":{return AQUA + " K" + WHITE;}
 				case "種類":{return AQUA + " 種類" + WHITE;}
@@ -623,7 +623,7 @@
 				}
 				for(i = 0;i < inAmount;i++){
 					if(nbt['gt.invlist'][i.toString()]['s'] == solt){
-						return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+						return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 					}
 				}
 			}
@@ -633,7 +633,7 @@
 				else{
 					for(i = 0;i < (inAmount + outAmount);i++){
 						if(nbt['gt.invlist'][i.toString()]['s'] == (solt + inAmount)){
-							return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+							return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 						}
 					}
 				}
@@ -642,7 +642,7 @@
 				if(blueprint == 1){
 					for(i = 0;i < (inAmount + outAmount);i++){
 						if(nbt['gt.invlist'][i.toString()]['s'] == 21){
-							return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+							return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 						}
 					}
 					return RED + "ブループリントが設置されてません";
@@ -819,7 +819,7 @@
 	    </line>
 
 		<line displayname = "搬入されてるアイテム">
-			return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+			return nbt['gt.invlist']['0']['Count'] + Unit("個") + name(nbt['gt.invlist']['0']);
 		</line>
 
 	</tileentity>
@@ -884,7 +884,7 @@
 	    </line>
 
 		<line displayname = "搬入されてるアイテム">
-			return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+			return nbt['gt.invlist']['0']['Count'] + Unit("個") + name(nbt['gt.invlist']['0']);
 		</line>
 
 	</tileentity>
@@ -1528,17 +1528,17 @@
 		<line displayname = "燃料の状況">
 			if(nbt['gt.invlist']['0']['Damage']!=8200)
 			if(nbt['gt.invlist']['0']['Damage']!=8201){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0'])}
+				return nbt['gt.invlist']['0']['Count'] + Unit("個") + RED + name(nbt['gt.invlist']['0'])}
 		</line>
 		<line displayname = "灰の個数">
 			switch(nbt['gt.invlist']['0']['Damage']) {
-			case 8200:return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0']);
+			case 8200:return nbt['gt.invlist']['0']['Count'] + Unit("個") + RED + name(nbt['gt.invlist']['0']);
 		  		break;
-			case 8201:return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['0']);
+			case 8201:return nbt['gt.invlist']['0']['Count'] + Unit("個") + RED + name(nbt['gt.invlist']['0']);
 		    	break;}
 		</line>
 		<line displayname = "灰の個数">
-			return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + RED + name(nbt['gt.invlist']['1'])
+			return nbt['gt.invlist']['1']['Count'] + Unit("個") + RED + name(nbt['gt.invlist']['1'])
 		</line>
 	</tileentity>
 
@@ -1638,37 +1638,37 @@
 	<tileentity id = "gt.multitileentity.bathing.pot.wood">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
@@ -1680,7 +1680,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1690,7 +1690,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1700,7 +1700,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1710,7 +1710,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1720,7 +1720,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1730,7 +1730,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1754,37 +1754,37 @@
 	<tileentity id = "gt.multitileentity.bathing.pot.table.wood">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
@@ -1796,7 +1796,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1806,7 +1806,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1816,7 +1816,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1826,7 +1826,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1836,7 +1836,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1846,7 +1846,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1870,37 +1870,37 @@
 	<tileentity id = "gt.multitileentity.bathing.pot">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
@@ -1912,7 +1912,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1922,7 +1922,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1932,7 +1932,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1942,7 +1942,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1952,7 +1952,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1962,7 +1962,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1986,37 +1986,37 @@
 	<tileentity id = "gt.multitileentity.bathing.pot.table">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
@@ -2028,7 +2028,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2038,7 +2038,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2048,7 +2048,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2058,7 +2058,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2068,7 +2068,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2078,7 +2078,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2102,37 +2102,37 @@
 	<tileentity id = "gt.multitileentity.mixing.bowl">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
@@ -2164,7 +2164,7 @@
 			var i = 0;
 			while(i < 7){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2184,37 +2184,37 @@
 	<tileentity id = "gt.multitileentity.mixing.bowl.table">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return nbt['gt.invlist']['0']['Count'] + Unit("個") + name(nbt['gt.invlist']['0']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
+				return nbt['gt.invlist']['1']['Count'] + Unit("個") + name(nbt['gt.invlist']['1']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['2']);
+				return nbt['gt.invlist']['2']['Count'] + Unit("個") + name(nbt['gt.invlist']['2']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['3']);
+				return nbt['gt.invlist']['3']['Count'] + Unit("個") + name(nbt['gt.invlist']['3']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['4']);
+				return nbt['gt.invlist']['4']['Count'] + Unit("個") + name(nbt['gt.invlist']['4']);
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['5']);
+				return nbt['gt.invlist']['5']['Count'] + Unit("個") + name(nbt['gt.invlist']['5']);
 			}
 		</line>
 
@@ -2246,7 +2246,7 @@
 			var i = 0;
 			while(i < 7){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -2265,7 +2265,7 @@
 	<!-- ジューサー-->
 	<tileentity id = "gt.multitileentity.juicer">
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.0']['FluidName']);
+			return fluidName(nbt['gt.tank.0']['FluidName']) + " " +  nbt['gt.tank.0']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -2291,15 +2291,14 @@
 		</line>
 
 	</tileentity>
-
 	<!-- 樹脂/樹液バッグ -->
 	<tileentity id = "gt.multitileentity.sapbag">
 		<line displayname = "採れるアイテム">
 			if(nbt['gt.invlist'] != undefined){
-				return nbt['gt.invlist']['0']['Count'] + "/64" + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + "/64" + Unit("個");
 			}
 			if(nbt['gt.tank'] != undefined){
-				return nbt['gt.tank']['Amount'] + "/8000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+				return fluidName(nbt['gt.tank']['FluidName']) + " " + nbt['gt.tank']['Amount'] + "/8000" + Unit("L");
 			}
 			return "なし";
 		</line>
@@ -2317,23 +2316,22 @@
 				case 4:{return BLUE + "1/72のサイズの粉";}
 			}
 		</line>
-
 		<line displayname = "入っているアイテム">
 			try{
 				var mDust = -1;
 				var mAmount = 0;
 				if(nbt['gt.invlist']['0']['s'] == 0){
 					var strT = name(nbt['gt.invlist']['0']);
-					if(strT.indexOf("粉块") >= 0){
+					if(strT.indexOf("粉ブロック") >= 0){
 						mDust = 0;
 					}
 					else if(strT.indexOf("1/72") >= 0){
 						mDust = 4;
 					}
-					else if(strT.indexOf("小撮") >= 0){
+					else if(strT.indexOf("とても小さな粉") >= 0){
 						mDust = 3;
 					}
-					else if(strT.indexOf("小堆") >= 0){
+					else if(strT.indexOf("小さな粉") >= 0){
 						mDust = 2;
 					}
 					else{
@@ -2362,26 +2360,26 @@
 					}
 				}
 				if(nbt['gt.invlist']['0']['s'] == 0){
-					return mAmount + Unit("個 ") + name(nbt['gt.invlist']['0']);
+					return name(nbt['gt.invlist']['0']) + " " + mAmount + Unit("個");
 				}
 				try{
 					switch(nbt['gt.mode']){
-						case 0:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"storage.dust");}
-						case 1:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dust");}
-						case 2:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustSmall");}
-						case 3:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustTiny");}
-						case 4:{return mAmount + Unit("個 ") + ID2Name(nbt['gt.invlist']['0']['Damage'],"dustDiv72");}
+						case 0:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"storage.dust");}
+						case 1:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"dust");}
+						case 2:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"dustSmall");}
+						case 3:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"dustTiny");}
+						case 4:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"dustDiv72");}
 					}
 				}
 				catch(e){
 					if(nbt['gt.materials']['a'] != undefined){
-						return parseInt(nbt['gt.materials']['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ") + nbt['gt.materials']['i'];
+						return nbt['gt.materials']['i'] +  " " + parseInt(nbt['gt.materials']['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
 					}
 				}
 			}
 			catch(e){
 				if(nbt['gt.invlist']['0']['s'] == 0){
-					return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+					return name(nbt['gt.invlist']['0']) +  " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 				}
 			}
 			return BLUE + "なし";
@@ -2391,7 +2389,7 @@
 			var i = 0;
 			while(i < 2){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 1){
-					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][i.toString()]);
+					return name(nbt['gt.invlist'][i.toString()]) +  " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++;
 			}
@@ -2399,7 +2397,7 @@
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			var str = "1" + Unit("個 ");
+			var str = "1" + Unit("個");
 			try{
 				switch(nbt['gt.mode']){
 					case 0:{str += ID2Name(nbt['gt.invlist']['0']['Damage'],"storage.dust");break;}
@@ -2452,131 +2450,130 @@
 
 		<line displayname = "搬入されたアイテム">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return name(nbt['gt.invlist']['0']) +  " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 			if(nbt['gt.state'] == 2){
-				return BLUE + "请取出产物";
+				return BLUE + "アイテムを取り出して下さい";
 			}
 			return BLUE + "なし";
 		</line>
-
-		<line displayname = "输出产物1">
+		<line displayname = "搬出されたアイテム1">
 			var order = 1;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物2">
+		<line displayname = "搬出されたアイテム2">
 			var order = 2;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物3">
+		<line displayname = "搬出されたアイテム3">
 			var order = 3;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物4">
+		<line displayname = "搬出されたアイテム4">
 			var order = 4;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物5">
+		<line displayname = "搬出されたアイテム5">
 			var order = 5;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物6">
+		<line displayname = "搬出されたアイテム6">
 			var order = 6;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物7">
+		<line displayname = "搬出されたアイテム7">
 			var order = 7;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物8">
+		<line displayname = "搬出されたアイテム8">
 			var order = 8;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物9">
+		<line displayname = "搬出されたアイテム9">
 			var order = 9;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物10">
+		<line displayname = "搬出されたアイテム10">
 			var order = 10;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物11">
+		<line displayname = "搬出されたアイテム11">
 			var order = 11;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "输出产物12">
+		<line displayname = "搬出されたアイテム12">
 			var order = 12;
 			if(nbt['gt.invlist']['0']['s'] != 0){
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return nbt['gt.invlist'][order.toString()]['Count'] + Unit("個 ") + name(nbt['gt.invlist'][order.toString()]);
+				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2622,26 +2619,26 @@
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.0']['Count'] + Unit("個 ") + name(nbt['gt.invout.0']) + " - " + nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
+			return name(nbt['gt.invout.0']) + " " + nbt['gt.invout.0']['Count'] + Unit("個") + " - " + fluidName(nbt['gt.tankout.0']['FluidName']) + " " + nbt['gt.tankout.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されたアイテム">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬出されたアイテム">
 			if(nbt['gt.invlist']['0']['s'] == 1){
-				return nbt['gt.invlist']['0']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['0']);
+				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 			else if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("個 ") + name(nbt['gt.invlist']['1']);
+				return name(nbt['gt.invlist']['1']) + " " + nbt['gt.invlist']['1']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -2649,7 +2646,7 @@
 	<!-- 岩石 -->
 	<tileentity id = "gt.multitileentity.rock">
 		<line displayname = "含まれているアイテム">
-			return nbt['gt.value']['Count'] + Unit("個 ") + name(nbt['gt.value']);
+			return name(nbt['gt.value']) + " " + nbt['gt.value']['Count'] + Unit("個");
 		</line>
 
 	</tileentity>
@@ -2689,7 +2686,7 @@
 		</line>
 		<-->
 		<line displayname = "採れる作物">
-			return nbt['gt.value']['Count'] + Unit("個 ") + name(nbt['gt.value']);
+			return name(nbt['gt.value']) + " " + nbt['gt.value']['Count'] + Unit("個");
 		</line>
 
 	</tileentity>
@@ -2727,51 +2724,51 @@
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.0']['Count'] + Unit("個 ") + name(nbt['gt.invout.0']);
+			return name(nbt['gt.invout.0']) + " " + nbt['gt.invout.0']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.1']['Count'] + Unit("個 ") + name(nbt['gt.invout.1']);
+			return name(nbt['gt.invout.1']) + " " + nbt['gt.invout.1']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.2']['Count'] + Unit("個 ") + name(nbt['gt.invout.2']);
+			return name(nbt['gt.invout.2']) + " " + nbt['gt.invout.2']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.3']['Count'] + Unit("個 ") + name(nbt['gt.invout.3']);
+			return name(nbt['gt.invout.3']) + " " + nbt['gt.invout.3']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.4']['Count'] + Unit("個 ") + name(nbt['gt.invout.4']);
+			return name(nbt['gt.invout.4']) + " " + nbt['gt.invout.4']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.5']['Count'] + Unit("個 ") + name(nbt['gt.invout.5']);
+			return name(nbt['gt.invout.5']) + " " + nbt['gt.invout.5']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.6']['Count'] + Unit("個 ") + name(nbt['gt.invout.6']);
+			return name(nbt['gt.invout.6']) + " " + nbt['gt.invout.6']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.7']['Count'] + Unit("個 ") + name(nbt['gt.invout.7']);
+			return name(nbt['gt.invout.7']) + " " + nbt['gt.invout.7']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.8']['Count'] + Unit("個 ") + name(nbt['gt.invout.8']);
+			return name(nbt['gt.invout.8']) + " " + nbt['gt.invout.8']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.9']['Count'] + Unit("個 ") + name(nbt['gt.invout.9']);
+			return name(nbt['gt.invout.9']) + " " + nbt['gt.invout.9']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.10']['Count'] + Unit("個 ") + name(nbt['gt.invout.10']);
+			return name(nbt['gt.invout.10']) + " " + nbt['gt.invout.10']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.11']['Count'] + Unit("個 ") + name(nbt['gt.invout.11']);
+			return name(nbt['gt.invout.11']) + " " + nbt['gt.invout.11']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産される液体/気体">
@@ -2910,28 +2907,28 @@
 			IOInv(nbt,11,'O');
 		</line>
 
-		<line displayname = "搬出される液体/気体/">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
+			return fluidName(nbt['gt.tank.out.3']['FluidName']) + " " + nbt['gt.tank.out.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
+			return fluidName(nbt['gt.tank.out.4']['FluidName']) + " " + nbt['gt.tank.out.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
+			return fluidName(nbt['gt.tank.out.5']['FluidName']) + " " + nbt['gt.tank.out.5']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -2964,75 +2961,75 @@
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.0']['Count'] + Unit("個 ") + name(nbt['gt.invout.0']);
+			return name(nbt['gt.invout.0']) +  " " + nbt['gt.invout.0']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.1']['Count'] + Unit("個 ") + name(nbt['gt.invout.1']);
+			return name(nbt['gt.invout.1']) +  " " + nbt['gt.invout.1']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.2']['Count'] + Unit("個 ") + name(nbt['gt.invout.2']);
+			return name(nbt['gt.invout.2']) +  " " + nbt['gt.invout.2']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.3']['Count'] + Unit("個 ") + name(nbt['gt.invout.3']);
+			return name(nbt['gt.invout.3']) +  " " + nbt['gt.invout.3']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.4']['Count'] + Unit("個 ") + name(nbt['gt.invout.4']);
+			return name(nbt['gt.invout.4']) +  " " + nbt['gt.invout.4']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.5']['Count'] + Unit("個 ") + name(nbt['gt.invout.5']);
+			return name(nbt['gt.invout.5']) +  " " + nbt['gt.invout.5']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.6']['Count'] + Unit("個 ") + name(nbt['gt.invout.6']);
+			return name(nbt['gt.invout.6']) +  " " + nbt['gt.invout.6']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.7']['Count'] + Unit("個 ") + name(nbt['gt.invout.7']);
+			return name(nbt['gt.invout.7']) +  " " + nbt['gt.invout.7']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.8']['Count'] + Unit("個 ") + name(nbt['gt.invout.8']);
+			return name(nbt['gt.invout.8']) +  " " + nbt['gt.invout.8']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.9']['Count'] + Unit("個 ") + name(nbt['gt.invout.9']);
+			return name(nbt['gt.invout.9']) +  " " + nbt['gt.invout.9']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.10']['Count'] + Unit("個 ") + name(nbt['gt.invout.10']);
+			return name(nbt['gt.invout.10']) +  " " + nbt['gt.invout.10']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return nbt['gt.invout.11']['Count'] + Unit("個 ") + name(nbt['gt.invout.11']);
+			return name(nbt['gt.invout.11']) +  " " + nbt['gt.invout.11']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return nbt['gt.tankout.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.0']['FluidName']);
+			return fluidName(nbt['gt.tankout.0']['FluidName']) + " " + nbt['gt.tankout.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return nbt['gt.tankout.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.1']['FluidName']);
+			return fluidName(nbt['gt.tankout.1']['FluidName']) + " " + nbt['gt.tankout.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return nbt['gt.tankout.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.2']['FluidName']);
+			return fluidName(nbt['gt.tankout.2']['FluidName']) + " " + nbt['gt.tankout.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return nbt['gt.tankout.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.3']['FluidName']);
+			return fluidName(nbt['gt.tankout.3']['FluidName']) + " " + nbt['gt.tankout.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return nbt['gt.tankout.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.4']['FluidName']);
+			return fluidName(nbt['gt.tankout.4']['FluidName']) + " " + nbt['gt.tankout.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return nbt['gt.tankout.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tankout.5']['FluidName']);
+			return fluidName(nbt['gt.tankout.5']['FluidName']) + " " + nbt['gt.tankout.5']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されているアイテム">
@@ -3076,27 +3073,27 @@
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.1']['FluidName']);
+			return fluidName(nbt['gt.tank.in.1']['FluidName']) + " " + nbt['gt.tank.in.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.2']['FluidName']);
+			return fluidName(nbt['gt.tank.in.2']['FluidName']) + " " + nbt['gt.tank.in.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.3']['FluidName']);
+			return fluidName(nbt['gt.tank.in.3']['FluidName']) + " " + nbt['gt.tank.in.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.4']['FluidName']);
+			return fluidName(nbt['gt.tank.in.4']['FluidName']) + " " + nbt['gt.tank.in.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.in.5']['FluidName']);
+			return fluidName(nbt['gt.tank.in.5']['FluidName']) + " " + nbt['gt.tank.in.5']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出されるアイテム">
@@ -3148,27 +3145,27 @@
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.0']['FluidName']);
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.3']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.3']['FluidName']);
+			return fluidName(nbt['gt.tank.out.3']['FluidName']) + " " + nbt['gt.tank.out.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.4']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.4']['FluidName']);
+			return fluidName(nbt['gt.tank.out.4']['FluidName']) + " " + nbt['gt.tank.out.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return nbt['gt.tank.out.5']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.5']['FluidName']);
+			return fluidName(nbt['gt.tank.out.5']['FluidName']) + " " + nbt['gt.tank.out.5']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
