@@ -163,7 +163,7 @@
 		}
 	</init>
 
-	<!-- 判断蒸汽机器爆炸半径 -->
+	<!-- ボイラーの爆発半径の判断 -->
 	<init>
 		function ExplodeRoundSU(cap){
 			if((Math.sqrt(cap) / 100) > 1){
@@ -173,7 +173,7 @@
 		}
 	</init>
 
-	<!-- 判断靠近锅炉所受伤害数值 -->
+	<!-- ボイラーの爆発威力を判断 -->
 	<init>
 		function HeatDamageSU(enCap,SUCap,isChisel){
 			if(isChisel == 0){
