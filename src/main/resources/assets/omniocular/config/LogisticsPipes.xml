@@ -1,6 +1,7 @@
 <!--Author: ViKaleidoscope, EpixZhang, Pr -->
 <!--Date: 2015/04/25-->
 <!--Version: 0.9.0.90-->
+<!--Don't Use NOW-->
 <oo>
 	<init>
 	function getSlot(i, slot, slotName){
@@ -32,7 +33,7 @@
 			if(nbt['allowAutoDestroy'] == 0){return translate("hud.msg.logisticspipes.off")}
 				else{return translate("hud.msg.logisticspipes.on")}
         </line>
-    </tileentity>	
+    </tileentity>
     <tileentity id="logisticspipes.blocks.powertile.LogisticsRFPowerProviderTileEntity"><!--物流TE能量供应器-->
         <line displayname="gui.powerprovider.StoredEnergy">
             return nbt['internalStorage']+' / 10000000 RF'
@@ -92,7 +93,7 @@
 				}
 		</line>
 		<line displayname="gui.crafting.Inventory"><!--物品栏-->
-        var items=nbt['items']; 
+        var items=nbt['items'];
         if (items.length==0){return };
         var ns=[];
             for(var index in items){
