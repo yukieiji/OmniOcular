@@ -182,7 +182,7 @@
 				}
 				return 10;
 			}
-			return parseInt((enCap + SUCap / 2) / 2000)
+			return parseInt((enCap + SUCap / 2) / 2000);
 		}
 	</init>
 
