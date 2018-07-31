@@ -1,656 +1,7 @@
-<!--Date : 2018/07/30-->
-<!--Version : 6.07.24-->
+<!--Date: 2018/07/31-->
+<!--Version: 6.07.24-->
+<!-- yukieiji -->
 <oo>
-
-	<!-- ID to EnergyTier -->
-	<!-- HU SU - ボイラー,SU KU - 蒸気エンジン,EU KU - 電気エンジン,SU RU - 蒸気タービン,EU HU - 電気ヒーター, -->
-	<!-- EU RU - 電気モーター,EU MU - 電磁石,EU EU - 変圧器,EU EU - バッテリーボックス,EU LU - CO2レーザー, -->
-	<!-- RU EU - 発電機,LU QU - 量子生成器, LU LU - クリスタルチャージャー,LU EU - レーザーアブソリューバー,EU CU HU - 半导体制冷器, -->
-	<init>
-		function ID2Tier(mID,mInput,mOutput,isInput){
-			var tInput = 0;
-			var tOutput = 0;
-
-			if(mInput == "HU"){
-				if(mOutput == "SU"){
-					if(mID >= 1250){
-						tInput = 4 * ID2Tier(mID - 50,"HU","SU",1);
-					}
-					else if(mID >= 1200){
-						switch(mID){
-							case 1200:{tInput = 16;break;}
-							case 1201:{tInput = 20;break;}
-							case 1202:{tInput = 24;break;}
-							case 1203:{tInput = 16;break;}
-							case 1204:{tInput = 32;break;}
-							case 1205:{tInput = 96;break;}
-							case 1206:{tInput = 112;break;}
-							case 1207:{tInput = 128;break;}
-							case 1208:{tInput = 128;break;}
-						}
-					}
-
-					tOutput = tInput * 2;
-				}
-			}
-			if(mInput == "SU"){
-				if(mOutput == "KU"){
-					if(mID > 1311){
-						tOutput = 4 * ID2Tier(mID - 50,"SU","KU",0);
-					}
-					else if(mID >= 1300){
-						switch(mID){
-							case 1300:{tOutput = 8;break;}
-							case 1301:{tOutput = 10;break;}
-							case 1302:{tOutput = 12;break;}
-							case 1303:{tOutput = 8;break;}
-							case 1304:{tOutput = 16;break;}
-							case 1305:{tOutput = 48;break;}
-							case 1306:{tOutput = 56;break;}
-							case 1307:{tOutput = 64;break;}
-							case 1308:{tOutput = 64;break;}
-							case 1309:{tOutput = 12;break;}
-							case 1310:{tOutput = 8;break;}
-							case 1311:{tOutput = 32;break;}
-						}
-					}
-
-					tInput = parseInt(tOutput * 2 * 10000 / SteamEff(mID));
-				}
-				if(mOutput == "RU"){
-					switch(mID){
-						case 1512:{tOutput = 16;break;}
-						case 1515:{tOutput = 24;break;}
-						case 1518:{tOutput = 32;break;}
-						case 1522:{tOutput = 64;break;}
-						case 1525:{tOutput = 96;break;}
-						case 1527:{tOutput = 128;break;}
-						case 1528:{tOutput = 128;break;}
-						case 1529:{tOutput = 128;break;}
-						case 1530:{tOutput = 256;break;}
-						case 1531:{tOutput = 256;break;}
-						case 1535:{tOutput = 384;break;}
-						case 1538:{tOutput = 512;break;}
-						case 1540:{tOutput = 768;break;}
-						case 1545:{tOutput = 1024;break;}
-						case 1548:{tOutput = 2048;break;}
-					}
-
-					tInput = tOutput * 3;
-				}
-			}
-			if(mInput == "EU"){
-				if(mOutput == "KU"){
-					tInput = 8 * Math.pow(4,(mID % 10010));
-					tOutput = tInput / 2;
-				}
-				if(mOutput == "HU"){
-					if(mID >= 10160){
-						tInput = 8 * Math.pow(4,(mID % 10160));
-						tOutput = tInput / 4;
-					}
-					else if(mID >= 10000){
-						tInput = 8 * Math.pow(4,(mID % 10000));
-						tOutput = tInput / 2;
-					}
-				}
-				if(mOutput == "RU"){
-					tInput = 8 * Math.pow(4,(mID % 10020));
-					tOutput = tInput / 2;
-				}
-				if(mOutput == "MU"){
-					tInput = 8 * Math.pow(4,(mID % 10030));
-					tOutput = tInput / 2;
-				}
-				if(mOutput == "EU"){
-					if(mID >= 10090){
-						tInput = 8 * Math.pow(4,(mID % 10090));
-						tOutput = tInput;
-					}
-					else if(mID >= 10080){
-						tInput = 8 * Math.pow(4,(mID % 10080));
-						tOutput = tInput;
-					}
-					else if(mID >= 10040){
-						tOutput = 8 * Math.pow(4,(mID % 10040));
-						tInput = tOutput * 4;
-					}
-				}
-				if(mOutput == "LU"){
-					tInput = 8 * Math.pow(4,(mID % 10100));
-					tOutput = tInput / 2;
-				}
-				if(mOutput == "CU"){
-					if(mID >= 10160){
-						tInput = 8 * Math.pow(4,(mID % 10160));
-						tOutput = tInput / 4;
-					}
-				}
-			}
-			if(mInput == "RU"){
-				if(mOutput == "EU"){
-					tInput = 8 * Math.pow(4,(mID % 10110));
-					tOutput = parseInt(tInput * 6875 / 10000);
-				}
-			}
-			if(mInput == "LU"){
-				if(mOutput == "QU"){
-					tInput = 8 * Math.pow(4,(mID % 10120));
-					tOutput = tInput / 2;
-				}
-				if(mOutput == "LU"){
-					if(mID >= 10140){
-						tInput = 8 * Math.pow(4,(mID % 10140));
-						tOutput = tInput;
-					}
-					else if(mID >= 10130){
-						tInput = 8 * Math.pow(4,(mID % 10130));
-						tOutput = tInput;
-					}
-				}
-				if(mOutput == "EU"){
-					tInput = 8 * Math.pow(4,(mID % 10150));
-					tOutput = tInput / 2;
-				}
-			}
-
-			if(isInput == 1){
-				return tInput;
-			}
-			else if(isInput == 0){
-				return tOutput;
-			}
-		}
-	</init>
-
-	<!-- ボイラーの爆発半径の判断 -->
-	<init>
-		function ExplodeRoundSU(cap){
-			if((Math.sqrt(cap) / 100) > 1){
-				return parseInt((Math.sqrt(cap) / 100));
-			}
-			return 1;
-		}
-	</init>
-
-	<!-- ボイラーの爆発威力を判断 -->
-	<init>
-		function HeatDamageSU(enCap,SUCap,isChisel){
-			if(isChisel == 0){
-				if(parseInt((enCap + SUCap / 2) / 2000) < 10){
-					return parseInt((enCap + SUCap / 2) / 2000);
-				}
-				return 10;
-			}
-			return parseInt((enCap + SUCap / 2) / 2000);
-		}
-	</init>
-
-	<!-- 蒸気エンジン効率 -->
-	<init>
-		function SteamEff(mID){
-			if(mID >= 1350){
-				return SteamEff(mID - 50);
-			}
-			switch(mID){
-				case 1300:{return 3000;}
-				case 1301:{return 4000;}
-				case 1302:{return 5000;}
-				case 1303:{return 6400;}
-				case 1304:{return 5000;}
-				case 1305:{return 6300;}
-				case 1306:{return 5800;}
-				case 1307:{return 5800;}
-				case 1308:{return 6000;}
-				case 1309:{return 5000;}
-				case 1310:{return 6450;}
-				case 1311:{return 6200;}
-			}
-		}
-	</init>
-
-	<!-- ボイラー容量 -->
-	<init>
-		function SteamCap(SC){
-			return ID2Tier(SC['gt.mte.id'],"HU","SU",1) * 10000;
-		}
-	</init>
-
-	<!-- 上限と下限 -->
-	<init>
-		function bind(aMin,aMax,aValue){
-			return Math.max(aMin,Math.min(aMax,aValue));
-		}
-	</init>
-
-	<!-- バッテリーボックスの状態 -->
-	<init>
-		function BatteryBoxArg(BBA,isLarge,ArgType,isEU){
-			var BatteryAmount = 0;
-			var EUAmount = 0;
-			var BatteryCap = 0;
-			var BatteryIDArg = 200;
-			var BatteryIDArg_2 = 14000;
-			var BatteryBoxArg_0 = 10080;
-			var BatteryBoxArg_1	= 10090;
-			var errorAmount = 0;
-
-			if(isEU != 1){
-				BatteryIDArg = 210;
-				BatteryIDArg_2 = 14500;
-				BatteryBoxArg_0 = 10130;
-				BatteryBoxArg_1 = 10140;
-			}
-
-			for (var i = 0; i < 16;i++) {
-				if(isLarge != 1){
-					if(i >= 4){
-						break;
-					}
-				}
-				if(BBA['gt.invlist'][i.toString()] != undefined){
-					try{
-						if((BBA['gt.invlist'][i.toString()]['Damage'] >= 20100) && (parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_0) || parseInt((BBA['gt.invlist'][i.toString()]['Damage'] / 100) % BatteryIDArg) == (BBA['gt.mte.id'] % BatteryBoxArg_1))){
-							if(BBA['gt.invlist'][i.toString()]['tag'] != undefined){
-								EUAmount += BBA['gt.invlist'][i.toString()]['tag']['gt.energy'];
-							}
-							BatteryAmount++;
-							if(isEU == 1){
-								BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"EU");
-								}else{
-									BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"LU");
-							}
-						}
-						else if((BBA['gt.invlist'][i.toString()]['Damage'] >= 14000) && (BBA['gt.invlist'][i.toString()]['Damage'] <= 14515) && (parseInt((BBA['gt.invlist'][i.toString()]['Damage'] % BatteryIDArg_2) % 10) == (BBA['gt.mte.id'] % BatteryBoxArg_0) || parseInt((BBA['gt.invlist'][i.toString()]['Damage'] % BatteryIDArg_2) % 10) == (BBA['gt.mte.id'] % BatteryBoxArg_1))){
-							if(BBA['gt.invlist'][i.toString()]['tag'] != undefined){
-								EUAmount += BBA['gt.invlist'][i.toString()]['tag']['gt.energy'];
-							}
-							BatteryAmount++;
-							if(isEU == 1){
-								BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"EU");
-							}else{
-								BatteryCap += ID2Cap(BBA['gt.invlist'][i.toString()]['Damage'],"LU");
-							}
-						}
-						else{
-							errorAmount++;
-						}
-					}
-					catch(e){
-						errorAmount++;
-					}
-				}
-			}
-
-			switch(ArgType){
-				case 0:{return BatteryAmount;}
-				case 1:{return EUAmount;}
-				case 2:{return BatteryCap;}
-				case 3:{return errorAmount;}
-			}
-		}
-	</init>
-
-	<!-- バッテリー容量 -->
-	<init>
-		function ID2Cap(mID,mInput){
-			if(mInput == "EU"){
-				if(mID >= 14100){
-					if(mID > 20300){
-						return 16 * ID2Cap(mID - 200,"EU");
-					}
-					if(mID > 20200){
-						return 4 * ID2Cap(mID - 100,"EU");
-					}
-					switch(mID){
-						case 20101:{return 32000;}
-						case 20102:{return 48000;}
-						case 20103:{return 64000;}
-						case 20104:{return 8000;}
-						case 20105:{return 16000;}
-						case 20106:{return 16000;}
-						case 20107:{return 16000;}
-					}
-				}
-				else{
-					if(mID >= 14020){
-						return 2 * ID2Cap(mID - 20,"EU");
-					}
-					if(mID >= 14010){
-						return 2 * ID2Cap(mID - 10,"EU");
-					}
-					switch(mID){
-						case 14000:{return 16000;}
-						case 14001:{return 64000;}
-						case 14002:{return 256000;}
-						case 14003:{return 1024000;}
-						case 14004:{return 4096000;}
-					}
-				}
-			}
-			if(mInput == "LU"){
-				if(mID >= 14510){
-					return 2 * ID2Cap(mID - 10,"LU");
-				}
-				return 3200000 * Math.pow(4,parseInt(mID % 14500));
-			}
-		}
-	</init>
-
-	<!-- 機械の状態 -->
-	<init>
-		function isRun(iR){
-			if(iR['gt.active.energy'] != undefined){
-				return GREEN + "動作中";
-			}
-			if((iR['gt.active'] != undefined)||(iR['gt.can.energy'] != undefined)){
-				return BLUE + "スタンバイ";
-			}
-			return RED + "停止中";
-		}
-	</init>
-
-	<!-- エネルギーの単位 -->
-	<init>
-		function Unit(Type){
-			switch(Type){
-				case "EU":{return BLUE + " EU" + WHITE;}
-				case "RU":{return GREEN + " RU" + WHITE;}
-				case "KU":{return DGREEN + " KU" + WHITE;}
-				case "HU":{return RED + " HU" + WHITE;}
-				case "CU":{return AQUA + " CU" + WHITE;}
-				case "LU":{return YELLOW + " LU" + WHITE;}
-				case "MU":{return DGRAY + " MU" + WHITE;}
-				case "NU":{return BLACK + " NU" + WHITE;}
-				case "QU":{return DPURPLE + " QU" + WHITE;}
-				case "TU":{return DBLUE + " TU" + WHITE;}
-				case "RF":{return DRED + " RF" + WHITE;}
-				case "MJ":{return DRED + " MJ" + WHITE;}
-				case "SU":{return GRAY + " SU" + WHITE;}
-				case "AU":{return WHITE + " AU" + WHITE;}
-				case "ORDO":{return WHITE + " Ordo" + WHITE;}
-				case "AER":{return YELLOW + " Aer" + WHITE;}
-				case "AQUA":{return AQUA + " Aqua" + WHITE;}
-				case "TERRA":{return GREEN + " Terra" + WHITE;}
-				case "IGNIS":{return RED + " Ignis" + WHITE;}
-				case "PERDITIO":{return BLACK + " Perditio" + WHITE;}
-				case "L":{return AQUA + " L" + WHITE;}
-				case "A":{return AQUA + " A" + WHITE;}
-				case "Angle":{return DAQUA + " °" + WHITE;}
-				case "個":{return AQUA + " 個 " + WHITE;}
-				case "ユニット ":{return AQUA + " ユニット " + WHITE;}
-				case "K":{return AQUA + " K" + WHITE;}
-				case "種類":{return AQUA + " 種類" + WHITE;}
-				case "S":{return AQUA + " S" + WHITE;}
-				case "個":{return AQUA + " 個" + WHITE;}
-			}
-		}
-	</init>
-
-	<!-- タンク容量 -->
-	<init>
-		function LiquidCap(LC){
-			switch(LC['gt.mte.id']){
-				case 32733:{return 8000;}
-				case 32752:{return 8000;}
-				case 32753:{return 8000;}
-				case 32754:{return 8000;}
-				case 32714:{return 16000;}
-				case 32734:{return 32000;}
-				case 32715:{return 32000;}
-				case 32716:{return 64000;}
-				case 32742:{return 128000;}
-				case 32717:{return 256000;}
-				case 32718:{return 256000;}
-				case 32719:{return 4096000;}
-				case 17001:{return 432000;}
-				case 17002:{return 1728000;}
-				case 17006:{return 3456000;}
-				case 17003:{return 6912000;}
-				case 17004:{return 6912000;}
-				case 17005:{return 110592000;}
-				case 17022:{return 6912000;}
-				case 17026:{return 13824000;}
-				case 17023:{return 27648000;}
-				case 17024:{return 27648000;}
-				case 17025:{return 442368000;}
-			}
-		}
-	</init>
-
-	<!-- るつぼの温度上限 -->
-	<init>
-		function KevinCap(Kevin){
-			switch(Kevin){
-				case 1000:{return 1375;}
-				case 1001:{return 2091;}
-				case 1002:{return 1875;}
-				case 1003:{return 1875;}
-				case 1004:{return 2250;}
-				case 1005:{return 2500;}
-				case 1019:{return 4750;}
-				case 1020:{return 1696;}
-				case 1021:{return 2395;}
-				case 1022:{return 2557;}
-				case 1041:{return 2341;}
-				case 1025:{return 2428;}
-				case 1026:{return 2807;}
-				case 1031:{return 2513;}
-				case 1032:{return 2807;}
-				case 1027:{return 2682;}
-				case 1028:{return 3695;}
-				case 1029:{return 2888;}
-				case 1023:{return 2426;}
-				case 1033:{return 2725;}
-				case 1034:{return 3620;}
-				case 1035:{return 3437;}
-				case 1036:{return 4112;}
-				case 1037:{return 4132;}
-				case 1039:{return 3398;}
-				case 1040:{return 2931;}
-				case 1038:{return 2728;}
-				case 1024:{return 4618;}
-				case 1030:{return 3750;}
-				case 1048:{return 5000;}
-				case 1049:{return 6781;}
-				default :{
-					if(Kevin >= 1750){
-						return KevinCap(Kevin - 750);
-					}
-					if(Kevin >= 1050){
-						return KevinCap(Kevin - 50);
-					}
-				}
-			}
-		}
-	</init>
-
-	<!-- アイテム名取得 -->
-	<init>
-		function getName(mID,Type){
-			try{
-				return ID2Name(mID,Type);
-			}
-			catch(e){
-				return mID;
-			}
-		}
-
-	</init>
-
-	<!-- 機械のエネルギーの単位 -->
-	<init>
-		function ID2EnergyType(mID){
-			if(mID > 20000 && mID < 21000){
-				switch(parseInt(mID / 10) % 2000){
-					case 0:{return "HU";}
-					case 1:{return "RU";}
-					case 2:{return "KU";}
-					case 4:{return "RU";}
-					case 5:{return "KU";}
-					case 6:{return "RU";}
-					case 7:{return "KU";}
-					case 8:{return "RU";}
-					case 9:{return "EU";}
-					case 10:{return "KU";}
-					case 11:{return "RU";}
-					case 12:{return "RU";}
-					case 13:{return "RU";}
-					case 14:{return "RU";}
-					case 15:{return "RU";}
-					case 16:{return "EU";}
-					case 17:{return "HU";}
-					case 18:{return "RU";}
-					case 19:{return "HU";}
-					case 20:{return "HU";}
-					case 21:{return "RU";}
-					case 22:{return "MU";}
-					case 23:{return "KU";}
-					case 24:{return "HU";}
-					case 25:{return "HU";}
-					case 26:{return "EU";}
-					case 27:{return "EU";}
-					case 28:{return "EU";}
-					case 29:{return "RU";}
-					case 30:{return "MU";}
-					case 31:{return "HU";}
-					case 32:{return "LU";}
-					case 33:{return "LU";}
-					case 34:{return "EU";}
-					case 35:{return "EU";}
-					case 36:{return "EU";}
-					case 37:{return "EU";}
-					case 38:{return "EU";}
-					case 39:{return "HU";}
-					case 41:{return "QU";}
-					case 42:{return "QU";}
-					case 43:{return "QU";}
-					case 51:{return "RU";}
-					case 52:{return "RU";}
-					case 53:{return "EU";}
-					case 54:{return "EU";}
-					case 55:{return "RU";}
-					case 56:{return "CU";}
-					case 57:{return "CU";}
-					case 58:{return "EU";}
-					case 59:{return "EU";}
-				}
-			}
-			switch(mID){
-				case 22000:{return "TU";}
-				case 22001:{return "TU";}
-				case 22002:{return "TU";}
-				case 22003:{return "HU";}
-				case 22004:{return "TU";}
-			}
-		}
-	</init>
-
-	<!-- 加工机器物品存储 -->
-	<init>
-		function IOInv(nbt,solt,IO){
-			var inAmount;
-			var outAmount;
-			var blueprint = 0;
-			var mID = nbt['gt.mte.id'];
-			if(mID > 20000 && mID < 21000){
-				switch(parseInt(mID / 10) % 2000){
-					case 0:{inAmount = 1;outAmount = 1;break;}
-					case 1:{inAmount = 1;outAmount = 6;break;}
-					case 2:{inAmount = 1;outAmount = 4;break;}
-					case 4:{inAmount = 1;outAmount = 2;break;}
-					case 5:{inAmount = 1;outAmount = 12;break;}
-					case 6:{inAmount = 1;outAmount = 3;break;}
-					case 7:{inAmount = 1;outAmount = 1;break;}
-					case 8:{inAmount = 1;outAmount = 6;break;}
-					case 9:{inAmount = 2;outAmount = 6;break;}
-					case 10:{inAmount = 1;outAmount = 1;break;}
-					case 11:{inAmount = 1;outAmount = 1;break;}
-					case 12:{inAmount = 1;outAmount = 1;break;}
-					case 13:{inAmount = 1;outAmount = 1;break;}
-					case 14:{inAmount = 1;outAmount = 1;break;}
-					case 15:{inAmount = 1;outAmount = 1;break;}
-					case 16:{inAmount = 2;outAmount = 2;break;}
-					case 17:{inAmount = 1;outAmount = 3;break;}
-					case 18:{inAmount = 6;outAmount = 1;break;}
-					case 19:{inAmount = 1;outAmount = 2;break;}
-					case 20:{inAmount = 2;outAmount = 1;break;}
-					case 21:{inAmount = 6;outAmount = 1;break;}
-					case 22:{inAmount = 1;outAmount = 1;break;}
-					case 23:{inAmount = 3;outAmount = 1;break;}
-					case 24:{inAmount = 1;outAmount = 1;break;}
-					case 25:{inAmount = 1;outAmount = 1;break;}
-					case 26:{inAmount = 2;outAmount = 1;break;}
-					case 27:{inAmount = 2;outAmount = 1;break;}
-					case 28:{inAmount = 2;outAmount = 2;break;}
-					case 29:{inAmount = 1;outAmount = 9;break;}
-					case 30:{inAmount = 1;outAmount = 6;break;}
-					case 31:{inAmount = 1;outAmount = 1;break;}
-					case 32:{inAmount = 2;outAmount = 1;break;}
-					case 33:{inAmount = 6;outAmount = 1;break;}
-					case 34:{inAmount = 9;outAmount = 12;blueprint = 1;break;}
-					case 35:{inAmount = 6;outAmount = 1;break;}
-					case 36:{inAmount = 6;outAmount = 1;break;}
-					case 37:{inAmount = 1;outAmount = 12;break;}
-					case 38:{inAmount = 2;outAmount = 2;break;}
-					case 39:{inAmount = 2;outAmount = 1;break;}
-					case 41:{inAmount = 1;outAmount = 1;break;}
-					case 42:{inAmount = 2;outAmount = 1;break;}
-					case 43:{inAmount = 3;outAmount = 3;break;}
-					case 51:{inAmount = 1;outAmount = 2;break;}
-					case 52:{inAmount = 6;outAmount = 1;break;}
-					case 53:{inAmount = 2;outAmount = 1;break;}
-					case 54:{inAmount = 2;outAmount = 1;break;}
-					case 55:{inAmount = 1;outAmount = 2;break;}
-					case 56:{inAmount = 1;outAmount = 1;break;}
-					case 57:{inAmount = 6;outAmount = 1;break;}
-					case 58:{inAmount = 2;outAmount = 1;break;}
-					case 59:{inAmount = 1;outAmount = 2;break;}
-				}
-			}
-			switch(mID){
-				case 22000:{inAmount = 0;outAmount = 1;break;}
-				case 22001:{inAmount = 1;outAmount = 1;break;}
-				case 22002:{inAmount = 6;outAmount = 6;break;}
-				case 22003:{inAmount = 1;outAmount = 1;break;}
-				case 22004:{inAmount = 2;outAmount = 3;break;}
-			}
-
-			var i = 0;
-
-			if(IO == 'I'){
-				if((solt + 1) > inAmount){
-				}
-				for(i = 0;i < inAmount;i++){
-					if(nbt['gt.invlist'][i.toString()]['s'] == solt){
-						return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
-					}
-				}
-			}
-			else if(IO == 'O'){
-				if((solt + 1) > outAmount){
-				}
-				else{
-					for(i = 0;i < (inAmount + outAmount);i++){
-						if(nbt['gt.invlist'][i.toString()]['s'] == (solt + inAmount)){
-							return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
-						}
-					}
-				}
-			}
-			else if(IO == 'B'){
-				if(blueprint == 1){
-					for(i = 0;i < (inAmount + outAmount);i++){
-						if(nbt['gt.invlist'][i.toString()]['s'] == 21){
-							return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
-						}
-					}
-					return RED + "ブループリントが設置されてません";
-				}
-			}
-		}
-	</init>
-
     <!-- るつぼ -->
     <tileentity id = "gt.multitileentity.smeltery">
 		<!-- TODO : 機械の注意/爆炸警告 -->
@@ -670,7 +21,7 @@
 
 				while(i < 4){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + " " + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット");
 					}
 					if(((i + 1) < 4) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -689,7 +40,7 @@
 
 				while(i < 8){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + " " + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット");
 					}
 					if(((i + 1) < 8) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -708,7 +59,7 @@
 
 				while(i < 12){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + " " + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット");
 					}
 					if(((i + 1) < 12) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -727,7 +78,7 @@
 
 				while(i < 16){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + " " + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット");
 					}
 					if(((i + 1) < 16) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -746,7 +97,7 @@
 
 				while(i < 20){
 					if(nbt['gt.materials'][i.toString()] != undefined){
-						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + " " + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
+						str += getName(nbt['gt.materials'][i.toString()]['i'],"material") + parseInt(nbt['gt.materials'][i.toString()]['a'] / 420076800 * 1000) / 1000 + Unit("ユニット");
 					}
 					if(((i + 1) < 20) && (nbt['gt.materials'][(i + 1).toString()] != undefined)){
 						str += " | ";
@@ -819,7 +170,7 @@
 	    </line>
 
 		<line displayname = "搬入されてるアイテム">
-			return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+			return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 		</line>
 
 	</tileentity>
@@ -884,20 +235,20 @@
 	    </line>
 
 		<line displayname = "搬入されてるアイテム">
-			return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+			return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 		</line>
 
 	</tileentity>
 
 	<!-- ボイラー -->
 	<tileentity id = "gt.multitileentity.tank.boiler_steam">
-		<line displayname = "警告">
+		<line displayname = "警告1">
 			if((nbt['gt.tank.1']['Amount'] / (SteamCap(nbt))) > 0.10){
 				return RED + "現在の爆発威力は:" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "です";
 			}
 		</line>
-
-		<line displayname = "ボイラーの注意1">
+		
+		<line displayname = "ボイラー注意1">
 			if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
 				if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
 					return RED + "ボイラーに触れると" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],0) + "のダメージを受けます";
@@ -921,7 +272,7 @@
 			}
 		</line>
 
-		<line displayname = "ボイラーの注意2">
+		<line displayname = "機械の注意2">
 			if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
 				if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
 					return RED + "今、ノミで加工すると" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],1) + "のダメージを受けます";
@@ -953,7 +304,7 @@
 				return BLUE + "加熱中";
 			}
 			if(nbt['gt.energy'] != undefined){
-				return GOLD + "エネルギーなし";
+				return GOLD + "干烧";
 			}
 			return RED + "停止中";
 		</line>
@@ -972,18 +323,96 @@
 			return "0/" + SteamCap(nbt) + Unit("HU") + " - " + "0.00%";
 		</line>
 
-	    <line displayname = "入っている液体">
+	    <line displayname = "入っている液体名">
 			return fluidName(nbt['gt.tank.0']['FluidName']);
 		</line>
 
-		<line displayname = "液体の搬入量">
+		<line displayname = "液体の量">
 			if(nbt['gt.tank.0'] != undefined){
 				return nbt['gt.tank.0']['Amount'] + "/4000" + Unit("L");
 			}
 			return "0/4000" + Unit("L");
 		</line>
 
-		<line displayname = "入っている蒸気の量">
+		<line displayname = "蒸気の量">
+			if(nbt['gt.tank.1'] != undefined){
+				return nbt['gt.tank.1']['Amount'] + "/" + SteamCap(nbt) + Unit("L") + " - " + parseInt(nbt['gt.tank.1']['Amount'] / SteamCap(nbt) * 10000) / 100 + "%";
+			}
+			return "0/" + SteamCap(nbt) + Unit("L") + " - " + "0.00%";
+		</line>
+
+	</tileentity>
+
+	<!-- ラージボイラー -->
+	<tileentity id = "gt.multitileentity.multiblock.boiler.steam">
+		<line displayname = "警告1">
+			if((nbt['gt.tank.1']['Amount'] / (SteamCap(nbt))) > 0.10){
+				return RED + "現在の爆発威力は:" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "です";
+			}
+
+		<line displayname = "機械の注意">
+			if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
+				if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
+					return RED + "今、ノミで加工すると" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],1) + "のダメージを受けます";
+				}
+			}
+
+			if(nbt['gt.energy'] != undefined){
+				if(nbt['gt.tank.1']['Amount'] != undefined){
+					if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
+						return RED + "今、ノミで加工すると" + HeatDamageSU(nbt['gt.energy'],nbt['gt.tank.1']['Amount'],1) + "のダメージを受けます";
+					}
+				}
+				if((nbt['gt.energy']) > 2000){
+					return RED + "今、ノミで加工すると" + HeatDamageSU(nbt['gt.energy'],0,1) + "のダメージを受けます";
+				}
+			}
+			if(nbt['gt.tank.1']['Amount'] != undefined){
+				if((nbt['gt.tank.1']['Amount'] / 2) > 2000){
+					return RED + "今、ノミで加工すると" + HeatDamageSU(0,nbt['gt.tank.1']['Amount'],1) + "のダメージを受けます";
+				}
+			}
+		</line>
+
+		<line displayname = "ボイラーの状態">
+			if(nbt['gt.tank.1']['Amount'] * 2 >= (SteamCap(nbt))){
+				return GREEN + "蒸気搬出中";
+			}
+			if(nbt['gt.tank.0'] != undefined){
+				return BLUE + "加熱中";
+			}
+			if(nbt['gt.energy'] != undefined){
+				return GOLD + "干烧";
+			}
+			return RED + "停止中";
+		</line>
+
+		<line displayname = "効率">
+			if(nbt['gt.eff'] != undefined){
+				return nbt['gt.eff'] / 100 + "%";
+			}
+			return "100.00%";
+		</line>
+
+		<line displayname = "保有しているエネルギー">
+			if(nbt['gt.energy'] != undefined){
+				return nbt['gt.energy'] + "/" + SteamCap(nbt) + Unit("HU") + " - " + parseInt(nbt['gt.energy'] / SteamCap(nbt) * 10000) / 100 + "%";
+			}
+			return "0/" + SteamCap(nbt) + Unit("HU") + " - " + "0.00%";
+		</line>
+
+	    <line displayname = "入っている液体名">
+			return fluidName(nbt['gt.tank.0']['FluidName']);
+		</line>
+
+		<line displayname = "液体の量">
+			if(nbt['gt.tank.0'] != undefined){
+				return nbt['gt.tank.0']['Amount'] + "/12800" + Unit("L");
+			}
+			return "0/4000" + Unit("L");
+		</line>
+
+		<line displayname = "蒸気の量">
 			if(nbt['gt.tank.1'] != undefined){
 				return nbt['gt.tank.1']['Amount'] + "/" + SteamCap(nbt) + Unit("L") + " - " + parseInt(nbt['gt.tank.1']['Amount'] / SteamCap(nbt) * 10000) / 100 + "%";
 			}
@@ -1000,12 +429,12 @@
 
 		<line displayname = "機械の状態">
 			if(nbt['gt.stopped'] == 1){
-				return RED + "スタンバイ - エネルギー消費中";
+				return RED + "停止中";
 			}
 			if(nbt['gt.active'] == 1){
 				return GREEN + "動作中";
 			}
-			return BLUE + "停止中";
+			return BLUE + "预热";
 		</line>
 
 		<line displayname = "エネルギー出力">
@@ -1015,7 +444,7 @@
 			return "機械は動作していません - 0" + Unit("KU") + "/t";
 		</line>
 
-	    <line displayname = "エネルギー保有量">
+	    <line displayname = "エネルギー搬出量">
 			if(nbt['gt.energy'] != undefined){
 				return nbt['gt.energy'] + "/" + bind(2000,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 2000) + Unit("KU") + " - " + parseInt(nbt['gt.energy'] / bind(2000,2147483647,ID2Tier(nbt['gt.mte.id'],"SU","KU",0) * 2000) * 10000) / 100 + "%";
 			}
@@ -1468,47 +897,47 @@
 	<tileentity id = "gt.multitileentity.connector.pipe.fluid">
 	    <line displayname = "入っている液体/気体">
 	    	if(nbt['gt.tank.0']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.0']['FluidName'])+" : "+GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.0']['FluidName']) + " : " + GREEN+nbt['gt.tank.0']['Amount'] + Unit("L");
 			}
 		</line>
 		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.1']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.1']['FluidName'])+" : "+GREEN+nbt['gt.tank.1']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.1']['FluidName']) + " : " + GREEN+nbt['gt.tank.1']['Amount'] + Unit("L");
 			}
 		</line>
 		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.2']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.2']['FluidName'])+" : "+GREEN+nbt['gt.tank.2']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.2']['FluidName']) + " : " + GREEN+nbt['gt.tank.2']['Amount'] + Unit("L");
 			}
 		</line>
 		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.3']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.3']['FluidName'])+" : "+GREEN+nbt['gt.tank.3']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.3']['FluidName']) + " : " + GREEN+nbt['gt.tank.3']['Amount'] + Unit("L");
 			}
 		</line>
 		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.4']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.4']['FluidName'])+" : "+GREEN+nbt['gt.tank.4']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.4']['FluidName']) + " : " + GREEN+nbt['gt.tank.4']['Amount'] + Unit("L");
 			}
 		</line>
 		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.5']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.5']['FluidName'])+" : "+GREEN+nbt['gt.tank.5']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.5']['FluidName']) + " : " + GREEN+nbt['gt.tank.5']['Amount'] + Unit("L");
 			}
 		</line>
 		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.6']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.6']['FluidName'])+" : "+GREEN+nbt['gt.tank.6']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.6']['FluidName']) + " : " + GREEN+nbt['gt.tank.6']['Amount'] + Unit("L");
 			}
 		</line>
 		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.7']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.7']['FluidName'])+" : "+GREEN+nbt['gt.tank.7']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.7']['FluidName']) + " : " + GREEN+nbt['gt.tank.7']['Amount'] + Unit("L");
 			}
 		</line>
 		<line displayname = "入っている液体/気体">
 			if(nbt['gt.tank.8']['Amount']!=undefined){
-				return fluidName(nbt['gt.tank.8']['FluidName'])+" : "+GREEN+nbt['gt.tank.8']['Amount'] + Unit("L");
+				return fluidName(nbt['gt.tank.8']['FluidName']) + " : " + GREEN+nbt['gt.tank.8']['Amount'] + Unit("L");
 			}
 		</line>
 	</tileentity>
@@ -1575,23 +1004,33 @@
 	<!-- シングルブロックタンク -->
 	<tileentity id = "gt.multitileentity.tank.barrel.metal">
 		<line displayname = "保存されている液体/気体">
-			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+			return fluidName(nbt['gt.tank']['FluidName']) + " : " + nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L");
 		</line>
 
 	</tileentity>
 
-	<!-- マルチブロックタンク -->
+	<!-- マルチブロックタンク(金属) -->
 	<tileentity id = "gt.multitileentity.multiblock.tank.metal">
 		<line displayname = "保存されている液体/気体">
-			return nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+			return fluidName(nbt['gt.tank']['FluidName']) + " : " + nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L");
 		</line>
 
 	</tileentity>
+
+	<!-- マルチブロックタンク(木製) -->
+	<tileentity id = "gt.multitileentity.multiblock.tank.wooden">
+		<line displayname = "保存されている液体/気体">
+			return fluidName(nbt['gt.tank']['FluidName']) + " : " + nbt['gt.tank']['Amount'] + "/" + LiquidCap(nbt) + Unit("L");
+		</line>
+
+	</tileentity>
+
+
 
 	<!-- カプセルセルコンテナ -->
 	<tileentity id = "gt.multitileentity.cell">
 		<line displayname = "保存されている液体/気体">
-			return nbt['gt.tank']['Amount'] + "/1000" + Unit("L") + " " + fluidName(nbt['gt.tank']['FluidName']);
+			return fluidName(nbt['gt.tank']['FluidName']) + " : " + nbt['gt.tank']['Amount'] + "/1000" + Unit("L");
 		</line>
 
 	</tileentity>
@@ -1599,7 +1038,7 @@
 	<!-- カップ -->
 	<tileentity id = "gt.multitileentity.cup">
 		<line displayname = "保存されている液体">
-			return fluidName(nbt['gt.tank']['FluidName'])  + " " + nbt['gt.tank']['Amount'] + "/250" + Unit("L");
+			return fluidName(nbt['gt.tank']['FluidName']) + " : " + nbt['gt.tank']['Amount'] + "/250" + Unit("L");
 		</line>
 
 	</tileentity>
@@ -1607,7 +1046,7 @@
 	<!-- ジャグ -->
 	<tileentity id = "gt.multitileentity.jug">
 		<line displayname = "保存されている液体">
-			return fluidName(nbt['gt.tank']['FluidName']) + " " + bt['gt.tank']['Amount'] + "/1000" + Unit("L");
+			return fluidName(nbt['gt.tank']['FluidName']) + " : " + nbt['gt.tank']['Amount'] + "/2000" + Unit("L");
 		</line>
 
 	</tileentity>
@@ -1615,7 +1054,7 @@
 	<!-- ポット -->
 	<tileentity id = "gt.multitileentity.measuring.pot">
 		<line displayname = "保存されている液体">
-			return fluidName(nbt['gt.tank']['FluidName']) + " " + nbt['gt.tank']['Amount'] + "/1000" + Unit("L");
+			return fluidName(nbt['gt.tank']['FluidName']) + " : " + nbt['gt.tank']['Amount'] + "/1000" + Unit("L");
 		</line>
 
 	</tileentity>
@@ -1623,7 +1062,7 @@
 	<!-- 保温瓶 -->
 	<tileentity id = "gt.multitileentity.thermos.can">
 		<line displayname = "保存されている液体">
-			return fluidName(nbt['gt.tank']['FluidName']) +" " + nbt['gt.tank']['Amount'] + "/4000" + Unit("L");
+			return fluidName(nbt['gt.tank']['FluidName']) +" : " + nbt['gt.tank']['Amount'] + "/4000" + Unit("L") ;
 		</line>
 
 	</tileentity>
@@ -1632,49 +1071,49 @@
 	<tileentity id = "gt.multitileentity.bathing.pot.wood">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("個") + name(nbt['gt.invlist']['1']);
+				return name(nbt['gt.invlist']['1']) + " : " + nbt['gt.invlist']['1']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("個") + name(nbt['gt.invlist']['2']);
+				return name(nbt['gt.invlist']['2']) + " : " + nbt['gt.invlist']['2']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("個") + name(nbt['gt.invlist']['3']);
+				return name(nbt['gt.invlist']['3']) + " : " + nbt['gt.invlist']['3']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("個") + name(nbt['gt.invlist']['4']);
+				return name(nbt['gt.invlist']['4']) + " : " + nbt['gt.invlist']['4']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("個") + name(nbt['gt.invlist']['5']);
+				return name(nbt['gt.invlist']['5']) + " : " + nbt['gt.invlist']['5']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入された液体">
-			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " : " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出されたアイテム1">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1684,7 +1123,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1694,7 +1133,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1704,7 +1143,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return nbt['gt.invlist'][i.toString()]['Count'] + Unit("個") + name(nbt['gt.invlist'][i.toString()]);
 				}
 				i++
 			}
@@ -1714,7 +1153,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1724,22 +1163,22 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
 		</line>
 
-		<line displayname = "搬出される液体">
-			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+		<line displayname = "搬出される液体1">
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体2">
-			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.1']['FluidName']);
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " : " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体3">
-			return nbt['gt.tank.out.2']['Amount'] + Unit("L") + " " + fluidName(nbt['gt.tank.out.2']['FluidName']);
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " : " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -1748,49 +1187,49 @@
 	<tileentity id = "gt.multitileentity.bathing.pot.table.wood">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return nbt['gt.invlist']['1']['Count'] + Unit("個") + name(nbt['gt.invlist']['1']);
+				return name(nbt['gt.invlist']['1']) + " : " + nbt['gt.invlist']['1']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return nbt['gt.invlist']['2']['Count'] + Unit("個") + name(nbt['gt.invlist']['2']);
+				return name(nbt['gt.invlist']['2']) + " : " + nbt['gt.invlist']['2']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return nbt['gt.invlist']['3']['Count'] + Unit("個") + name(nbt['gt.invlist']['3']);
+				return name(nbt['gt.invlist']['3']) + " : " + nbt['gt.invlist']['3']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return nbt['gt.invlist']['4']['Count'] + Unit("個") + name(nbt['gt.invlist']['4']);
+				return name(nbt['gt.invlist']['4']) + " : " + nbt['gt.invlist']['4']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return nbt['gt.invlist']['5']['Count'] + Unit("個") + name(nbt['gt.invlist']['5']);
+				return name(nbt['gt.invlist']['5']) + " : " + nbt['gt.invlist']['5']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入された液体">
-			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " : " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出されたアイテム1">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1800,7 +1239,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1810,7 +1249,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1820,7 +1259,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1830,7 +1269,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1840,22 +1279,22 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
 		</line>
 
 		<line displayname = "搬出される液体1">
-			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体2">
-			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " : " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体3">
-			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " : " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -1864,49 +1303,49 @@
 	<tileentity id = "gt.multitileentity.bathing.pot">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return name(nbt['gt.invlist']['1']) + " " + nbt['gt.invlist']['1']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['1']) + " : " + nbt['gt.invlist']['1']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return name(nbt['gt.invlist']['2']) + " " + nbt['gt.invlist']['2']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['2']) + " : " + nbt['gt.invlist']['2']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return name(nbt['gt.invlist']['3']) + " " + nbt['gt.invlist']['3']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['3']) + " : " + nbt['gt.invlist']['3']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return name(nbt['gt.invlist']['4']) + " " + nbt['gt.invlist']['4']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['4']) + " : " + nbt['gt.invlist']['4']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return name(nbt['gt.invlist']['5']) + " " + nbt['gt.invlist']['5']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['5']) + " : " + nbt['gt.invlist']['5']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入された液体">
-			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " : " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出されたアイテム1">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1916,7 +1355,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1926,7 +1365,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1936,7 +1375,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1946,7 +1385,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -1956,22 +1395,22 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
 		</line>
 
 		<line displayname = "搬出される液体1">
-			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体2">
-			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " : " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体3">
-			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " : " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -1980,49 +1419,49 @@
 	<tileentity id = "gt.multitileentity.bathing.pot.table">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return name(nbt['gt.invlist']['1']) + " " + nbt['gt.invlist']['1']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['1']) + " : " + nbt['gt.invlist']['1']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return name(nbt['gt.invlist']['2']) + " " + nbt['gt.invlist']['2']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['2']) + " : " + nbt['gt.invlist']['2']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return name(nbt['gt.invlist']['3']) + " " + nbt['gt.invlist'][3']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['3']) + " : " + nbt['gt.invlist']['3']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return name(nbt['gt.invlist']['4']) + " " + nbt['gt.invlist']['4']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['4']) + " : " + nbt['gt.invlist']['4']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return name(nbt['gt.invlist']['5']) + " " + nbt['gt.invlist']['5']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['5']) + " : " + nbt['gt.invlist']['5']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入された液体">
-			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " : " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出されたアイテム1">
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -2032,7 +1471,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 7){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -2042,7 +1481,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 8){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -2052,7 +1491,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 9){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -2062,7 +1501,7 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 10){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
@@ -2072,22 +1511,22 @@
 			var i = 0;
 			while(i < 12){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 11){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
 		</line>
 
 		<line displayname = "搬出される液体1">
-			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体2">
-			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " : " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体3">
-			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " : " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -2096,80 +1535,80 @@
 	<tileentity id = "gt.multitileentity.mixing.bowl">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return name(nbt['gt.invlist']['1']) + " " + nbt['gt.invlist']['1']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['1']) + " : " + nbt['gt.invlist']['1']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return name(nbt['gt.invlist']['2']) + " " + nbt['gt.invlist']['2']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['2']) + " : " + nbt['gt.invlist']['2']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return name(nbt['gt.invlist']['3']) + " " + nbt['gt.invlist']['3']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['3']) + " : " + nbt['gt.invlist']['3']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return name(nbt['gt.invlist']['4']) + " " + nbt['gt.invlist']['4']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['4']) + " : " + nbt['gt.invlist']['4']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return name(nbt['gt.invlist']['5']) + " " + nbt['gt.invlist']['5']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['5']) + " : " + nbt['gt.invlist']['5']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入された液体1">
-			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " : " + nbt['gt.tank.in.5']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入された液体2">
-			return fluidName(nbt['gt.tank.in.1']['FluidName']) + " " + nbt['gt.tank.in.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.1']['FluidName']) + " : " + nbt['gt.tank.in.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入された液体3">
-			return fluidName(nbt['gt.tank.in.2']['FluidName']) + " " + nbt['gt.tank.in.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.2']['FluidName']) + " : " + nbt['gt.tank.in.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入された液体4">
-			return fluidName(nbt['gt.tank.in.3']['FluidName']) + " " + nbt['gt.tank.in.3']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.3']['FluidName']) + " : " + nbt['gt.tank.in.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入された液体5">
-			return fluidName(nbt['gt.tank.in.4']['FluidName']) + " " + nbt['gt.tank.in.4']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.4']['FluidName']) + " : " + nbt['gt.tank.in.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入された液体6">
-			return fluidName(nbt['gt.tank.in.5']['FluidName']) + " " + nbt['gt.tank.in.5']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.5']['FluidName']) + " : " + nbt['gt.tank.in.5']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出されたアイテム">
 			var i = 0;
 			while(i < 7){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
 		</line>
 
 		<line displayname = "搬出される液体1">
-			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体2">
-			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " : " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -2178,80 +1617,80 @@
 	<tileentity id = "gt.multitileentity.mixing.bowl.table">
 		<line displayname = "搬入されたアイテム1">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム2">
 			if(nbt['gt.invlist']['1']['s'] == 1){
-				return name(nbt['gt.invlist']['1']) + " " + nbt['gt.invlist']['1']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['1']) + " : " + nbt['gt.invlist']['1']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム3">
 			if(nbt['gt.invlist']['2']['s'] == 2){
-				return name(nbt['gt.invlist']['2']) + " " + nbt['gt.invlist']['2']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['2']) + " : " + nbt['gt.invlist']['2']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム4">
 			if(nbt['gt.invlist']['3']['s'] == 3){
-				return name(nbt['gt.invlist']['3']) + " " + nbt['gt.invlist']['3']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['3']) + " : " + nbt['gt.invlist']['3']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム5">
 			if(nbt['gt.invlist']['4']['s'] == 4){
-				return name(nbt['gt.invlist']['4']) + " " + nbt['gt.invlist']['4']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['4']) + " : " + nbt['gt.invlist']['4']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入されたアイテム6">
 			if(nbt['gt.invlist']['5']['s'] == 5){
-				return name(nbt['gt.invlist']['5']) + " " + nbt['gt.invlist']['5']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['5']) + " : " + nbt['gt.invlist']['5']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬入された液体1">
-			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+			return nbt['gt.tank.in.0']['Amount'] + Unit("L") + " : " + fluidName(nbt['gt.tank.in.0']['FluidName']);
 		</line>
 
 		<line displayname = "搬入された液体2">
-			return fluidName(nbt['gt.tank.in.1']['FluidName']) + " " + nbt['gt.tank.in.1']['Amount'] + Unit("L");
+			return nbt['gt.tank.in.1']['Amount'] + Unit("L") + " : " + fluidName(nbt['gt.tank.in.1']['FluidName']);
 		</line>
 
 		<line displayname = "搬入された液体3">
-			return fluidName(nbt['gt.tank.in.2']['FluidName']) + " " + nbt['gt.tank.in.2']['Amount'] + Unit("L");
+			return nbt['gt.tank.in.2']['Amount'] + Unit("L") + " : " + fluidName(nbt['gt.tank.in.2']['FluidName']);
 		</line>
 
 		<line displayname = "搬入された液体4">
-			return fluidName(nbt['gt.tank.in.3']['FluidName']) + " " + nbt['gt.tank.in.3']['Amount'] + Unit("L");
+			return nbt['gt.tank.in.3']['Amount'] + Unit("L") + " : " + fluidName(nbt['gt.tank.in.3']['FluidName']);
 		</line>
 
 		<line displayname = "搬入された液体5">
-			return fluidName(nbt['gt.tank.in.4']['FluidName']) + " " + nbt['gt.tank.in.4']['Amount'] + Unit("L"));
+			return nbt['gt.tank.in.4']['Amount'] + Unit("L") + " : " + fluidName(nbt['gt.tank.in.4']['FluidName']);
 		</line>
 
 		<line displayname = "搬入された液体6">
-			return fluidName(nbt['gt.tank.in.5']['FluidName']) + " " + nbt['gt.tank.in.5']['Amount'] + Unit("L");
+			return nbt['gt.tank.in.5']['Amount'] + Unit("L") + " : " + fluidName(nbt['gt.tank.in.5']['FluidName']);
 		</line>
 
 		<line displayname = "搬出されたアイテム">
 			var i = 0;
 			while(i < 7){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 6){
-					return  name(nbt['gt.invlist'][i.toString()]) + " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) + " : " +nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++
 			}
 		</line>
 
 		<line displayname = "搬出される液体1">
-			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+			return nbt['gt.tank.out.0']['Amount'] + Unit("L") + " : " + fluidName(nbt['gt.tank.out.0']['FluidName']);
 		</line>
 
 		<line displayname = "搬出される液体2">
-			return fluidName(nbt['gt.tank.in.1']['FluidName']) + " " + nbt['gt.tank.in.1']['Amount'] + Unit("L");
+			return nbt['gt.tank.out.1']['Amount'] + Unit("L") + " : " + fluidName(nbt['gt.tank.out.1']['FluidName']);
 		</line>
 
 	</tileentity>
@@ -2259,7 +1698,7 @@
 	<!-- ジューサー-->
 	<tileentity id = "gt.multitileentity.juicer">
 		<line displayname = "搬出される液体">
-			return fluidName(nbt['gt.tank.0']['FluidName']) + " " +  nbt['gt.tank.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.0']['FluidName']) + " : " +  nbt['gt.tank.0']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -2289,10 +1728,10 @@
 	<tileentity id = "gt.multitileentity.sapbag">
 		<line displayname = "採れるアイテム">
 			if(nbt['gt.invlist'] != undefined){
-				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + "/64" + Unit("個");
+				return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + "/64" + Unit("個");
 			}
 			if(nbt['gt.tank'] != undefined){
-				return fluidName(nbt['gt.tank']['FluidName']) + " " + nbt['gt.tank']['Amount'] + "/8000" + Unit("L");
+				return fluidName(nbt['gt.tank']['FluidName']) + " : " + nbt['gt.tank']['Amount'] + "/8000" + Unit("L");
 			}
 			return "なし";
 		</line>
@@ -2354,36 +1793,36 @@
 					}
 				}
 				if(nbt['gt.invlist']['0']['s'] == 0){
-					return name(nbt['gt.invlist']['0']) + " " + mAmount + Unit("個");
+					return name(nbt['gt.invlist']['0']) + " : " + mAmount + Unit("個");
 				}
 				try{
 					switch(nbt['gt.mode']){
-						case 0:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"storage.dust");}
-						case 1:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"dust");}
-						case 2:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"dustSmall");}
-						case 3:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"dustTiny");}
-						case 4:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " " + mAmount + Unit("個"),"dustDiv72");}
+						case 0:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " : " + mAmount + Unit("個"),"storage.dust");}
+						case 1:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " : " + mAmount + Unit("個"),"dust");}
+						case 2:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " : " + mAmount + Unit("個"),"dustSmall");}
+						case 3:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " : " + mAmount + Unit("個"),"dustTiny");}
+						case 4:{return ID2Name(nbt['gt.invlist']['0']['Damage'] + " : " + mAmount + Unit("個"),"dustDiv72");}
 					}
 				}
 				catch(e){
 					if(nbt['gt.materials']['a'] != undefined){
-						return nbt['gt.materials']['i'] +  " " + parseInt(nbt['gt.materials']['a'] / 420076800 * 1000) / 1000 + Unit("ユニット ");
+						return nbt['gt.materials']['i'] +  " : " + parseInt(nbt['gt.materials']['a'] / 420076800 * 1000) / 1000 + Unit("ユニット");
 					}
 				}
 			}
 			catch(e){
 				if(nbt['gt.invlist']['0']['s'] == 0){
-					return name(nbt['gt.invlist']['0']) +  " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+					return name(nbt['gt.invlist']['0']) +  " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 				}
 			}
 			return BLUE + "なし";
 		</line>
 
-		<line displayname = "搬出されるアイテム">
+		<line displayname = "アイテムが搬出されます">
 			var i = 0;
 			while(i < 2){
 				if(nbt['gt.invlist'][i.toString()]['s'] == 1){
-					return name(nbt['gt.invlist'][i.toString()]) +  " " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
+					return name(nbt['gt.invlist'][i.toString()]) +  " : " + nbt['gt.invlist'][i.toString()]['Count'] + Unit("個");
 				}
 				i++;
 			}
@@ -2436,7 +1875,7 @@
 		<line displayname = "ふるいの状態">
 			switch(nbt['gt.state']){
 				case 0:{return BLUE + "アイテムを搬入して下さい";}
-				case 1:{return BLUE + "上部を素手で右クリックして、動作させます";}
+				case 1:{return BLUE + "上部を素手で右クリックして、シフターを動作させます";}
 				case 2:{return BLUE + "アイテムを取り出して下さい";}
 				case 3:{return BLUE + "アイテムを取り出さないと、次のアイテムをふるいにかけれません";}
 			}
@@ -2444,10 +1883,10 @@
 
 		<line displayname = "搬入されたアイテム">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return name(nbt['gt.invlist']['0']) +  " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['0']) +  " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 			if(nbt['gt.state'] == 2){
-				return BLUE + "アイテムが処理されました";
+				return BLUE + "処理済み";
 			}
 			return BLUE + "なし";
 		</line>
@@ -2457,7 +1896,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2467,7 +1906,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2477,7 +1916,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2487,7 +1926,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2497,7 +1936,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2507,7 +1946,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2517,7 +1956,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2527,7 +1966,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2537,7 +1976,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2547,7 +1986,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2557,7 +1996,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2567,7 +2006,7 @@
 				order -= 1;
 			}
 			if(nbt['gt.invlist'][order.toString()] != undefined){
-				return name(nbt['gt.invlist'][order.toString()]) + " " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
+				return name(nbt['gt.invlist'][order.toString()]) + " : " + nbt['gt.invlist'][order.toString()]['Count'] + Unit("個");
 			}
 		</line>
 
@@ -2587,7 +2026,7 @@
 				}
 				if((nbt['gt.running'] != undefined) && (nbt['gt.invlist']['0']['s'] == 0)){
 					if(nbt['gt.invlist']['1']['Count'] == 64){
-						return RED + "搬出先のアイテムを取り出して下さい";
+						return RED + "搬出スロットのアイテムを取り出して下さい";
 					}
 					return RED + "動作準備完了、火を付けて下さい";
 				}
@@ -2613,26 +2052,26 @@
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.0']) + " " + nbt['gt.invout.0']['Count'] + Unit("個") + " - " + fluidName(nbt['gt.tankout.0']['FluidName']) + " " + nbt['gt.tankout.0']['Amount'] + Unit("L");
+			return name(nbt['gt.invout.0']) + " : " + nbt['gt.invout.0']['Count'] + Unit("個") + " - " + fluidName(nbt['gt.tankout.0']['FluidName']) + " : " + nbt['gt.tankout.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されたアイテム">
 			if(nbt['gt.invlist']['0']['s'] == 0){
-				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 		</line>
 
 		<line displayname = "搬出されたアイテム">
 			if(nbt['gt.invlist']['0']['s'] == 1){
-				return name(nbt['gt.invlist']['0']) + " " + nbt['gt.invlist']['0']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['0']) + " : " + nbt['gt.invlist']['0']['Count'] + Unit("個");
 			}
 			else if(nbt['gt.invlist']['1']['s'] == 1){
-				return name(nbt['gt.invlist']['1']) + " " + nbt['gt.invlist']['1']['Count'] + Unit("個");
+				return name(nbt['gt.invlist']['1']) + " : " + nbt['gt.invlist']['1']['Count'] + Unit("個");
 			}
 		</line>
 
-		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+		<line displayname = "搬出される液体">
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
@@ -2640,7 +2079,7 @@
 	<!-- 岩石 -->
 	<tileentity id = "gt.multitileentity.rock">
 		<line displayname = "含まれているアイテム">
-			return name(nbt['gt.value']) + " " + nbt['gt.value']['Count'] + Unit("個");
+			return name(nbt['gt.value']) + " : " + nbt['gt.value']['Count'] + Unit("個");
 		</line>
 
 	</tileentity>
@@ -2680,17 +2119,167 @@
 		</line>
 		<-->
 		<line displayname = "採れる作物">
-			return name(nbt['gt.value']) + " " + nbt['gt.value']['Count'] + Unit("個");
+			return name(nbt['gt.value']) + " : " + nbt['gt.value']['Count'] + Unit("個");
+		</line>
+
+	</tileentity>
+
+	<!-- 蒸留塔 -->
+	<tileentity id = "gt.multitileentity.multiblock.distillationtower">
+		<line displayname = "機械の状態">
+			if(nbt['gt.active'] != undefined){
+				return BLUE + "稼働中";
+			}
+			if(nbt['gt.running'] != undefined){
+				if(nbt['gt.mte.id'] < 22000){
+					return BLUE + "スタンバイ - エネルギー消費中";
+				}
+				return BLUE + "スタンバイ";
+			}
+			return RED + "停止中";
+		</line>
+
+		<line displayname = "処理プロセス">
+			if(nbt['gt.progress'] != undefined){
+				return nbt['gt.progress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
+			}
+		</line>
+
+		<line displayname = "必要エネルギー">
+			if(nbt['gt.minenergy'] != undefined){
+				return nbt['gt.minenergy'] + Unit(ID2EnergyType(nbt['gt.mte.id']));
+			}
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.0']) + " : " + nbt['gt.invout.0']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.1']) + " : " + nbt['gt.invout.1']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.2']) + " : " + nbt['gt.invout.2']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.0']['FluidName']) + " : " + nbt['gt.tankout.0']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.1']['FluidName']) + " : " + nbt['gt.tankout.1']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.2']['FluidName']) + " : " + nbt['gt.tankout.2']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.3']['FluidName']) + " : " + nbt['gt.tankout.3']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.4']['FluidName']) + " : " + nbt['gt.tankout.4']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.5']['FluidName']) + " : " + nbt['gt.tankout.5']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.6']['FluidName']) + " : " + nbt['gt.tankout.6']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.7']['FluidName']) + " : " + nbt['gt.tankout.7']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.8']['FluidName']) + " : " + nbt['gt.tankout.8']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬入されているアイテム">
+			IOInv(nbt,0,'I');
+		</line>
+
+		<line displayname = "搬入されている液体">
+			return fluidName(nbt['gt.tank.in.0']['FluidName'])+ " : " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出されるアイテム">
+			IOInv(nbt,0,'O');
+		</line>
+
+		<line displayname = "搬出されるアイテム">
+			IOInv(nbt,1,'O');
+		</line>
+
+		<line displayname = "搬出されるアイテム">
+			IOInv(nbt,2,'O');
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " : " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " : " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.3']['FluidName']) + " : " + nbt['gt.tank.out.3']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.4']['FluidName']) + " : " + nbt['gt.tank.out.4']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.5']['FluidName']) + " : " + nbt['gt.tank.out.5']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.6']['FluidName']) + " : " + nbt['gt.tank.out.6']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.7']['FluidName']) + " : " + nbt['gt.tank.out.7']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.8']['FluidName']) + " : " + nbt['gt.tank.out.8']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
 
 	<!-- ポンプ -->
 	<tileentity id = "gt.multitileentity.pump.rotation">
+		<line displayname = "機械の状態">
+			if(nbt['gt.active'] != undefined){
+				return BLUE + "稼働中";
+			}
+			if(nbt['gt.running'] != undefined){
+				if(nbt['gt.mte.id'] < 22000){
+					return BLUE + "スタンバイ - エネルギー消費中";
+				}
+				return BLUE + "スタンバイ";
+			}
+			return RED + "停止中";
+		</line>
 
+		<line displayname = "処理プロセス">
+			if(nbt['gt.progress'] != undefined){
+				return nbt['gt.progress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
+			}
+		</line>
 	</tileentity>
 
-	<!-- 加工機械 -->
+	<!-- 基本機械 -->
 	<tileentity id = "gt.multitileentity.machine.basic">
 		<line displayname = "機械の状態">
 			if(nbt['gt.active'] != undefined){
@@ -2718,75 +2307,75 @@
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.0']) + " " + nbt['gt.invout.0']['Count'] + Unit("個");
+			return name(nbt['gt.invout.0']) + " : " + nbt['gt.invout.0']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.1']) + " " + nbt['gt.invout.1']['Count'] + Unit("個");
+			return name(nbt['gt.invout.1']) + " : " + nbt['gt.invout.1']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.2']) + " " + nbt['gt.invout.2']['Count'] + Unit("個");
+			return name(nbt['gt.invout.2']) + " : " + nbt['gt.invout.2']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.3']) + " " + nbt['gt.invout.3']['Count'] + Unit("個");
+			return name(nbt['gt.invout.3']) + " : " + nbt['gt.invout.3']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.4']) + " " + nbt['gt.invout.4']['Count'] + Unit("個");
+			return name(nbt['gt.invout.4']) + " : " + nbt['gt.invout.4']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.5']) + " " + nbt['gt.invout.5']['Count'] + Unit("個");
+			return name(nbt['gt.invout.5']) + " : " + nbt['gt.invout.5']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.6']) + " " + nbt['gt.invout.6']['Count'] + Unit("個");
+			return name(nbt['gt.invout.6']) + " : " + nbt['gt.invout.6']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.7']) + " " + nbt['gt.invout.7']['Count'] + Unit("個");
+			return name(nbt['gt.invout.7']) + " : " + nbt['gt.invout.7']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.8']) + " " + nbt['gt.invout.8']['Count'] + Unit("個");
+			return name(nbt['gt.invout.8']) + " : " + nbt['gt.invout.8']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.9']) + " " + nbt['gt.invout.9']['Count'] + Unit("個");
+			return name(nbt['gt.invout.9']) + " : " + nbt['gt.invout.9']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.10']) + " " + nbt['gt.invout.10']['Count'] + Unit("個");
+			return name(nbt['gt.invout.10']) + " : " + nbt['gt.invout.10']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.11']) + " " + nbt['gt.invout.11']['Count'] + Unit("個");
+			return name(nbt['gt.invout.11']) + " : " + nbt['gt.invout.11']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.0']['FluidName']) + " " + nbt['gt.tankout.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.0']['FluidName']) + " : " + nbt['gt.tankout.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.1']['FluidName']) + " " + nbt['gt.tankout.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.1']['FluidName']) + " : " + nbt['gt.tankout.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.2']['FluidName']) + " " + nbt['gt.tankout.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.2']['FluidName']) + " : " + nbt['gt.tankout.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.3']['FluidName']) + " " + nbt['gt.tankout.3']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.3']['FluidName']) + " : " + nbt['gt.tankout.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.4']['FluidName']) + " " + nbt['gt.tankout.4']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.4']['FluidName']) + " : " + nbt['gt.tankout.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.5']['FluidName']) + " " + nbt['gt.tankout.5']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.5']['FluidName']) + " : " + nbt['gt.tankout.5']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されているアイテム">
@@ -2830,27 +2419,27 @@
 		</line>
 
 		<line displayname = "搬入されている液体">
-			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.0']['FluidName'])+ " : " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体">
-			return fluidName(nbt['gt.tank.in.1']['FluidName']) + " " + nbt['gt.tank.in.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.1']['FluidName'])+ " : " + nbt['gt.tank.in.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体">
-			return fluidName(nbt['gt.tank.in.2']['FluidName']) + " " + nbt['gt.tank.in.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.2']['FluidName'])+ " : " + nbt['gt.tank.in.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体">
-			return fluidName(nbt['gt.tank.in.3']['FluidName']) + " " + nbt['gt.tank.in.3']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.3']['FluidName'])+ " : " + nbt['gt.tank.in.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体">
-			return fluidName(nbt['gt.tank.in.4']['FluidName']) + " " + nbt['gt.tank.in.4']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.4']['FluidName'])+ " : " + nbt['gt.tank.in.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体">
-			return fluidName(nbt['gt.tank.in.5']['FluidName']) + " " + nbt['gt.tank.in.5']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.5']['FluidName'])+ " : " + nbt['gt.tank.in.5']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出されるアイテム">
@@ -2902,32 +2491,32 @@
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " : " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " : " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.3']['FluidName']) + " " + nbt['gt.tank.out.3']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.3']['FluidName']) + " : " + nbt['gt.tank.out.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.4']['FluidName']) + " " + nbt['gt.tank.out.4']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.4']['FluidName']) + " : " + nbt['gt.tank.out.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.5']['FluidName']) + " " + nbt['gt.tank.out.5']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.5']['FluidName']) + " : " + nbt['gt.tank.out.5']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>
 
-	<!-- 電気加工機械-->
+	<!-- 電気基本機械-->
 	<tileentity id = "gt.multitileentity.machine.basic.electric">
 		<line displayname = "機械の状態">
 			if(nbt['gt.active'] != undefined){
@@ -2955,75 +2544,75 @@
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.0']) +  " " + nbt['gt.invout.0']['Count'] + Unit("個");
+			return name(nbt['gt.invout.0']) +  " : " + nbt['gt.invout.0']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.1']) +  " " + nbt['gt.invout.1']['Count'] + Unit("個");
+			return name(nbt['gt.invout.1']) +  " : " + nbt['gt.invout.1']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.2']) +  " " + nbt['gt.invout.2']['Count'] + Unit("個");
+			return name(nbt['gt.invout.2']) +  " : " + nbt['gt.invout.2']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.3']) +  " " + nbt['gt.invout.3']['Count'] + Unit("個");
+			return name(nbt['gt.invout.3']) +  " : " + nbt['gt.invout.3']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.4']) +  " " + nbt['gt.invout.4']['Count'] + Unit("個");
+			return name(nbt['gt.invout.4']) +  " : " + nbt['gt.invout.4']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.5']) +  " " + nbt['gt.invout.5']['Count'] + Unit("個");
+			return name(nbt['gt.invout.5']) +  " : " + nbt['gt.invout.5']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.6']) +  " " + nbt['gt.invout.6']['Count'] + Unit("個");
+			return name(nbt['gt.invout.6']) +  " : " + nbt['gt.invout.6']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.7']) +  " " + nbt['gt.invout.7']['Count'] + Unit("個");
+			return name(nbt['gt.invout.7']) +  " : " + nbt['gt.invout.7']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.8']) +  " " + nbt['gt.invout.8']['Count'] + Unit("個");
+			return name(nbt['gt.invout.8']) +  " : " + nbt['gt.invout.8']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.9']) +  " " + nbt['gt.invout.9']['Count'] + Unit("個");
+			return name(nbt['gt.invout.9']) +  " : " + nbt['gt.invout.9']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.10']) +  " " + nbt['gt.invout.10']['Count'] + Unit("個");
+			return name(nbt['gt.invout.10']) +  " : " + nbt['gt.invout.10']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.11']) +  " " + nbt['gt.invout.11']['Count'] + Unit("個");
+			return name(nbt['gt.invout.11']) +  " : " + nbt['gt.invout.11']['Count'] + Unit("個");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.0']['FluidName']) + " " + nbt['gt.tankout.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.0']['FluidName']) + " : " + nbt['gt.tankout.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.1']['FluidName']) + " " + nbt['gt.tankout.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.1']['FluidName']) + " : " + nbt['gt.tankout.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.2']['FluidName']) + " " + nbt['gt.tankout.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.2']['FluidName']) + " : " + nbt['gt.tankout.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.3']['FluidName']) + " " + nbt['gt.tankout.3']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.3']['FluidName']) + " : " + nbt['gt.tankout.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.4']['FluidName']) + " " + nbt['gt.tankout.4']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.4']['FluidName']) + " : " + nbt['gt.tankout.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "生産される液体/気体">
-			return fluidName(nbt['gt.tankout.5']['FluidName']) + " " + nbt['gt.tankout.5']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tankout.5']['FluidName']) + " : " + nbt['gt.tankout.5']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されているアイテム">
@@ -3067,27 +2656,27 @@
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " : " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return fluidName(nbt['gt.tank.in.1']['FluidName']) + " " + nbt['gt.tank.in.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.1']['FluidName']) + " : " + nbt['gt.tank.in.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return fluidName(nbt['gt.tank.in.2']['FluidName']) + " " + nbt['gt.tank.in.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.2']['FluidName']) + " : " + nbt['gt.tank.in.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return fluidName(nbt['gt.tank.in.3']['FluidName']) + " " + nbt['gt.tank.in.3']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.3']['FluidName']) + " : " + nbt['gt.tank.in.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return fluidName(nbt['gt.tank.in.4']['FluidName']) + " " + nbt['gt.tank.in.4']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.4']['FluidName']) + " : " + nbt['gt.tank.in.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬入されている液体/気体">
-			return fluidName(nbt['gt.tank.in.5']['FluidName']) + " " + nbt['gt.tank.in.5']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.in.5']['FluidName']) + " : " + nbt['gt.tank.in.5']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出されるアイテム">
@@ -3139,27 +2728,259 @@
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " : " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " : " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.3']['FluidName']) + " " + nbt['gt.tank.out.3']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.3']['FluidName']) + " : " + nbt['gt.tank.out.3']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.4']['FluidName']) + " " + nbt['gt.tank.out.4']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.4']['FluidName']) + " : " + nbt['gt.tank.out.4']['Amount'] + Unit("L");
 		</line>
 
 		<line displayname = "搬出される液体/気体">
-			return fluidName(nbt['gt.tank.out.5']['FluidName']) + " " + nbt['gt.tank.out.5']['Amount'] + Unit("L");
+			return fluidName(nbt['gt.tank.out.5']['FluidName']) + " : " + nbt['gt.tank.out.5']['Amount'] + Unit("L");
+		</line>
+
+	</tileentity>
+
+	<!-- ラージ遠心分離機 -->
+	<tileentity id = "gt.multitileentity.multiblock.centrifuge">
+		<line displayname = "機械の状態">
+			if(nbt['gt.active'] != undefined){
+				return BLUE + "稼働中";
+			}
+			if(nbt['gt.running'] != undefined){
+				if(nbt['gt.mte.id'] < 22000){
+					return BLUE + "スタンバイ - エネルギー消費中";
+				}
+				return BLUE + "スタンバイ";
+			}
+			return RED + "停止中";
+		</line>
+
+		<line displayname = "処理プロセス">
+			if(nbt['gt.progress'] != undefined){
+				return nbt['gt.progress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
+			}
+		</line>
+
+		<line displayname = "要求エネルギー">
+			if(nbt['gt.minenergy'] != undefined){
+				return nbt['gt.minenergy'] + Unit(ID2EnergyType(nbt['gt.mte.id']));
+			}
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.0']) +  " : " + nbt['gt.invout.0']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.1']) +  " : " + nbt['gt.invout.1']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.2']) +  " : " + nbt['gt.invout.2']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.3']) +  " : " + nbt['gt.invout.3']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.4']) +  " : " + nbt['gt.invout.4']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.5']) +  " : " + nbt['gt.invout.5']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.0']['FluidName']) + " : " + nbt['gt.tankout.0']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.1']['FluidName']) + " : " + nbt['gt.tankout.1']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.2']['FluidName']) + " : " + nbt['gt.tankout.2']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.3']['FluidName']) + " : " + nbt['gt.tankout.3']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.4']['FluidName']) + " : " + nbt['gt.tankout.4']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産される液体/気体">
+			return fluidName(nbt['gt.tankout.5']['FluidName']) + " : " + nbt['gt.tankout.5']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬入されているアイテム">
+			IOInv(nbt,0,'I');
+		</line>
+
+		<line displayname = "搬入されているアイテム">
+			IOInv(nbt,1,'I');
+		</line>
+
+		<line displayname = "搬入されているアイテム">
+			IOInv(nbt,2,'I');
+		</line>
+
+		<line displayname = "搬入されているアイテム">
+			IOInv(nbt,3,'I');
+		</line>
+
+		<line displayname = "搬入されているアイテム">
+			IOInv(nbt,4,'I');
+		</line>
+
+		<line displayname = "搬入されているアイテム">
+			IOInv(nbt,5,'I');
+		</line>
+
+		<line displayname = "搬入されている液体/気体">
+			return fluidName(nbt['gt.tank.in.0']['FluidName']) + " : " + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出されるアイテム">
+			IOInv(nbt,0,'O');
+		</line>
+
+		<line displayname = "搬出されるアイテム">
+			IOInv(nbt,1,'O');
+		</line>
+
+		<line displayname = "搬出されるアイテム">
+			IOInv(nbt,2,'O');
+		</line>
+
+		<line displayname = "搬出されるアイテム">
+			IOInv(nbt,3,'O');
+		</line>
+
+		<line displayname = "搬出されるアイテム">
+			IOInv(nbt,4,'O');
+		</line>
+
+		<line displayname = "搬出されるアイテム">
+			IOInv(nbt,5,'O');
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.0']['FluidName']) + " : " + nbt['gt.tank.out.0']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.1']['FluidName']) + " : " + nbt['gt.tank.out.1']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.2']['FluidName']) + " : " + nbt['gt.tank.out.2']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.3']['FluidName']) + " : " + nbt['gt.tank.out.3']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.4']['FluidName']) + " : " + nbt['gt.tank.out.4']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "搬出される液体/気体">
+			return fluidName(nbt['gt.tank.out.5']['FluidName']) + " : " + nbt['gt.tank.out.5']['Amount'] + Unit("L");
+		</line>
+
+	</tileentity>
+
+	<!-- 岩盤ドリル -->
+	<tileentity id = "gt.multitileentity.multiblock.drill.bedrock">
+		<line displayname = "機械の状態">
+			if(nbt['gt.active'] != undefined){
+				return BLUE + "稼働中";
+			}
+			if(nbt['gt.running'] != undefined){
+				if(nbt['gt.mte.id'] < 22000){
+					return BLUE + "スタンバイ - エネルギー消費中";
+				}
+				return BLUE + "スタンバイ";
+			}
+			return RED + "停止中";
+		</line>
+
+		<line displayname = "処理プロセス">
+			if(nbt['gt.progress'] != undefined){
+				return nbt['gt.progress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
+			}
+		</line>
+
+		<line displayname = "潤滑油の種類">
+			return fluidName(nbt['gt.tank.in.0']['FluidName']);
+		</line>
+
+		<line displayname = "潤滑油の量">
+			return + nbt['gt.tank.in.0']['Amount'] + Unit("L");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.0']) + " : " + nbt['gt.invout.0']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.1']) + " : " + nbt['gt.invout.1']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.2']) + " : " + nbt['gt.invout.2']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.3']) + " : " + nbt['gt.invout.3']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.4']) + " : " + nbt['gt.invout.4']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.5']) + " : " + nbt['gt.invout.5']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.6']) + " : " + nbt['gt.invout.6']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.7']) + " : " + nbt['gt.invout.7']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.8']) + " : " + nbt['gt.invout.8']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.9']) + " : " + nbt['gt.invout.9']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.10']) + " : " + nbt['gt.invout.10']['Count'] + Unit("個");
+		</line>
+
+		<line displayname = "生産されるアイテム">
+			return name(nbt['gt.invout.11']) + " : " + nbt['gt.invout.11']['Count'] + Unit("個");
 		</line>
 
 	</tileentity>
