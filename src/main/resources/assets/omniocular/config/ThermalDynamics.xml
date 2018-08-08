@@ -3,7 +3,7 @@
 <oo>
 	<init>
 		function gttdFluid(td){
-			if(nbt['FluidName']!=undefined)return fluidName(td['FluidName'])+" : "+td['Amount']+" / "+(td['ConnFluid']['Amount'])+" mB"
+			if(nbt['FluidName']!=undefined)return fluidName(td['FluidName'])+" : "+td['Amount']+" / " + "2500 mB"
 		}
 	</init>
 	<tileentity id="thermaldynamics.FluidDuct.*">
