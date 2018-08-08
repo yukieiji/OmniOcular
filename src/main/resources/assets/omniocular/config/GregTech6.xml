@@ -247,7 +247,7 @@
 				return RED + "現在の爆発威力は:" + ExplodeRoundSU(nbt['gt.tank.1']['Amount']) + "です";
 			}
 		</line>
-		
+
 		<line displayname = "ボイラー注意1">
 			if((nbt['gt.energy'] != undefined) && (nbt['gt.tank.1']['Amount'] != undefined)){
 				if((nbt['gt.energy'] + nbt['gt.tank.1']['Amount'] / 2) > 2000){
@@ -304,7 +304,7 @@
 				return BLUE + "加熱中";
 			}
 			if(nbt['gt.energy'] != undefined){
-				return GOLD + "干烧";
+				return GOLD + "空焚き中";
 			}
 			return RED + "停止中";
 		</line>
@@ -434,7 +434,7 @@
 			if(nbt['gt.active'] == 1){
 				return GREEN + "動作中";
 			}
-			return BLUE + "预热";
+			return BLUE + "予熱で動作中";
 		</line>
 
 		<line displayname = "エネルギー出力">
@@ -510,12 +510,12 @@
 		<line displayname = "エネルギー出力">
 			if(nbt['gt.output.su'] != undefined){
 				if((nbt['gt.output.su'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
-					return RED + "机器超载なし法正常工作，请降低エネルギー入力"
+					return RED + "エネルギー入力が不安定のため機械が正しく動作しないです"
 				}
 			}
 			if(nbt['gt.tank.0'] != undefined){
 				if((nbt['gt.tank.0']['Amount'] / 3) > (ID2Tier(nbt['gt.mte.id'],"SU","RU",0) * 2)){
-					return RED + "机器超载なし法正常工作，请降低エネルギー入力"
+					return RED + "エネルギー入力が不安定のため機械が正しく動作しないです"
 				}
 			}
 			if(nbt['gt.output.su'] != undefined){
@@ -2908,79 +2908,12 @@
 
 	<!-- 岩盤ドリル -->
 	<tileentity id = "gt.multitileentity.multiblock.drill.bedrock">
-		<line displayname = "機械の状態">
-			if(nbt['gt.active'] != undefined){
-				return BLUE + "稼働中";
-			}
-			if(nbt['gt.running'] != undefined){
-				if(nbt['gt.mte.id'] < 22000){
-					return BLUE + "スタンバイ - エネルギー消費中";
-				}
-				return BLUE + "スタンバイ";
-			}
-			return RED + "停止中";
-		</line>
-
-		<line displayname = "処理プロセス">
-			if(nbt['gt.progress'] != undefined){
-				return nbt['gt.progress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " / " + nbt['gt.maxprogress'] / 20 / nbt['gt.minenergy'] + Unit("S") + " - " + parseInt(nbt['gt.progress'] * 10000 / nbt['gt.maxprogress']) / 100 + " %";
-			}
-		</line>
-
 		<line displayname = "潤滑油の種類">
-			return fluidName(nbt['gt.tank.in.0']['FluidName']);
+			return fluidName(nbt['gt.tank.0']['FluidName']);
 		</line>
 
 		<line displayname = "潤滑油の量">
-			return + nbt['gt.tank.in.0']['Amount'] + Unit("L");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.0']) + " : " + nbt['gt.invout.0']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.1']) + " : " + nbt['gt.invout.1']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.2']) + " : " + nbt['gt.invout.2']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.3']) + " : " + nbt['gt.invout.3']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.4']) + " : " + nbt['gt.invout.4']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.5']) + " : " + nbt['gt.invout.5']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.6']) + " : " + nbt['gt.invout.6']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.7']) + " : " + nbt['gt.invout.7']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.8']) + " : " + nbt['gt.invout.8']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.9']) + " : " + nbt['gt.invout.9']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.10']) + " : " + nbt['gt.invout.10']['Count'] + Unit("個");
-		</line>
-
-		<line displayname = "生産されるアイテム">
-			return name(nbt['gt.invout.11']) + " : " + nbt['gt.invout.11']['Count'] + Unit("個");
+			return + nbt['gt.tank.0']['Amount'] + Unit("L");
 		</line>
 
 	</tileentity>

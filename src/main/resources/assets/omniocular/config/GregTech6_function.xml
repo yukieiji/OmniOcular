@@ -8,7 +8,7 @@
 	<!-- RU EU - 発電機,LU QU - 量子生成器, LU LU - クリスタルチャージャー,LU EU - レーザーアブソリューバー,EU CU HU - 半导体制冷器, -->
     
     <init>
-		function ID2Tier(mID,mInput,mOutput,isInput){
+		function ID2Tier(mID,mInput,mOutput,isInput,InSlotBattery){
 			var tInput = 0;
 			var tOutput = 0;
 
@@ -109,15 +109,15 @@
 				}
 				if(mOutput == "EU"){
 					if(mID >= 10090){
-						tInput = 8 * Math.pow(4,(mID % 10090));
+						tInput = 8 * Math.pow(4,(mID % 10090)) * InSlotBattery;
 						tOutput = tInput;
 					}
 					else if(mID >= 10080){
-						tInput = 8 * Math.pow(4,(mID % 10080));
+						tInput = 8 * Math.pow(4,(mID % 10080)) * InSlotBattery;
 						tOutput = tInput;
 					}
 					else if(mID >= 10040){
-						tOutput = 8 * Math.pow(4,(mID % 10040));
+						tOutput = 8 * Math.pow(4,(mID % 10040)) * InSlotBattery;
 						tInput = tOutput * 4;
 					}
 				}
@@ -145,11 +145,11 @@
 				}
 				if(mOutput == "LU"){
 					if(mID >= 10140){
-						tInput = 8 * Math.pow(4,(mID % 10140));
+						tInput = 8 * Math.pow(4,(mID % 10140)) * InSlotBattery;
 						tOutput = tInput;
 					}
 					else if(mID >= 10130){
-						tInput = 8 * Math.pow(4,(mID % 10130));
+						tInput = 8 * Math.pow(4,(mID % 10130)) * InSlotBattery;
 						tOutput = tInput;
 					}
 				}

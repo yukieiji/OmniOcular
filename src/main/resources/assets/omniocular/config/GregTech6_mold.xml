@@ -1,31 +1,31 @@
 <!--Date: 2018/07/31-->
 <!--Version: 6.07.24-->
 <!-- yukieiji -->
-<oo>    
+<oo>
     <init>
         function Mold2Recipes(mold){
             switch(mold){
-				case 3:{return "螺栓";}
-				case 6:{return "螺栓";}
-				case 12:{return "螺栓";}
+				case 3:{return "ボルト";}
+				case 6:{return "ボルト";}
+				case 12:{return "ボルト";}
 				case 15:{return "螺丝刀头";}
-				case 24:{return "螺栓";}
+				case 24:{return "ボルト";}
 				case 30:{return "螺丝刀头";}
 				case 31:{return "杆/棍";}
-				case 33:{return "螺栓";}
-				case 66:{return "螺栓";}
-				case 96:{return "螺栓";}
+				case 33:{return "ボルト";}
+				case 66:{return "ボルト";}
+				case 96:{return "ボルト";}
 				case 99:{return "小块";}
 				case 103:{return "锄头毛坯";}
-				case 132:{return "螺栓";}
-				case 192:{return "螺栓";}
+				case 132:{return "ボルト";}
+				case 192:{return "ボルト";}
 				case 198:{return "小块";}
 				case 199:{return "锄头毛坯";}
 				case 206:{return "锄头毛坯";}
 				case 227:{return "锄头毛坯";}
 				case 230:{return "锄头毛坯";}
-				case 264:{return "螺栓";}
-				case 384:{return "螺栓";}
+				case 264:{return "ボルト";}
+				case 384:{return "ボルト";}
 				case 396:{return "小块";}
 				case 398:{return "锄头毛坯";}
 				case 412:{return "锄头毛坯";}
@@ -34,9 +34,9 @@
 				case 465:{return "镐头毛坯";}
 				case 480:{return "螺丝刀头";}
 				case 511:{return "镰刀片毛坯";}
-				case 528:{return "螺栓";}
+				case 528:{return "ボルト";}
 				case 558:{return "镐头毛坯";}
-				case 768:{return "螺栓";}
+				case 768:{return "ボルト";}
 				case 792:{return "小块";}
 				case 796:{return "锄头毛坯";}
 				case 908:{return "锄头毛坯";}
@@ -47,24 +47,24 @@
 				case 1007:{return "镰刀片毛坯";}
 				case 1022:{return "镰刀片毛坯";}
 				case 1023:{return "锯片毛坯";}
-				case 1056:{return "螺栓";}
+				case 1056:{return "ボルト";}
 				case 1123:{return "锄头毛坯";}
 				case 1249:{return "箭头毛坯";}
 				case 1255:{return "斧头毛坯";}
 				case 2017:{return "凿子头毛坯";}
-				case 2112:{return "螺栓";}
+				case 2112:{return "ボルト";}
 				case 2119:{return "箭头毛坯";}
 				case 2147:{return "锄头毛坯";}
 				case 2246:{return "锄头毛坯";}
 				case 2498:{return "箭头毛坯";}
 				case 2510:{return "斧头毛坯";}
-				case 3072:{return "螺栓";}
+				case 3072:{return "ボルト";}
 				case 3168:{return "小块";}
 				case 3169:{return "锄头毛坯";}
 				case 3170:{return "锄头毛坯";}
 				case 3175:{return "斧头毛坯";}
 				case 3296:{return "锄头毛坯";}
-				case 4224:{return "螺栓";}
+				case 4224:{return "ボルト";}
 				case 4238:{return "箭头毛坯";}
 				case 4294:{return "锄头毛坯";}
 				case 4324:{return "箭头毛坯";}
@@ -73,7 +73,7 @@
 				case 4996:{return "箭头毛坯";}
 				case 5020:{return "斧头毛坯";}
 				case 5607:{return "万用铲头毛坯";}
-				case 6144:{return "螺栓";}
+				case 6144:{return "ボルト";}
 				case 6336:{return "小块";}
 				case 6338:{return "锄头毛坯";}
 				case 6340:{return "锄头毛坯";}
@@ -89,11 +89,11 @@
 				case 7366:{return "斧头毛坯";}
 				case 7393:{return "斧头毛坯";}
 				case 7396:{return "斧头毛坯";}
-				case 7399:{return "小块板";}
+				case 7399:{return "小さなプレート";}
 				case 7653:{return "万用铲头毛坯";}
 				case 7655:{return "锹头毛坯";}
 				case 8167:{return "锉刀头";}
-				case 8448:{return "螺栓";}
+				case 8448:{return "ボルト";}
 				case 8476:{return "箭头毛坯";}
 				case 8588:{return "锄头毛坯";}
 				case 8648:{return "箭头毛坯";}
@@ -101,7 +101,7 @@
 				case 8984:{return "锄头毛坯";}
 				case 10734:{return "万用铲头毛坯";}
 				case 11214:{return "万用铲头毛坯";}
-				case 12288:{return "螺栓";}
+				case 12288:{return "ボルト";}
 				case 12672:{return "小块";}
 				case 12676:{return "锄头毛坯";}
 				case 12680:{return "锄头毛坯";}
@@ -117,7 +117,7 @@
 				case 14732:{return "斧头毛坯";}
 				case 14786:{return "斧头毛坯";}
 				case 14792:{return "斧头毛坯";}
-				case 14798:{return "小块板";}
+				case 14798:{return "小さなプレート";}
 				case 14826:{return "万用铲头毛坯";}
 				case 14830:{return "锹头毛坯";}
 				case 14880:{return "镐头毛坯";}
@@ -128,7 +128,7 @@
 				case 15823:{return "铲头毛坯";}
 				case 16352:{return "镰刀片毛坯";}
 				case 16367:{return "剑身毛坯";}
-				case 16896:{return "螺栓";}
+				case 16896:{return "ボルト";}
 				case 17176:{return "锄头毛坯";}
 				case 17296:{return "箭头毛坯";}
 				case 17308:{return "斧头毛坯";}
@@ -136,7 +136,7 @@
 				case 17856:{return "镐头毛坯";}
 				case 18431:{return "双刃斧头毛坯";}
 				case 21468:{return "万用铲头毛坯";}
-				case 24576:{return "螺栓";}
+				case 24576:{return "ボルト";}
 				case 25344:{return "小块";}
 				case 25352:{return "锄头毛坯";}
 				case 25360:{return "锄头毛坯";}
@@ -150,7 +150,7 @@
 				case 29464:{return "斧头毛坯";}
 				case 29572:{return "斧头毛坯";}
 				case 29584:{return "斧头毛坯";}
-				case 29596:{return "小块板";}
+				case 29596:{return "小さなプレート";}
 				case 29652:{return "万用铲头毛坯";}
 				case 29660:{return "锹头毛坯";}
 				case 29692:{return "锉刀头";}
@@ -166,13 +166,13 @@
 				case 32736:{return "锯片毛坯";}
 				case 32753:{return "双刃斧头毛坯";}
 				case 32767:{return "锭";}
-				case 33792:{return "螺栓";}
+				case 33792:{return "ボルト";}
 				case 33825:{return "螺丝刀头";}
 				case 35936:{return "锄头毛坯";}
 				case 39968:{return "箭头毛坯";}
 				case 40160:{return "斧头毛坯";}
 				case 64544:{return "凿子头毛坯";}
-				case 67584:{return "螺栓";}
+				case 67584:{return "ボルト";}
 				case 67650:{return "螺丝刀头";}
 				case 67808:{return "箭头毛坯";}
 				case 68704:{return "锄头毛坯";}
@@ -182,13 +182,13 @@
 				case 72935:{return "锹头毛坯";}
 				case 79936:{return "箭头毛坯";}
 				case 80320:{return "斧头毛坯";}
-				case 98304:{return "螺栓";}
+				case 98304:{return "ボルト";}
 				case 101376:{return "小块";}
 				case 101408:{return "锄头毛坯";}
 				case 101440:{return "锄头毛坯";}
 				case 101600:{return "斧头毛坯";}
 				case 105472:{return "锄头毛坯";}
-				case 135168:{return "螺栓";}
+				case 135168:{return "ボルト";}
 				case 135300:{return "螺丝刀头";}
 				case 135616:{return "箭头毛坯";}
 				case 137408:{return "锄头毛坯";}
@@ -202,7 +202,7 @@
 				case 160640:{return "斧头毛坯";}
 				case 171239:{return "铲头毛坯";}
 				case 179424:{return "万用铲头毛坯";}
-				case 196608:{return "螺栓";}
+				case 196608:{return "ボルト";}
 				case 202752:{return "小块";}
 				case 202816:{return "锄头毛坯";}
 				case 202880:{return "锄头毛坯";}
@@ -220,13 +220,13 @@
 				case 235746:{return "万用铲头毛坯";}
 				case 236576:{return "斧头毛坯";}
 				case 236672:{return "斧头毛坯";}
-				case 236768:{return "小块板";}
+				case 236768:{return "小さなプレート";}
 				case 236770:{return "锹头毛坯";}
 				case 236773:{return "铲头毛坯";}
 				case 244896:{return "万用铲头毛坯";}
 				case 244960:{return "锹头毛坯";}
 				case 261344:{return "锉刀头";}
-				case 270336:{return "螺栓";}
+				case 270336:{return "ボルト";}
 				case 270600:{return "螺丝刀头";}
 				case 271232:{return "箭头毛坯";}
 				case 274816:{return "锄头毛坯";}
@@ -239,7 +239,7 @@
 				case 342478:{return "铲头毛坯";}
 				case 343488:{return "万用铲头毛坯";}
 				case 358848:{return "万用铲头毛坯";}
-				case 393216:{return "螺栓";}
+				case 393216:{return "ボルト";}
 				case 405504:{return "小块";}
 				case 405632:{return "锄头毛坯";}
 				case 405760:{return "锄头毛坯";}
@@ -257,7 +257,7 @@
 				case 471492:{return "万用铲头毛坯";}
 				case 473152:{return "斧头毛坯";}
 				case 473344:{return "斧头毛坯";}
-				case 473536:{return "小块板";}
+				case 473536:{return "小さなプレート";}
 				case 473540:{return "锹头毛坯";}
 				case 473546:{return "铲头毛坯";}
 				case 474432:{return "万用铲头毛坯";}
@@ -270,7 +270,7 @@
 				case 506336:{return "铲头毛坯";}
 				case 523264:{return "镰刀片毛坯";}
 				case 523744:{return "剑身毛坯";}
-				case 540672:{return "螺栓";}
+				case 540672:{return "ボルト";}
 				case 541200:{return "螺丝刀头";}
 				case 549632:{return "锄头毛坯";}
 				case 553472:{return "箭头毛坯";}
@@ -280,7 +280,7 @@
 				case 589792:{return "双刃斧头毛坯";}
 				case 684956:{return "铲头毛坯";}
 				case 686976:{return "万用铲头毛坯";}
-				case 786432:{return "螺栓";}
+				case 786432:{return "ボルト";}
 				case 811008:{return "小块";}
 				case 811264:{return "锄头毛坯";}
 				case 811520:{return "锄头毛坯";}
@@ -296,7 +296,7 @@
 				case 942984:{return "万用铲头毛坯";}
 				case 946304:{return "斧头毛坯";}
 				case 946688:{return "斧头毛坯";}
-				case 947072:{return "小块板";}
+				case 947072:{return "小さなプレート";}
 				case 947080:{return "锹头毛坯";}
 				case 947092:{return "铲头毛坯";}
 				case 948864:{return "万用铲头毛坯";}
@@ -314,7 +314,7 @@
 				case 1047552:{return "锯片毛坯";}
 				case 1048096:{return "双刃斧头毛坯";}
 				case 1048544:{return "锭";}
-				case 1081344:{return "螺栓";}
+				case 1081344:{return "ボルト";}
 				case 1082400:{return "螺丝刀头";}
 				case 1082401:{return "杆/棍";}
 				case 1116225:{return "镐头毛坯";}
@@ -325,7 +325,7 @@
 				case 1285120:{return "斧头毛坯";}
 				case 2065408:{return "凿子头毛坯";}
 				case 2130978:{return "镐头毛坯";}
-				case 2162688:{return "螺栓";}
+				case 2162688:{return "ボルト";}
 				case 2164800:{return "螺丝刀头";}
 				case 2164802:{return "杆/棍";}
 				case 2164807:{return "凿子头毛坯";}
@@ -342,7 +342,7 @@
 				case 2333927:{return "剑身毛坯";}
 				case 2557952:{return "箭头毛坯";}
 				case 2570240:{return "斧头毛坯";}
-				case 3145728:{return "螺栓";}
+				case 3145728:{return "ボルト";}
 				case 3244032:{return "小块";}
 				case 3245056:{return "锄头毛坯";}
 				case 3246080:{return "锄头毛坯";}
@@ -352,7 +352,7 @@
 				case 3251200:{return "斧头毛坯";}
 				case 3375104:{return "锄头毛坯";}
 				case 4261956:{return "镐头毛坯";}
-				case 4325376:{return "螺栓";}
+				case 4325376:{return "ボルト";}
 				case 4329600:{return "螺丝刀头";}
 				case 4329604:{return "杆/棍";}
 				case 4329614:{return "凿子头毛坯";}
@@ -374,7 +374,7 @@
 				case 5242879:{return "犁头毛坯";}
 				case 5479648:{return "铲头毛坯";}
 				case 5741568:{return "万用铲头毛坯";}
-				case 6291456:{return "螺栓";}
+				case 6291456:{return "ボルト";}
 				case 6488064:{return "小块";}
 				case 6490112:{return "锄头毛坯";}
 				case 6492160:{return "锄头毛坯";}
@@ -399,7 +399,7 @@
 				case 7570432:{return "斧头毛坯";}
 				case 7573504:{return "斧头毛坯";}
 				case 7574759:{return "锤头";}
-				case 7576576:{return "小块板";}
+				case 7576576:{return "小さなプレート";}
 				case 7576640:{return "锹头毛坯";}
 				case 7576642:{return "锉刀头";}
 				case 7576736:{return "铲头毛坯";}
@@ -410,7 +410,7 @@
 				case 7888631:{return "外壳";}
 				case 8363008:{return "锉刀头";}
 				case 8523912:{return "镐头毛坯";}
-				case 8650752:{return "螺栓";}
+				case 8650752:{return "ボルト";}
 				case 8659200:{return "螺丝刀头";}
 				case 8659208:{return "杆/棍";}
 				case 8659228:{return "凿子头毛坯";}
@@ -431,7 +431,7 @@
 				case 10991616:{return "万用铲头毛坯";}
 				case 11483136:{return "万用铲头毛坯";}
 				case 11512810:{return "小型齿轮";}
-				case 12582912:{return "螺栓";}
+				case 12582912:{return "ボルト";}
 				case 12976128:{return "小块";}
 				case 12980224:{return "锄头毛坯";}
 				case 12984320:{return "锄头毛坯";}
@@ -456,7 +456,7 @@
 				case 15140864:{return "斧头毛坯";}
 				case 15147008:{return "斧头毛坯";}
 				case 15149518:{return "锤头";}
-				case 15153152:{return "小块板";}
+				case 15153152:{return "小さなプレート";}
 				case 15153280:{return "锹头毛坯";}
 				case 15153284:{return "锉刀头";}
 				case 15153472:{return "铲头毛坯";}
@@ -476,7 +476,7 @@
 				case 16759808:{return "剑身毛坯";}
 				case 17043521:{return "长杆/长棍";}
 				case 17047824:{return "镐头毛坯";}
-				case 17301504:{return "螺栓";}
+				case 17301504:{return "ボルト";}
 				case 17318400:{return "螺丝刀头";}
 				case 17318416:{return "杆/棍";}
 				case 17588224:{return "锄头毛坯";}
@@ -491,7 +491,7 @@
 				case 22506965:{return "齿轮";}
 				case 24894479:{return "外壳";}
 				case 24894983:{return "外壳";}
-				case 25165824:{return "螺栓";}
+				case 25165824:{return "ボルト";}
 				case 25952256:{return "小块";}
 				case 25960448:{return "锄头毛坯";}
 				case 25968640:{return "锄头毛坯";}
@@ -515,7 +515,7 @@
 				case 30281728:{return "斧头毛坯";}
 				case 30294016:{return "斧头毛坯";}
 				case 30299036:{return "锤头";}
-				case 30306304:{return "小块板";}
+				case 30306304:{return "小さなプレート";}
 				case 30306560:{return "锹头毛坯";}
 				case 30306568:{return "锉刀头";}
 				case 30306944:{return "铲头毛坯";}
@@ -541,7 +541,7 @@
 				case 33539072:{return "双刃斧头毛坯";}
 				case 33553408:{return "锭";}
 				case 33554404:{return "犁头毛坯";}
-				case 33554431:{return "板";}
+				case 33554431:{return "プレート";}
             }
             return "ナゲット";
         }
