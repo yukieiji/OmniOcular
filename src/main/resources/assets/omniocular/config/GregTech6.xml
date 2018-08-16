@@ -643,21 +643,22 @@
 			isRun(nbt);
 		</line>
 
-		<line displayname = "エネルギー入力">
+		<line displayname = "この変圧器の情報">
 			if(nbt['gt.reversed'] != undefined){
-				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) * 2 + ")";
+				return ID2Tier(nbt['gt.mte.id'],"EU","EU",1,1) / 2 + "～" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1,1) * 2 + Unit("EU") + " → " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0,1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0,1) * 2 + Unit("EU")
 			}
-			return ID2Tier(nbt['gt.mte.id'],"EU","EU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) * 2 + ")";
+			return ID2Tier(nbt['gt.mte.id'],"EU","EU",1,1) / 2 + "～" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1,1) * 2 + Unit("EU") + " → " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0,1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0,1) * 2 + Unit("EU")
 		</line>
 
-		<line displayname = "エネルギー出力">
-			if(nbt['gt.reversed'] != undefined){
-				return ID2Tier(nbt['gt.mte.id'],"EU","EU",1) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",1) * 2 + ")";
+		<line displayname = "現在の状況">
+			if(nbt['gt.energy'] != undefined){
+				return nbt['gt.energy']　+ Unit("EU") + "/t" + " → " + ( nbt['gt.energy'] / 4 ) + Unit("EU");
 			}
-			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + "(" + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) / 2 + " ～ " + ID2Tier(nbt['gt.mte.id'],"EU","EU",0) * 2 + ")";
 		</line>
 
-		<line displayname = "転送方向">
+
+
+		<line displayname = "変圧する方向">
 			if(nbt['gt.reversed'] != undefined){
 				return BLUE + "大きな点が高電圧の" + RED + "搬出口 ，"+ BLUE + "小さな点が低電圧の" + RED + "搬入口";
 			}
@@ -674,9 +675,9 @@
 
 		<line displayname = "エネルギー出力">
 			if(nbt['gt.mode'] != undefined){
-				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,0,0,1)) + Unit("A");
+				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0,BatteryBoxArg(nbt,0,0,1)) + Unit("EU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,0,0,1)) + Unit("A");
 			}
-			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + BatteryBoxArg(nbt,0,0,1) + Unit("A");
+			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0,BatteryBoxArg(nbt,0,0,1)) + Unit("EU") + "/t" + " - " + BatteryBoxArg(nbt,0,0,1) + Unit("A");
 		</line>
 
 		<line displayname = "放電しているアイテム">
@@ -705,9 +706,9 @@
 
 		<line displayname = "エネルギー出力">
 			if(nbt['gt.mode'] != undefined){
-				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,1,0,1)) + Unit("A");
+				return ID2Tier(nbt['gt.mte.id'],"EU","EU",0,BatteryBoxArg(nbt,0,0,1)) + Unit("EU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,1,0,1)) + Unit("A");
 			}
-			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0) + Unit("EU") + "/t" + " - " + BatteryBoxArg(nbt,1,0,1) + Unit("A");
+			return ID2Tier(nbt['gt.mte.id'],"EU","EU",0,BatteryBoxArg(nbt,0,0,1)) + Unit("EU") + "/t" + " - " + BatteryBoxArg(nbt,1,0,1) + Unit("A");
 		</line>
 
 		<line displayname = "放電しているアイテム">
@@ -803,9 +804,9 @@
 
 		<line displayname = "エネルギー出力">
 			if(nbt['gt.mode'] != undefined){
-				return ID2Tier(nbt['gt.mte.id'],"LU","LU",0) + Unit("LU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,0,0,0)) + Unit("A");
+				return ID2Tier(nbt['gt.mte.id'],"LU","LU",0 , BatteryBoxArg(nbt,0,0,0)) + Unit("LU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,0,0,0)) + Unit("A");
 			}
-			return ID2Tier(nbt['gt.mte.id'],"LU","LU",0) + Unit("LU") + "/t" + " - " + BatteryBoxArg(nbt,0,0,0) + Unit("A");
+			return ID2Tier(nbt['gt.mte.id'],"LU","LU",0,BatteryBoxArg(nbt,0,0,0)) + Unit("LU") + "/t" + " - " + BatteryBoxArg(nbt,0,0,0) + Unit("A");
 		</line>
 
 		<line displayname = "放電しているアイテム">
@@ -834,9 +835,9 @@
 
 		<line displayname = "エネルギー出力">
 			if(nbt['gt.mode'] != undefined){
-				return ID2Tier(nbt['gt.mte.id'],"LU","LU",0) + Unit("LU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,1,0,0)) + Unit("A");
+				return ID2Tier(nbt['gt.mte.id'],"LU","LU",0,BatteryBoxArg(nbt,1,0,0)) + Unit("LU") + "/t" + " - " + Math.min(nbt['gt.mode'],BatteryBoxArg(nbt,1,0,0)) + Unit("A");
 			}
-			return ID2Tier(nbt['gt.mte.id'],"LU","LU",0) + Unit("LU") + "/t" + " - " + BatteryBoxArg(nbt,1,0,0) + Unit("A");
+			return ID2Tier(nbt['gt.mte.id'],"LU","LU",0,BatteryBoxArg(nbt,1,0,0)) + Unit("LU") + "/t" + " - " + BatteryBoxArg(nbt,1,0,0) + Unit("A");
 		</line>
 
 		<line displayname = "放電しているアイテム">
